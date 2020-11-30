@@ -16,7 +16,7 @@ public class LogIn {
 
 
     public void logIn(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "staff/loggedInStaff");
+        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "visitor/loggedInVisitor");
         loginPane.getChildren().setAll(pane);
     }
 

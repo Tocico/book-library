@@ -23,7 +23,7 @@
                   </Text>
                   <ButtonBar layoutX="242.0" layoutY="9.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="740.0">
                     <buttons>
-                        <Button fx:id="LogOut" alignment="CENTER" contentDisplay="TOP" maxWidth="79.0" minWidth="30.0" mnemonicParsing="false" onAction="#goToLogIn" prefHeight="28.0" prefWidth="30.0" style="-fx-background-color: transparent;" text="Log out" textFill="WHITE">
+                        <Button fx:id="LogOut" alignment="CENTER" contentDisplay="TOP" maxWidth="79.0" minWidth="30.0" mnemonicParsing="false" onAction="#goToLogOut" prefHeight="28.0" prefWidth="30.0" style="-fx-background-color: transparent;" text="Log out" textFill="WHITE">
                            <font>
                               <Font name="Euphemia UCAS" size="13.0" />
                            </font>
@@ -48,9 +48,9 @@
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #c9d8da;" BorderPane.alignment="CENTER" />
          </center>
          <left>
-            <VBox fx:id="staffTop" onDragDetected="#goToStaff" prefHeight="513.0" prefWidth="208.0" style="-fx-background-color: #536c85;" BorderPane.alignment="CENTER">
+            <VBox fx:id="visitorTop" onDragDetected="#goToVisitorTop" prefHeight="513.0" prefWidth="208.0" style="-fx-background-color: #536c85;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="staffeTop1" maxWidth="210.0" minWidth="20.0" mnemonicParsing="false" onAction="#goToStaffTop" prefHeight="28.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="Top" textFill="WHITE" textOverrun="CLIP">
+                  <Button fx:id="staffeTop1" maxWidth="210.0" minWidth="20.0" mnemonicParsing="false" onAction="#goToVisitorTop" prefHeight="28.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="Top" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
