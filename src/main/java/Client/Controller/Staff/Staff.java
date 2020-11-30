@@ -38,7 +38,7 @@ public class Staff {
 
 
 
-    public void goToLogIn(ActionEvent actionEvent) {
+    public void goToLogOut(ActionEvent actionEvent) {
         AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "logIn");
         loggedInStaff.getChildren().setAll(pane);
     }
