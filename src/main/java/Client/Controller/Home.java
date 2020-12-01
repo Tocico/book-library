@@ -1,5 +1,6 @@
 package Client.Controller;
 
+import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -15,21 +16,16 @@ public class Home {
     public Button top;
     public Button log;
 
-    Class<?> currentClass = getClass();
-
 
     public void goToTop(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "home");
-        homePane.getChildren().setAll(pane);
+        homePane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "home"));
     }
 
     public void goToSearch(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "search");
-        homePane.getChildren().setAll(pane);
+        homePane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "search"));
     }
 
     public void goToLogIn(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "logIn");
-        homePane.getChildren().setAll(pane);
+        homePane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 }
