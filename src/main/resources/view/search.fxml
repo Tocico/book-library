@@ -60,9 +60,9 @@
                   <Pane layoutX="160.0" prefHeight="511.0" prefWidth="709.0">
                      <children>
                         <TextField fx:id="searchT" layoutY="43.0" prefHeight="40.0" prefWidth="590.0" />
-                        <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="42.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#searchAction" prefWidth="90.0" style="-fx-background-color: #a65d58;" text="sök" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                        <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="45.0" minHeight="36.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#searchAction" prefHeight="29.0" prefWidth="90.0" style="-fx-background-color: #a65d58;" text="sök" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                            <font>
-                              <Font size="22.0" />
+                              <Font size="20.0" />
                            </font>
                         </Button>
                      </children>

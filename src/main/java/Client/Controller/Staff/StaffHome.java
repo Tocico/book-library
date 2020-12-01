@@ -1,6 +1,8 @@
 package Client.Controller.Staff;
 
 import Client.Controller.ControllerUtil;
+import Model.User;
+import Model.UserTest;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -14,11 +16,11 @@ import javafx.scene.layout.AnchorPane;
  */
 
 
-public class Staff {
+public class StaffHome {
     public AnchorPane loggedInStaff;
     public Button staffeTop;
     public Button history;
-    Class<?> currentClass = getClass();
+    public static UserTest currentLoggedInUser;
 
 
     public void goToStaffTop(ActionEvent actionEvent) {
@@ -36,11 +38,8 @@ public class Staff {
     public void goToRegisterBooks(ActionEvent actionEvent) {
     }
 
-
-
     public void goToLogOut(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "logIn");
-        loggedInStaff.getChildren().setAll(pane);
+        loggedInStaff.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToSearch(ActionEvent actionEvent) {

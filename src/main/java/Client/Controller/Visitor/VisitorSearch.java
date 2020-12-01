@@ -16,29 +16,23 @@ import javafx.scene.layout.AnchorPane;
 
 public class VisitorSearch {
     public AnchorPane visitorSearchPane;
-    Class<?> currentClass = getClass();
-
-    public void goToVisitorTop(MouseEvent mouseEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "visitor/loggedInVisitor");
-        visitorSearchPane.getChildren().setAll(pane);
-    }
 
     public void goToHistory(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "visitor/visitorHistory");
-        visitorSearchPane.getChildren().setAll(pane);
+        visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHistory"));
     }
 
     public void goToSearch(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "visitor/visitorSearch");
-        visitorSearchPane.getChildren().setAll(pane);
+        visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorSearch"));
     }
 
     public void searchAction(ActionEvent actionEvent) {
     }
 
     public void goToLogOut(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "logIn");
-        visitorSearchPane.getChildren().setAll(pane);
+        visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
+    public void goToVisitorTop(ActionEvent actionEvent) {
+        visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
+    }
 }

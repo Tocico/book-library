@@ -11,21 +11,17 @@ import java.util.ResourceBundle;
 public class Search implements Initializable {
     public TextField searchT;
     public AnchorPane searchPane;
-    Class<?> currentClass = getClass();
 
     public void goToLogIn(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "logIn");
-        searchPane.getChildren().setAll(pane);
+        searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToSearch(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "search");
-        searchPane.getChildren().setAll(pane);
+        searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "search"));
     }
 
     public void goToTop(ActionEvent actionEvent) {
-        AnchorPane pane = ControllerUtil.loadFMXLFiles(currentClass, "home");
-        searchPane.getChildren().setAll(pane);
+        searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "home"));
     }
 
     public void searchAction(ActionEvent actionEvent) {
