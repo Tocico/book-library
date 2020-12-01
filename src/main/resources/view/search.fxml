@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -54,7 +56,7 @@
             </Pane>
          </bottom>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #c9d8da;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                  
                   <Pane layoutX="160.0" prefHeight="511.0" prefWidth="709.0">
@@ -65,6 +67,15 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
+                        <Text fx:id="message" fill="#f80909" layoutX="-4.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="572.0787963867188" />
+                        <TableView fx:id="searchView" layoutX="-1.0" layoutY="130.0" prefHeight="341.0" prefWidth="710.0" stylesheets="@../css/style.css">
+                          <columns>
+                            <TableColumn fx:id="title" prefWidth="271.98435974121094" text="Title" />
+                            <TableColumn fx:id="author" minWidth="0.0" prefWidth="189.984375" text="Author" />
+                              <TableColumn fx:id="language" prefWidth="127.015625" text="Language" />
+                              <TableColumn fx:id="category" minWidth="0.0" prefWidth="127.640625" text="Category" />
+                          </columns>
+                        </TableView>
                      </children>
                   </Pane>
                </children>
