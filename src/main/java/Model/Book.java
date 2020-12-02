@@ -9,7 +9,7 @@ package Model;  /**
     
     
     public class Book {
-    protected int isbn;
+    protected String isbn;
     protected String title;
     protected String description;
     protected int numberOfBooks;
@@ -24,7 +24,7 @@ package Model;  /**
 
     // I think that we need to use setter and need to use a builder pattern...
 
-    public Book(int isbn, String title, String description, int numberOfBooks, String author, Category category, String publisher, String edition, int releaseDate, Language language, String numberOfPages, Library location) {
+   /* public Book(String isbn, String title, String description, int numberOfBooks, String author, Category category, String publisher, String edition, int releaseDate, Language language, String numberOfPages, Library location) {
         this.isbn = isbn;
         this.title = title;
         this.description = description;
@@ -37,26 +37,29 @@ package Model;  /**
         this.language = language;
         this.numberOfPages = numberOfPages;
         this.location = location;
-    }
+    }*/
+
 
 
     //Or We can use fluent builder (do not make constructor)
 
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public Book setIsbn(String isbn) {
         this.isbn = isbn;
+        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public Book setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getDescription() {
@@ -79,16 +82,18 @@ package Model;  /**
         return author;
     }
 
-    public void setAuthor(String author) {
+    public Book setAuthor(String author) {
         this.author = author;
+        return this;
     }
 
     public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public Book setCategory(Category category) {
         this.category = category;
+        return this;
     }
 
     public String getPublisher() {
@@ -119,8 +124,9 @@ package Model;  /**
         return language;
     }
 
-    public void setLanguage(Language language) {
+    public Book setLanguage(Language language) {
         this.language = language;
+        return this;
     }
 
     public String getNumberOfPages() {
@@ -141,19 +147,6 @@ package Model;  /**
 
     @Override
     public String toString() {
-        return "Book{" +
-                "isbn=" + isbn +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", numberOfBooks=" + numberOfBooks +
-                ", author='" + author + '\'' +
-                ", category=" + category +
-                ", publisher='" + publisher + '\'' +
-                ", edition='" + edition + '\'' +
-                ", releaseDate=" + releaseDate +
-                ", language=" + language +
-                ", numberOfPages='" + numberOfPages + '\'' +
-                ", location=" + location +
-                '}';
+        return isbn;
     }
 }
