@@ -7,14 +7,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -38,6 +37,7 @@ public class Search implements Initializable {
         data = FXCollections.observableArrayList();
         //Sätt disable på sök knappen om man inte skriver något
         searchBtn.disableProperty().bind(searchT.textProperty().isEmpty());
+
     }
 
     public void goToLogIn() {
@@ -72,8 +72,13 @@ public class Search implements Initializable {
                 data.add(book);
             }
             searchView.setItems(data);
+
         }
 
-    }
+        searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
+        {
+            System.out.println(newVal.toString());
+        });
 
+    }
 }

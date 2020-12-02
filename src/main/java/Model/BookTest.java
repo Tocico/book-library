@@ -43,4 +43,9 @@ public class BookTest {
     public String getAuthor() {
         return author;
     }
+
+    @Override
+    public String toString() {
+        return isbn;
+    }
 }
