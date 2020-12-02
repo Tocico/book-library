@@ -9,4 +9,5 @@ package Model;  /**
     
     
     public enum Category {
+        LYRIK,DRAMATIK,SKÖNLITTERATUR,ROMANNER, NOVELL, DECKARE, SCIENCE_FICTION, FANTASY, ESSÄER
 }
