@@ -66,16 +66,18 @@ package Model;  /**
         return description;
     }
 
-    public void setDescription(String description) {
+    public Book setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public int getNumberOfBooks() {
         return numberOfBooks;
     }
 
-    public void setNumberOfBooks(int numberOfBooks) {
+    public Book setNumberOfBooks(int numberOfBooks) {
         this.numberOfBooks = numberOfBooks;
+        return this;
     }
 
     public String getAuthor() {
@@ -100,24 +102,27 @@ package Model;  /**
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    public Book setPublisher(String publisher) {
         this.publisher = publisher;
+        return this;
     }
 
     public String getEdition() {
         return edition;
     }
 
-    public void setEdition(String edition) {
+    public Book setEdition(String edition) {
         this.edition = edition;
+        return this;
     }
 
     public int getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(int releaseDate) {
+    public Book setReleaseDate(int releaseDate) {
         this.releaseDate = releaseDate;
+        return this;
     }
 
     public Language getLanguage() {
@@ -133,16 +138,18 @@ package Model;  /**
         return numberOfPages;
     }
 
-    public void setNumberOfPages(String numberOfPages) {
+    public Book setNumberOfPages(String numberOfPages) {
         this.numberOfPages = numberOfPages;
+        return this;
     }
 
     public Library getLocation() {
         return location;
     }
 
-    public void setLocation(Library location) {
+    public Book setLocation(Library location) {
         this.location = location;
+        return this;
     }
 
     @Override

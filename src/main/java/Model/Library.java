@@ -17,8 +17,7 @@ package Model;  /**
         protected String libraryEmail;
 
 
-        // for example,  make a constructor with most useful variables??
-     //May be it is
+/*
     public Library(int libraryID, String libraryName, String location, String libraryAddress, String libraryPhone, String libraryEmail) {
         this.libraryID = libraryID;
         this.libraryName = libraryName;
@@ -27,52 +26,59 @@ package Model;  /**
         this.libraryPhone = libraryPhone;
         this.libraryEmail = libraryEmail;
     }
+ */
 
     public int getLibraryID() {
         return libraryID;
     }
 
-    public void setLibraryID(int libraryID) {
+    public Library setLibraryID(int libraryID) {
         this.libraryID = libraryID;
+        return this;
     }
 
     public String getLibraryName() {
         return libraryName;
     }
 
-    public void setLibraryName(String libraryName) {
+    public Library setLibraryName(String libraryName) {
         this.libraryName = libraryName;
+        return this;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public Library setLocation(String location) {
         this.location = location;
+        return this;
     }
 
     public String getLibraryAddress() {
         return libraryAddress;
     }
 
-    public void setLibraryAddress(String libraryAddress) {
+    public Library setLibraryAddress(String libraryAddress) {
         this.libraryAddress = libraryAddress;
+        return this;
     }
 
     public String getLibraryPhone() {
         return libraryPhone;
     }
 
-    public void setLibraryPhone(String libraryPhone) {
+    public Library setLibraryPhone(String libraryPhone) {
         this.libraryPhone = libraryPhone;
+        return this;
     }
 
     public String getLibraryEmail() {
         return libraryEmail;
     }
 
-    public void setLibraryEmail(String libraryEmail) {
+    public Library setLibraryEmail(String libraryEmail) {
         this.libraryEmail = libraryEmail;
+        return this;
     }
 }
