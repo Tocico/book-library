@@ -1,5 +1,6 @@
 package Client;
 
+import Client.Controller.ControllerUtil;
 import Client.Controller.Modal;
 import Model.Book;
 import Model.Category;
@@ -30,6 +31,7 @@ import java.util.List;
 
 public class BookUtil {
     private static ObservableList<Book> data = FXCollections.observableArrayList();
+    public static Book selectedBook;
     /**
      * Ta bort white space
      *
@@ -80,7 +82,7 @@ public class BookUtil {
    public static void printOutSearchResult(String searchWord, TableView searchView,
                                             TableColumn<Book, String> title, TableColumn<Book, String> author,
                                             TableColumn<Book, String> language, TableColumn<Book, String> category,
-                                            Text message) {
+                                            Text message, Class<?> currentClass) {
 
         searchView.getItems().clear();
         searchView.setVisible(false);
@@ -100,30 +102,13 @@ public class BookUtil {
                 data.add(book);
             }
             searchView.setItems(data);
-
         }
 
+        //Open modal window
         searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
         {
-
-            System.out.println(observable.getValue().toString());
-           // Modal.displayBook(observable.toString());
-
-            /*try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(currentClass.getResource("modal.fxml"));
-                *//*
-                 * if "fx:controller" is not set in fxml
-                 * fxmlLoader.setController(NewWindowController);
-                 *//*
-                Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-                Stage stage = new Stage();
-                stage.setTitle("New Window");
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
+            selectedBook = getBook(newVal.toString());
+            Modal.displayBook(currentClass);
         });
 
     }

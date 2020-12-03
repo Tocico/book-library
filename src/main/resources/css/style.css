@@ -57,6 +57,10 @@
     -fx-shape: null;
 }
 
+.gridPane {
+    -fx-background-color: red;
+}
+
 
 
 

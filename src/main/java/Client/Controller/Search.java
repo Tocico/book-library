@@ -45,7 +45,7 @@ public class Search implements Initializable {
 
     public void searchAction(){
         String searchWord = searchT.getText();
-        BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message);
+        BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
     }
 
 }
