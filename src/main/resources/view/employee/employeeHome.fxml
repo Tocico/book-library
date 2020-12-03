@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="loggedInStaff" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Staff.StaffHome">
+<AnchorPane fx:id="loggedInEmployee" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Employee.EmployeeHome">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="1000.0">
          <top>
@@ -50,7 +50,7 @@
          <left>
             <VBox prefHeight="513.0" prefWidth="208.0" style="-fx-background-color: #536c85;" BorderPane.alignment="CENTER">
                <children>
-                <Button fx:id="staffeTop" maxWidth="210.0" minWidth="20.0" mnemonicParsing="false" onAction="#goToStaffTop" prefHeight="28.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="Top" textFill="WHITE" textOverrun="CLIP">
+                <Button fx:id="employeeTop" maxWidth="210.0" minWidth="20.0" mnemonicParsing="false" onAction="#goToEmployeeTop" prefHeight="28.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="Top" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
@@ -83,7 +83,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="userManage" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goTouserManage" prefWidth="210.0" style="-fx-background-color: transparent;" text="User manage" textFill="#fffbfb">
+                  <Button fx:id="userManage" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToUserManage" prefWidth="210.0" style="-fx-background-color: transparent;" text="User manage" textFill="#fffbfb">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>

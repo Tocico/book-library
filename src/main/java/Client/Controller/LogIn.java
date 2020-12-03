@@ -1,6 +1,6 @@
 package Client.Controller;
 
-import Client.Controller.Staff.StaffHome;
+import Client.Controller.Employee.EmployeeHome;
 import Client.Controller.Visitor.VisitorHome;
 import Model.UserTest;
 import javafx.event.ActionEvent;
@@ -32,7 +32,7 @@ public class LogIn implements Initializable {
     }
 
 
-    public void logIn(ActionEvent actionEvent) {
+    public void logIn() {
         /*------------------------TEST----------------------------------*/
         ArrayList<UserTest> userList = new ArrayList<>();
         UserTest u1 = new UserTest("Toshiko", "8811072886", "1111", false);
@@ -54,8 +54,8 @@ public class LogIn implements Initializable {
 
         if (tempUser != null) {
             if (tempUser.isStaff()) {
-                StaffHome.currentLoggedInUser = tempUser;
-                loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "staff/staffHome"));
+                EmployeeHome.currentLoggedInUser = tempUser;
+                loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
             } else {
                 VisitorHome.currentLoggedInUser = tempUser;
                 loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
@@ -70,20 +70,20 @@ public class LogIn implements Initializable {
 
     }
 
-    public void goToTop(ActionEvent actionEvent) {
+    public void goToTop() {
         loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "home"));
     }
 
-    public void goToSearch(ActionEvent actionEvent) {
+    public void goToSearch() {
         loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "search"));
     }
 
-    public void goToLogIn(ActionEvent actionEvent) {
+    public void goToLogIn() {
         loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     //Ta bort felmeddelande så fort användare skriver något
-    public void onChangeText(KeyEvent inputMethodEvent) {
+    public void onChangeText() {
         message.setText("");
     }
 }
