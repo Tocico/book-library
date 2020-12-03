@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -48,13 +50,21 @@
          <center>
             <Pane layoutX="160.0" prefHeight="162.0" prefWidth="790.0">
                <children>
-                  <TextField fx:id="visitorSearch" layoutX="62.0" layoutY="42.0" prefHeight="38.0" prefWidth="532.0" />
+                  <TextField fx:id="searchT" layoutX="62.0" layoutY="42.0" prefHeight="38.0" prefWidth="532.0" />
                   <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="42.0" minHeight="36.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#searchAction" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #a65d58;" text="sök" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <AnchorPane fx:id="searchResultPane" layoutY="115.0" prefHeight="397.0" prefWidth="789.0" />
+                  <Text fx:id="message" fill="#f80909" layoutX="62.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="572.0787963867188" />
+                  <TableView fx:id="searchView" layoutX="32.0" layoutY="122.0" prefHeight="341.0" prefWidth="710.0" stylesheets="@../../css/style.css">
+                     <columns>
+                        <TableColumn fx:id="title" prefWidth="271.98435974121094" text="Title" />
+                        <TableColumn fx:id="author" minWidth="0.0" prefWidth="189.984375" text="Author" />
+                        <TableColumn fx:id="language" prefWidth="127.015625" text="Language" />
+                        <TableColumn fx:id="category" minWidth="0.0" prefWidth="127.640625" text="Category" />
+                     </columns>
+                  </TableView>
                </children>
             </Pane>
          </center>
