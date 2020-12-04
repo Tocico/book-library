@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -132,22 +133,40 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="89.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
-                        <TextField fx:id="titleT" prefHeight="33.0" prefWidth="485.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" />
+                        <TextField fx:id="titleT" GridPane.columnIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Author" GridPane.rowIndex="2" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category" GridPane.rowIndex="3" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Language" GridPane.rowIndex="4" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description" GridPane.rowIndex="5" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Publisher" GridPane.rowIndex="6" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edition" GridPane.rowIndex="7" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Release Date" GridPane.rowIndex="8" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of pages" GridPane.rowIndex="9" />
+                        <TextField fx:id="isbnT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="authorT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="categoryT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="languageT" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="descriptionT" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="publisherT" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="editionT" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="releaseDateT" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="numberOfPagesT" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextArea fx:id="descriptionT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <Button layoutX="648.0" layoutY="458.0" mnemonicParsing="false" text="Button" />
+                  <Button fx:id="regiBtn" layoutX="665.0" layoutY="460.0" mnemonicParsing="false" onAction="#actionRegister" text="Register" />
+                  <Text layoutX="187.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register Books" wrappingWidth="127.31640625" />
                </children>
             </AnchorPane>
          </center></BorderPane>
