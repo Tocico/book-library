@@ -1,7 +1,10 @@
 package Client.Controller;
 
+import Client.BookUtil;
 import Client.Controller.Employee.EmployeeHome;
 import Client.Controller.Visitor.VisitorHome;
+import Client.UserUtil;
+import Model.History;
 import Model.UserTest;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -13,7 +16,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -23,6 +28,7 @@ public class LogIn implements Initializable {
     public PasswordField psw;
     public Button logInBtn;
     public Text message;
+    public static UserTest currentLoggedInUser;
 
 
     @Override
@@ -33,18 +39,8 @@ public class LogIn implements Initializable {
 
 
     public void logIn() {
-        /*------------------------TEST----------------------------------*/
-        ArrayList<UserTest> userList = new ArrayList<>();
-        UserTest u1 = new UserTest("Toshiko", "8811072886", "1111", false);
-        UserTest u2 = new UserTest("Miwa", "0000000000", "2222", false);
-        UserTest u3 = new UserTest("Maxim", "1111111111", "3333", false);
-        UserTest u4 = new UserTest("Yohannes", "2222222222", "4444", false);
-        userList.add(u1);
-        userList.add(u2);
-        userList.add(u3);
-        userList.add(u4);
-
-        /*----------------------------------------------------------------*/
+        //Hämta user list
+        List<UserTest> userList = UserUtil.getUserList();
 
         UserTest tempUser = userList.stream()
                 .filter(user -> user.getSsn().equalsIgnoreCase(socialId.getText())
@@ -54,12 +50,11 @@ public class LogIn implements Initializable {
 
         if (tempUser != null) {
             if (tempUser.isStaff()) {
-                EmployeeHome.currentLoggedInUser = tempUser;
                 loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
             } else {
-                VisitorHome.currentLoggedInUser = tempUser;
                 loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
             }
+            currentLoggedInUser = tempUser;
 
         } else {
             message.setText("Vi hittar inte dig i systemet.  Försök logga in igen.");

@@ -19,7 +19,6 @@ public class EmployeeHome {
     public AnchorPane loggedInEmployee;
     public Button employeeTop;
     public Button history;
-    public static UserTest currentLoggedInUser;
 
 
     public void goToEmployeeTop() {

@@ -17,21 +17,20 @@ import javafx.scene.layout.AnchorPane;
 
 public class VisitorHome {
     public AnchorPane loggedInVisitor;
-    public static UserTest currentLoggedInUser;
 
-    public void goToVisitorTop(ActionEvent actionEvent) {
+    public void goToVisitorTop() {
         loggedInVisitor.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
     }
 
-    public void goToHistory(ActionEvent actionEvent) {
+    public void goToHistory() {
         loggedInVisitor.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHistory"));
     }
 
-    public void goToSearch(ActionEvent actionEvent) {
+    public void goToSearch() {
         loggedInVisitor.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorSearch"));
     }
 
-    public void goToLogOut(ActionEvent actionEvent) {
+    public void goToLogOut() {
         loggedInVisitor.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 }

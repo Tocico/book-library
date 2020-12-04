@@ -1,9 +1,21 @@
 package Client.Controller.Visitor;
 
+import Client.BookUtil;
 import Client.Controller.ControllerUtil;
 import Client.Main;
+import Model.Book;
+import Model.History;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created by Toshiko Kuno
@@ -14,22 +26,32 @@ import javafx.scene.layout.AnchorPane;
  */
 
 
-public class VisitorHistory {
+public class VisitorHistory implements Initializable {
     public AnchorPane visitorHistoryPane;
+    public TableColumn<History, String> isbn;
+    public TableColumn<History, String> title;
+    public TableColumn<History, String> lendDate;
+    public TableColumn<History, String> returnDate;
+    public TableView historyView;
 
-    public void goToLogOut(ActionEvent actionEvent) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        BookUtil.printOutLendingHistory(historyView,  title,  isbn, returnDate, lendDate);
+    }
+
+    public void goToLogOut() {
         visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
-    public void goToVisitorTop(ActionEvent actionEvent) {
+    public void goToVisitorTop() {
         visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
     }
 
-    public void goToHistory(ActionEvent actionEvent) {
+    public void goToHistory() {
         visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHistory"));
     }
 
-    public void goToVisitorSearch(ActionEvent actionEvent) {
+    public void goToVisitorSearch() {
         visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorSearch"));
     }
 }
