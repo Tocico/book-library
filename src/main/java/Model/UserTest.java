@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Toshiko Kuno
  * Date: 2020-11-30
@@ -14,12 +17,14 @@ public class UserTest {
     private String ssn;
     private String passwd;
     private boolean isStaff;
+    private List<History> histories;
 
     public UserTest(String name, String ssn, String passwd, boolean isStaff) {
         this.name = name;
         this.ssn = ssn;
         this.passwd = passwd;
         this.isStaff = isStaff;
+        this.histories = new ArrayList<>();
     }
 
     public String getName() {
@@ -36,5 +41,13 @@ public class UserTest {
 
     public boolean isStaff() {
         return isStaff;
+    }
+
+    public void addHistory(History history) {
+        histories.add(history);
+    }
+
+    public List<History> getHistories() {
+        return histories;
     }
 }

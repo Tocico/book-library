@@ -1,22 +1,19 @@
 package Client;
 
-import Client.Controller.ControllerUtil;
+import Client.Controller.LogIn;
 import Client.Controller.Modal;
+import Client.Controller.Visitor.VisitorHome;
 import Model.Book;
 import Model.Category;
+import Model.History;
 import Model.Language;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +27,10 @@ import java.util.List;
 
 
 public class BookUtil {
-    private static ObservableList<Book> data = FXCollections.observableArrayList();
+    private static ObservableList<Book> bookData = FXCollections.observableArrayList();
+    private static ObservableList<History> historyData = FXCollections.observableArrayList();
     public static Book selectedBook;
+
     /**
      * Ta bort white space
      *
@@ -52,6 +51,7 @@ public class BookUtil {
     public static List<Book> searchBook(String searchWord) {
 
         /*---------------- TEST --------------------*/
+
         Book b1 = new Book().setTitle("Harry Potter").setIsbn("123434").setCategory(Category.FANTASY).setLanguage(Language.Svenska).setAuthor("JK.Rolling");
         Book b2 = new Book().setTitle("Load of the rings").setIsbn("22343").setCategory(Category.FANTASY).setLanguage(Language.Engelska).setAuthor("J. R. R. Tolkien");
         Book b3 = new Book().setTitle("Gozilla").setIsbn("32343").setCategory(Category.SCIENCE_FICTION).setLanguage(Language.Engelska).setAuthor("Tomoyuki Tanaka");
@@ -79,7 +79,7 @@ public class BookUtil {
     }
 
     //Skriv ut sökresultat
-   public static void printOutSearchResult(String searchWord, TableView searchView,
+    public static void printOutSearchResult(String searchWord, TableView searchView,
                                             TableColumn<Book, String> title, TableColumn<Book, String> author,
                                             TableColumn<Book, String> language, TableColumn<Book, String> category,
                                             Text message, Class<?> currentClass) {
@@ -96,12 +96,12 @@ public class BookUtil {
             //Skriv ut sökresultat
             for (Book book : books) {
                 title.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getTitle()));
-                author.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAuthor()));
-                language.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLanguage().toString()));
-                category.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getCategory()));
-                data.add(book);
+                author.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getAuthor()));
+                language.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getLanguage().toString()));
+                category.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getCategory().getCategory()));
+                bookData.add(book);
             }
-            searchView.setItems(data);
+            searchView.setItems(bookData);
         }
 
         //Open modal window
@@ -110,6 +110,27 @@ public class BookUtil {
             selectedBook = getBook(newVal.toString());
             Modal.displayBook(currentClass);
         });
+
+    }
+
+    //Skriv ut utlåningshistorik
+    public static void printOutLendingHistory(TableView historyView, TableColumn<History, String> title, TableColumn<History, String> isbn,
+                                              TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) {
+
+
+        List<History> histories = UserUtil.getLoggedInUserHistory(LogIn.currentLoggedInUser);
+        if (histories != null) {
+            for (History history : histories) {
+                title.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getBook().getTitle()));
+                isbn.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getBook().getIsbn()));
+                lendOutDate.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getLendOutDate())));
+                returnDate.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getReturnDate())));
+                historyData.add(history);
+            }
+            historyView.getItems().clear();
+            historyView.setItems(historyData);
+
+        }
 
     }
 
@@ -127,8 +148,8 @@ public class BookUtil {
 
         Book tempBook = new Book();
         for (Book book : bookList) {
-            if(book.getIsbn().equals(isbn))
-              tempBook = book;
+            if (book.getIsbn().equals(isbn))
+                tempBook = book;
         }
         return tempBook;
     }
