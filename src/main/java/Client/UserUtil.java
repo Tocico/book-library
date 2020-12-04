@@ -25,7 +25,7 @@ public class UserUtil {
 
     /*------------------------TEST----------------------------------*/
     List<UserTest> userList = new ArrayList<>();
-    UserTest u1 = new UserTest("Toshiko", "8811072886", "1111", false);
+    UserTest u1 = new UserTest("Toshiko", "8811072886", "1111", true);
     UserTest u2 = new UserTest("Miwa", "0000000000", "2222", false);
     UserTest u3 = new UserTest("Maxim", "1111111111", "3333", false);
     UserTest u4 = new UserTest("Yohannes", "2222222222", "4444", false);

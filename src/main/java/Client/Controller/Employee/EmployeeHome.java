@@ -1,7 +1,6 @@
 package Client.Controller.Employee;
 
 import Client.Controller.ControllerUtil;
-import Model.UserTest;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -22,6 +21,7 @@ public class EmployeeHome {
 
 
     public void goToEmployeeTop() {
+        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
     }
 
     public void goToHistory() {
@@ -34,6 +34,7 @@ public class EmployeeHome {
     }
 
     public void goToRegisterBooks() {
+        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
     }
 
     public void goToLogOut() {
@@ -41,5 +42,8 @@ public class EmployeeHome {
     }
 
     public void goToSearch() {
+    }
+
+    public void goToRegisterUser(ActionEvent actionEvent) {
     }
 }
