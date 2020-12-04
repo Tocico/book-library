@@ -1,4 +1,8 @@
-package Model;  /**
+package Model;
+
+import java.io.Serializable;
+
+/**
    * Created by Toshiko Kuno
    * Date: 2020-11-30
    * Time: 15:52
@@ -8,7 +12,7 @@ package Model;  /**
     
     
     
-    public class Book {
+    public class Book implements Serializable {
     protected String isbn;
     protected String title;
     protected String description;

@@ -2,11 +2,9 @@ package Client.Controller;
 
 import Client.BookUtil;
 import Model.Book;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -36,7 +34,6 @@ public class Modal implements Initializable {
     public TextField releaseDate;
     public TextField numberOfPages;
     public TextField available;
-    public TextField location;
 
 
     public static void displayBook(Class<?> currentClass) {
@@ -65,6 +62,5 @@ public class Modal implements Initializable {
         releaseDate.setText(String.valueOf(book.getReleaseDate()));
         numberOfPages.setText(book.getNumberOfPages());
         available.setText(String.valueOf(book.getNumberOfBooks()));
-        //location.setText(book.getLocation().getLibraryName());
     }
 }

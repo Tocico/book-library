@@ -36,6 +36,7 @@ public class VisitorHistory implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        historyView.getItems().clear();
         BookUtil.printOutLendingHistory(historyView,  title,  isbn, returnDate, lendDate);
     }
 
