@@ -55,7 +55,6 @@
                         <RowConstraints maxHeight="48.189056396484375" minHeight="10.0" prefHeight="41.8109130859375" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="44.38726806640625" minHeight="10.0" prefHeight="38.00909423828125" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="35.99090576171875" minHeight="10.0" prefHeight="33.6036376953125" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="40.792724609375" minHeight="10.0" prefHeight="38.3963623046875" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="Title" textFill="#575757">
@@ -146,14 +145,6 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label prefHeight="16.0" prefWidth="112.0" text="Location" textFill="#575757" GridPane.rowIndex="11">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets left="10.0" />
-                           </GridPane.margin>
-                        </Label>
                         <TextField fx:id="title" editable="false" prefHeight="51.0" prefWidth="736.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" GridPane.columnIndex="1" />
                         <TextField fx:id="isbn" editable="false" prefHeight="51.0" prefWidth="736.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="author" editable="false" prefHeight="51.0" prefWidth="736.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -165,7 +156,6 @@
                         <TextField fx:id="releaseDate" editable="false" prefHeight="107.0" prefWidth="736.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <TextField fx:id="numberOfPages" editable="false" prefHeight="107.0" prefWidth="736.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                         <TextField fx:id="available" editable="false" prefHeight="107.0" prefWidth="736.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <TextField fx:id="location" editable="false" prefHeight="107.0" prefWidth="736.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                      </children>
                   </GridPane>
                </children>

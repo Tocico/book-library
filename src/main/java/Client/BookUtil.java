@@ -117,7 +117,7 @@ public class BookUtil {
     public static void printOutLendingHistory(TableView historyView, TableColumn<History, String> title, TableColumn<History, String> isbn,
                                               TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) {
 
-
+        //TODO:: Fixa bugg att ta bort föregående historik
         List<History> histories = UserUtil.getLoggedInUserHistory(LogIn.currentLoggedInUser);
         if (histories != null) {
             for (History history : histories) {
@@ -127,7 +127,6 @@ public class BookUtil {
                 returnDate.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getReturnDate())));
                 historyData.add(history);
             }
-            historyView.getItems().clear();
             historyView.setItems(historyData);
 
         }
