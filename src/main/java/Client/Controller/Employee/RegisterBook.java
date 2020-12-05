@@ -1,8 +1,17 @@
 package Client.Controller.Employee;
 
+import Client.Controller.ControllerUtil;
+import Model.Category;
+import Model.Language;
 import javafx.event.ActionEvent;
-import javafx.scene.control.MenuButton;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
+
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 /**
  * Created by Toshiko Kuno
@@ -13,35 +22,64 @@ import javafx.scene.layout.AnchorPane;
  */
 
 
-public class RegisterBook {
-    public MenuButton category;
-    public AnchorPane RegisterBook;
+public class RegisterBook implements Initializable {
+    public AnchorPane registerBook;
+    public ComboBox category;
+    public ComboBox language;
+    public DatePicker releaseDate;
 
-    public void goToLogOut(ActionEvent actionEvent) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        /*-------------Category-------------------*/
+        //Hämta alla category enum
+        Category[] categoryArr = Category.values();
+        //Sätta alla category namn i dropdown menu
+        for(Category categoryItem: categoryArr) {
+            category.getItems().add(categoryItem);
+        }
+
+        /*-------------Languages-------------------*/
+        //Hämta alla language enum
+        Language[] languageArr = Language.values();
+        //Sätta alla language namn i dropdown menu
+        for(Language languageItem: languageArr) {
+            language.getItems().add(languageItem);
+        }
+
     }
 
-    public void goToEmployeeTop(ActionEvent actionEvent) {
+    public void goToLogOut() {
+        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
-    public void goToHistory(ActionEvent actionEvent) {
+    public void goToEmployeeTop() {
+        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
     }
 
-    public void goToBookManage(ActionEvent actionEvent) {
+    public void goToHistory() {
     }
 
-    public void goToUserManage(ActionEvent actionEvent) {
+    public void goToBookManage() {
     }
 
-    public void goToRegisterBooks(ActionEvent actionEvent) {
+    public void goToUserManage() {
     }
 
-    public void goToSearch(ActionEvent actionEvent) {
+    public void goToRegisterBooks() {
+        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
     }
 
-    public void actionRegister(ActionEvent e) {
+    public void goToSearch() {
     }
 
-    public void goToRegisterUser(ActionEvent actionEvent) {
+    public void goToRegisterUser() {
     }
 
+    public void actionRegister() {
+        System.out.println(category.getValue());
+        System.out.println(language.getValue());
+        LocalDate releaseDay = releaseDate.getValue();
+        System.out.println(releaseDay);
+    }
 }
