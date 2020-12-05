@@ -31,4 +31,18 @@ public enum Category {
     public String getCategory() {
         return category;
     }
+
+    /**
+     * To get Enum value from constructor arguments value
+     * @param categoryName Lyrik
+     * @return LYRIK
+     */
+    public static Category getByStringCategoryName(String categoryName) {
+        for (Category category : Category.values()) {
+            if (category.getCategory().equals(categoryName)) {
+                return category;
+            }
+        }
+        return null;
+    }
 }

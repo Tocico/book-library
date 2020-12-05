@@ -182,6 +182,11 @@
                      <font>
                         <Font size="18.0" />
                      </font></Text>
+                  <Text fx:id="message" fill="#ee0606" layoutX="251.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="373.2060546875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </center></BorderPane>

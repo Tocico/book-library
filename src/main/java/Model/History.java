@@ -13,12 +13,12 @@ import java.util.List;
 
 
 public class History {
-    private UserTest user;
+    private User user;
     private Book book;
     private LocalDate returnDate;
     private LocalDate lendOutDate;
 
-    public History(UserTest user, Book book, LocalDate returnDate, LocalDate lendOutDate) {
+    public History(User user, Book book, LocalDate returnDate, LocalDate lendOutDate) {
         this.user = user;
         this.book = book;
         this.returnDate = returnDate;

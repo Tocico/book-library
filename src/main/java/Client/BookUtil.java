@@ -2,7 +2,8 @@ package Client;
 
 import Client.Controller.LogIn;
 import Client.Controller.Modal;
-import Client.Controller.Visitor.VisitorHome;
+import DAO.BookDao;
+import DAO.UserDao;
 import Model.Book;
 import Model.Category;
 import Model.History;
@@ -14,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,12 @@ public class BookUtil {
     private static ObservableList<Book> bookData = FXCollections.observableArrayList();
     private static ObservableList<History> historyData = FXCollections.observableArrayList();
     public static Book selectedBook;
+    public static BookDao bookDao = new BookDao();
+
+    //Hämta ut alla boklista
+    public static List<Book> getAllBookList() {
+        return bookDao.getAll();
+    }
 
     /**
      * Ta bort white space
@@ -50,18 +58,7 @@ public class BookUtil {
     //Boksök funktion
     public static List<Book> searchBook(String searchWord) {
 
-        /*---------------- TEST --------------------*/
-
-        Book b1 = new Book().setTitle("Harry Potter").setIsbn("123434").setCategory(Category.FANTASY).setLanguage(Language.Svenska).setAuthor("JK.Rolling");
-        Book b2 = new Book().setTitle("Load of the rings").setIsbn("22343").setCategory(Category.FANTASY).setLanguage(Language.Engelska).setAuthor("J. R. R. Tolkien");
-        Book b3 = new Book().setTitle("Gozilla").setIsbn("32343").setCategory(Category.SCIENCE_FICTION).setLanguage(Language.Engelska).setAuthor("Tomoyuki Tanaka");
-
-        List<Book> bookList = new ArrayList<>();
-        bookList.add(b1);
-        bookList.add(b2);
-        bookList.add(b3);
-        /*------------------------------------------*/
-
+        List<Book> bookList = getAllBookList();
         List<Book> hitSearchBookList = new ArrayList<>();
         searchWord = removeWhiteSpace(searchWord);
 
@@ -133,23 +130,39 @@ public class BookUtil {
 
     }
 
+    //Hämta ut en bok
     public static Book getBook(String isbn) {
-        /*---------------- TEST --------------------*/
-        Book b1 = new Book().setTitle("Harry Potter").setIsbn("123434").setCategory(Category.FANTASY).setLanguage(Language.Svenska).setAuthor("JK.Rolling");
-        Book b2 = new Book().setTitle("Load of the rings").setIsbn("22343").setCategory(Category.FANTASY).setLanguage(Language.Engelska).setAuthor("J. R. R. Tolkien");
-        Book b3 = new Book().setTitle("Gozilla").setIsbn("32343").setCategory(Category.SCIENCE_FICTION).setLanguage(Language.Engelska).setAuthor("Tomoyuki Tanaka");
 
-        List<Book> bookList = new ArrayList<>();
-        bookList.add(b1);
-        bookList.add(b2);
-        bookList.add(b3);
-        /*------------------------------------------*/
-
+        List<Book> bookList = getAllBookList();
         Book tempBook = new Book();
         for (Book book : bookList) {
             if (book.getIsbn().equals(isbn))
                 tempBook = book;
         }
         return tempBook;
+    }
+
+    public static void registerBook(String title, String isbn, String author, String edition,
+                                    String numberOfPages, String description,
+                                    String publisher, String category,
+                                    String language, LocalDate releaseDate) {
+
+        Book registerBook = new Book()
+                .setTitle(title)
+                .setIsbn(isbn)
+                .setAuthor(author)
+                .setEdition(edition)
+                .setNumberOfPages(numberOfPages)
+                .setDescription(description)
+                .setPublisher(publisher)
+                .setReleaseDate(releaseDate);
+
+        if(category.length() != 0) {
+            registerBook.setCategory(Category.getByStringCategoryName(category));
+        } if(language.length() != 0) {
+            registerBook.setLanguage(Language.valueOf(language));
+        }
+
+        bookDao.save(registerBook);
     }
 }

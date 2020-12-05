@@ -1,13 +1,14 @@
 package Client.Controller.Employee;
 
+import Client.BookUtil;
 import Client.Controller.ControllerUtil;
+import Client.Controller.SuccessModal;
 import Model.Category;
 import Model.Language;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -27,6 +28,15 @@ public class RegisterBook implements Initializable {
     public ComboBox category;
     public ComboBox language;
     public DatePicker releaseDate;
+    public TextField titleT;
+    public TextField isbnT;
+    public TextField authorT;
+    public TextField editionT;
+    public TextField numberOfPagesT;
+    public TextArea descriptionT;
+    public TextField publisherT;
+    public Text message;
+    public Button regiBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,7 +46,7 @@ public class RegisterBook implements Initializable {
         Category[] categoryArr = Category.values();
         //Sätta alla category namn i dropdown menu
         for(Category categoryItem: categoryArr) {
-            category.getItems().add(categoryItem);
+            category.getItems().add(categoryItem.getCategory());
         }
 
         /*-------------Languages-------------------*/
@@ -46,6 +56,9 @@ public class RegisterBook implements Initializable {
         for(Language languageItem: languageArr) {
             language.getItems().add(languageItem);
         }
+
+        //Disable login knappen om man inte skriver title eller ISBN
+        regiBtn.disableProperty().bind(titleT.textProperty().isEmpty().or(isbnT.textProperty().isEmpty()));
 
     }
 
@@ -77,9 +90,41 @@ public class RegisterBook implements Initializable {
     }
 
     public void actionRegister() {
-        System.out.println(category.getValue());
-        System.out.println(language.getValue());
         LocalDate releaseDay = releaseDate.getValue();
-        System.out.println(releaseDay);
+        try{
+
+            if(category.getValue() != null )
+            BookUtil.registerBook(
+                    titleT.getText(),
+                    isbnT.getText(),
+                    authorT.getText(),
+                    editionT.getText(),
+                    numberOfPagesT.getText(),
+                    descriptionT.getText(),
+                    publisherT.getText(),
+                    category.getValue() != null ? category.getValue().toString() : "",
+                    language.getValue() != null? language.getValue().toString() : "",
+                    releaseDay);
+
+            SuccessModal.message = "You've successfully created book data";
+            SuccessModal.displaySuccessDisplay(getClass());
+
+            titleT.setText("");
+            isbnT.setText("");
+            authorT.setText("");
+            editionT.setText("");
+            numberOfPagesT.setText("");
+            descriptionT.setText("");
+            publisherT.setText("");
+            category.getSelectionModel().clearSelection();
+            language.getSelectionModel().clearSelection();
+            releaseDate.setValue(null);
+
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            message.setText("Det gick något fel. Försök igen");
+        }
+
     }
 }

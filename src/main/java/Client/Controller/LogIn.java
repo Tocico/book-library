@@ -1,23 +1,15 @@
 package Client.Controller;
 
-import Client.BookUtil;
-import Client.Controller.Employee.EmployeeHome;
-import Client.Controller.Visitor.VisitorHome;
 import Client.UserUtil;
-import Model.History;
-import Model.UserTest;
-import javafx.event.ActionEvent;
+import Model.User;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -28,7 +20,7 @@ public class LogIn implements Initializable {
     public PasswordField psw;
     public Button logInBtn;
     public Text message;
-    public static UserTest currentLoggedInUser;
+    public static User currentLoggedInUser;
 
 
     @Override
@@ -40,9 +32,9 @@ public class LogIn implements Initializable {
 
     public void logIn() {
         //Hämta user list
-        List<UserTest> userList = UserUtil.getUserList();
+        List<User> userList = UserUtil.getUserList();
 
-        UserTest tempUser = userList.stream()
+        User tempUser = userList.stream()
                 .filter(user -> user.getSsn().equalsIgnoreCase(socialId.getText())
                         && user.getPasswd().equals(psw.getText()))
                 .findFirst()
