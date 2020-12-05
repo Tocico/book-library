@@ -1,9 +1,6 @@
 package Client.Controller.Visitor;
 
 import Client.Controller.ControllerUtil;
-import Model.User;
-import Model.UserTest;
-import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**

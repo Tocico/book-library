@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
    * Created by Toshiko Kuno
@@ -21,7 +22,7 @@ import java.io.Serializable;
     protected Category category;// enum
     protected String publisher;
     protected String edition;
-    protected int releaseDate;
+    protected LocalDate releaseDate;
     protected Language language;//enum
     protected String numberOfPages;
     protected Library location;// other klass
@@ -120,11 +121,11 @@ import java.io.Serializable;
         return this;
     }
 
-    public int getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public Book setReleaseDate(int releaseDate) {
+    public Book setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
         return this;
     }
@@ -160,4 +161,5 @@ import java.io.Serializable;
     public String toString() {
         return isbn;
     }
+
 }

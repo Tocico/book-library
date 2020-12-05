@@ -1,15 +1,7 @@
 package Client.Controller;
 
-import Model.Book;
-import Model.User;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 
 public class Home {
@@ -19,15 +11,15 @@ public class Home {
     public Button log;
 
 
-    public void goToTop(ActionEvent actionEvent) {
+    public void goToTop() {
         homePane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "home"));
     }
 
-    public void goToSearch(ActionEvent actionEvent) {
+    public void goToSearch() {
         homePane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "search"));
     }
 
-    public void goToLogIn(ActionEvent actionEvent) {
+    public void goToLogIn() {
         homePane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
