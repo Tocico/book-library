@@ -1,5 +1,7 @@
 package Client.Controller.Employee;
 
+import Client.Controller.ControllerUtil;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -10,6 +12,39 @@ import javafx.scene.layout.AnchorPane;
  * Copyright: MIT
  */
 public class RegisterUser {
-    public AnchorPane RegisterUser;
+    public AnchorPane registerUserPane;
+    public ToggleGroup userCat;
 
+    public void goToLogOut() {
+        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
+
+    }
+
+    public void goToEmployeeTop() {
+    }
+
+    public void goToHistory() {
+    }
+
+    public void goToBookManage() {
+    }
+
+    public void goToUserManage() {
+    }
+
+    public void goToRegisterBooks() {
+        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
+    }
+
+    public void goToRegisterUser() {
+        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
+    }
+
+    public void goToSearch() {
+    }
+
+    public void actionRegister() {
+        System.out.println(userCat.getSelectedToggle().getUserData().toString());
+
+    }
 }

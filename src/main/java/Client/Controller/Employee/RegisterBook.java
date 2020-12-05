@@ -87,6 +87,7 @@ public class RegisterBook implements Initializable {
     }
 
     public void goToRegisterUser() {
+        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
     }
 
     public void actionRegister() {

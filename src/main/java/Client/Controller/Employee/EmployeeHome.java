@@ -44,6 +44,8 @@ public class EmployeeHome {
     public void goToSearch() {
     }
 
-    public void goToRegisterUser(ActionEvent actionEvent) {
+    public void goToRegisterUser() {
+        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
+
     }
 }
