@@ -13,6 +13,7 @@ import java.io.Serializable;
     
     
     public class Book implements Serializable {
+    protected String id;// Add id to
     protected String isbn;
     protected String title;
     protected String description;
@@ -24,9 +25,9 @@ import java.io.Serializable;
     protected int releaseDate;
     protected Language language;//enum
     protected String numberOfPages;
-    protected Library location;// other klass
+    protected Library library;
 
-    // I think that we need to use setter and need to use a builder pattern...
+// I think that we need to use setter and need to use a builder pattern...
 
    /* public Book(String isbn, String title, String description, int numberOfBooks, String author, Category category, String publisher, String edition, int releaseDate, Language language, String numberOfPages, Library location) {
         this.isbn = isbn;
@@ -43,10 +44,17 @@ import java.io.Serializable;
         this.location = location;
     }*/
 
+    // We can use fluent builder (do not make constructor)
 
 
-    //Or We can use fluent builder (do not make constructor)
+    public String getId() {
+        return id;
+    }
 
+    public Book setId(String id) {
+        this.id = id;
+        return this;
+    }
 
     public String getIsbn() {
         return isbn;
@@ -147,14 +155,10 @@ import java.io.Serializable;
         return this;
     }
 
-    public Library getLocation() {
-        return location;
+    public Library getLibraryObject() {
+        return library;
     }
 
-    public Book setLocation(Library location) {
-        this.location = location;
-        return this;
-    }
 
     @Override
     public String toString() {
