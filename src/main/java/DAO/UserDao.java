@@ -23,9 +23,9 @@ public class UserDao implements Dao<User> {
     public UserDao() {
         /*------------------------TEST----------------------------------*/
         userList.add(new User("Toshiko", "8811072886", "1111", true));
-        userList.add(new User("Miwa", "0000000000", "2222", false));
-        userList.add(new User("Maxim", "1111111111", "3333", false));
-        userList.add(new User("Yohannes", "2222222222", "4444", false));
+        userList.add(new User("Miwa", "0000000000", "2222", true));
+        userList.add(new User("Maxim", "1111111111", "3333", true));
+        userList.add(new User("Yohannes", "2222222222", "4444", true));
     }
     
 

@@ -3,7 +3,6 @@ package Client;
 import Client.Controller.LogIn;
 import Client.Controller.Modal;
 import DAO.BookDao;
-import DAO.UserDao;
 import Model.Book;
 import Model.Category;
 import Model.History;

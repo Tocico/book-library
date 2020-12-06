@@ -116,6 +116,9 @@
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                   </Button>
                   <Button fx:id="search" contentDisplay="TOP" maxWidth="30.0" minWidth="210.0" mnemonicParsing="false" onAction="#goToSearch" prefWidth="210.0" style="-fx-background-color: transparent;" text="Search" textFill="#fffbfb">
                      <font>

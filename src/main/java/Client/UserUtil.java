@@ -16,10 +16,11 @@ import java.util.List;
 
 
 public class UserUtil {
+    public static UserDao userDao = new UserDao();
 
     //Hämta ut alla användare list
     public static List<User> getUserList() {
-        return new UserDao().getAll();
+        return userDao.getAll();
     }
 
     //Hämta ut den aktuella histori lista
@@ -31,5 +32,10 @@ public class UserUtil {
                 .map(user -> user.getHistories())
                 .findFirst()
                 .orElse(null);
+    }
+
+    public static void registerUser() {
+
+        //userDao.save(user);
     }
 }
