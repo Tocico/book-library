@@ -2,19 +2,13 @@ package Client.Controller.Visitor;
 
 import Client.BookUtil;
 import Client.Controller.ControllerUtil;
-import Client.Main;
-import Model.Book;
 import Model.History;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**

@@ -3,7 +3,7 @@ package Client;
 import DAO.HistoryDao;
 import DAO.UserDao;
 import Model.History;
-import Model.User;
+import Model.UserEntities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class UserUtil {
     //Hämta ut en användare
     public static User getUser(String ssn) {
         return userDao.getAll().stream()
-                .filter(user -> user.getSsn().equals(ssn))
+                .filter(user -> user.getsSN().equals(ssn))
                 .findFirst()
                 .orElse(null);
     }

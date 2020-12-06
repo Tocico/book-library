@@ -1,6 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
+import Model.UserEntities.User;
 import java.util.List;
 
 /**

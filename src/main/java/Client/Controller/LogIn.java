@@ -1,7 +1,7 @@
 package Client.Controller;
 
 import Client.UserUtil;
-import Model.User;
+import Model.UserEntities.User;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -35,13 +35,13 @@ public class LogIn implements Initializable {
         List<User> userList = UserUtil.getUserList();
 
         User tempUser = userList.stream()
-                .filter(user -> user.getSsn().equalsIgnoreCase(socialId.getText())
+                .filter(user -> user.getsSN().equalsIgnoreCase(socialId.getText())
                         && user.getPasswd().equals(psw.getText()))
                 .findFirst()
                 .orElse(null);
 
         if (tempUser != null) {
-            if (tempUser.isStaff()) {
+            if (tempUser.isAdmin()) {
                 currentLoggedInUser = tempUser;
                 loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
             } else {

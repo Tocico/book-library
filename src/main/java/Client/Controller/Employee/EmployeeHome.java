@@ -24,12 +24,11 @@ import java.util.ResourceBundle;
 public class EmployeeHome implements Initializable {
     public AnchorPane loggedInEmployee;
     public Button employeeTop;
-    public Button history;
     public Text userName;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userName.setText(LogIn.currentLoggedInUser.getName());
+        userName.setText(LogIn.currentLoggedInUser.getFirstName());
     }
 
 
