@@ -64,16 +64,29 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="history" contentDisplay="TOP" maxWidth="1.7976931348623157E308" minWidth="210.0" mnemonicParsing="false" onAction="#goToHistory" prefWidth="200.0" style="-fx-background-color: transparent;" text="History" textFill="#fffbfb">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="300.0" style="-fx-background-color: transparent;" text="Register" textFill="WHITE">
+                     <padding>
+                        <Insets right="40.0" top="10.0" />
+                     </padding>
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
+                  </Button>
+                  <Button fx:id="lendOut" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#lendOutAction" style="-fx-background-color: transparent;" text="Lend out Books" textAlignment="RIGHT" textFill="WHITE">
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="returned" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#returnedAction" style="-fx-background-color: transparent;" text="Returned Books" textAlignment="RIGHT" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
                   </Button>
                   <Button fx:id="bookManage" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToBookManage" prefWidth="210.0" style="-fx-background-color: transparent;" text="Book manage" textFill="#fffbfb">
                      <font>

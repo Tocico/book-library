@@ -37,4 +37,10 @@ public class EmployeeSearch {
 
     public void searchAction() {
     }
+
+    public void lendOutAction() {
+    }
+
+    public void returnedAction() {
+    }
 }

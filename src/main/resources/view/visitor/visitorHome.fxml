@@ -45,7 +45,20 @@
             </Pane>
          </bottom>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #c9d8da;" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #c9d8da;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fx:id="welcome" layoutX="203.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome ">
+                     <font>
+                        <Font name="Euphemia UCAS" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="userName" fill="#c35050" layoutX="333.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="345.2060546875">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="63.0" layoutY="117.0" prefHeight="330.0" prefWidth="680.0" styleClass="bgHome" stylesheets="@../../css/style.css" />
+               </children></Pane>
          </center>
          <left>
             <VBox prefHeight="513.0" prefWidth="208.0" style="-fx-background-color: #536c85;" BorderPane.alignment="CENTER">

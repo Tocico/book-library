@@ -1,7 +1,13 @@
 package Client.Controller.Visitor;
 
 import Client.Controller.ControllerUtil;
+import Client.Controller.LogIn;
+import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by Toshiko Kuno
@@ -12,8 +18,14 @@ import javafx.scene.layout.AnchorPane;
  */
 
 
-public class VisitorHome {
+public class VisitorHome implements Initializable {
     public AnchorPane loggedInVisitor;
+    public Text userName;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        userName.setText(LogIn.currentLoggedInUser.getName());
+    }
 
     public void goToVisitorTop() {
         loggedInVisitor.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
