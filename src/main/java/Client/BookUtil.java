@@ -8,6 +8,8 @@ import Model.Book;
 import Model.Category;
 import Model.History;
 import Model.Language;
+import Model.UserEntities.User;
+import Model.UserEntities.Visitor;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +20,6 @@ import javafx.scene.text.Text;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Toshiko Kuno
@@ -117,7 +118,7 @@ public class BookUtil {
 
         //TODO:: Fixa bugg att ta bort föregående historik
 
-       List<History> histories = UserUtil.getLoggedInUserHistory(LogIn.currentLoggedInUser);
+        List<History> histories = UserUtil.getLoggedInUserHistory(LogIn.currentLoggedInUser);
 
         if (histories != null) {
             for (History history : histories) {
@@ -136,15 +137,13 @@ public class BookUtil {
     //Hämta ut en bok
     public static Book getBook(String isbn) {
 
-        List<Book> bookList = getAllBookList();
-        Book tempBook = new Book();
-        for (Book book : bookList) {
-            if (book.getIsbn().equals(isbn))
-                tempBook = book;
-        }
-        return tempBook;
+        return getAllBookList().stream()
+                .filter(book -> book.getIsbn().equals(isbn))
+                .findFirst()
+                .orElse(null);
     }
 
+    //Registrera bok
     public static void registerBook(String title, String isbn, String author, String edition,
                                     String numberOfPages, String description,
                                     String publisher, String category,
@@ -160,12 +159,27 @@ public class BookUtil {
                 .setPublisher(publisher)
                 .setReleaseDate(releaseDate);
 
-        if(category.length() != 0) {
+        if (category.length() != 0) {
             registerBook.setCategory(Category.getByStringCategoryName(category));
-        } if(language.length() != 0) {
+        }
+        if (language.length() != 0) {
             registerBook.setLanguage(Language.valueOf(language));
         }
 
         bookDao.save(registerBook);
+    }
+
+    public static History registerLendOutBook(String ssn, String isbn) {
+        User user = UserUtil.getUser(ssn);
+        Book book = BookUtil.getBook(isbn);
+        History history = new History(user, book, LocalDate.now(), LocalDate.now().plusDays(14));
+
+        //Add new history
+        UserUtil.historyDao.save(history);
+
+        //Update number of books
+        book.setNumberOfBooks(book.getNumberOfBooks()-1);
+
+        return history;
     }
 }

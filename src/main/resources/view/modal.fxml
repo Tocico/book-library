@@ -137,7 +137,7 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label prefHeight="16.0" prefWidth="99.0" text="Available" textFill="#575757" GridPane.rowIndex="10">
+                        <Label prefHeight="16.0" prefWidth="143.0" text="Number of books" textFill="#575757" GridPane.rowIndex="10">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>

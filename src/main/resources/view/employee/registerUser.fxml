@@ -72,7 +72,7 @@
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="lendOut" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#lendOutAction" style="-fx-background-color: transparent;" text="Lend out Books" textAlignment="RIGHT" textFill="WHITE">
+                  <Button fx:id="lendOut" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#goTolendOut" style="-fx-background-color: transparent;" text="Lend out Books" textAlignment="RIGHT" textFill="WHITE">
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
@@ -80,7 +80,7 @@
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="returned" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#returnedAction" style="-fx-background-color: transparent;" text="Returned Books" textAlignment="RIGHT" textFill="WHITE">
+                  <Button fx:id="returned" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#goToreturned" style="-fx-background-color: transparent;" text="Returned Books" textAlignment="RIGHT" textFill="WHITE">
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
