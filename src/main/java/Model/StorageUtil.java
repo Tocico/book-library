@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.*;
+import java.util.List;
 
 public class StorageUtil {
     FileOutputStream fileOutput;
@@ -17,19 +18,34 @@ public class StorageUtil {
         objInput = new ObjectInputStream(fileInput);
     }
 
-    public void serializeStore(Object obj) throws IOException {
+    public void serializeStoreObj(Object obj) throws IOException {
         objOutput.writeObject(obj);
         objOutput.close();
         fileOutput.close();
-        System.out.println("Serialization and store success!");
+        System.out.println("Object serialization and store success!");
     }
 
-    public Object deserializeRead() throws ClassNotFoundException, IOException {
-        Object readData = objInput.readObject();
+    public void serializeStoreList(List list) throws IOException {
+        objOutput.writeObject(list);
+        objOutput.close();
+        fileOutput.close();
+        System.out.println("List serialization and store success!");
+    }
+
+    public Object deserializeReadObj() throws ClassNotFoundException, IOException {
+        Object readObject = objInput.readObject();
         objInput.close();
         fileInput.close();
-        System.out.println("Deserialization and read success!");
-        return readData;
+        System.out.println("Object deserialization and read success!");
+        return readObject;
+    }
+
+    public Object deserializeReadList() throws ClassNotFoundException, IOException {
+        List readList = (List) objInput.readObject();
+        objInput.close();
+        fileInput.close();
+        System.out.println("List deserialization and read success!");
+        return readList;
     }
 
 }
