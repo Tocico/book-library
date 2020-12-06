@@ -8,20 +8,22 @@ package Model.UserEntities;  /**
     
     
     
-    public abstract class Users {
+    public abstract class User {
         protected String firstName;
         protected String lastName;
         protected String sSN;
         protected String address;
         protected String email;
+        protected String passwd;
         protected boolean isAdmin;
 
-    public Users(String firstName, String lastName, String sSN, String address, String email, boolean isAdmin) {
+    public User(String firstName, String lastName, String sSN, String address, String email, String passwd, boolean isAdmin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sSN = sSN;
         this.address = address;
         this.email = email;
+        this.passwd = passwd;
         this.isAdmin = isAdmin;
     }
 
@@ -63,6 +65,14 @@ package Model.UserEntities;  /**
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
     }
 
     public boolean isAdmin() {

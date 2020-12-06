@@ -24,7 +24,7 @@ public class VisitorHome implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userName.setText(LogIn.currentLoggedInUser.getName());
+        userName.setText(LogIn.currentLoggedInUser.getFirstName());
     }
 
     public void goToVisitorTop() {

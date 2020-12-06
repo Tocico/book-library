@@ -13,11 +13,11 @@ import java.io.Serializable;
     
     
     
-    public class Employee extends Users implements Serializable {
+    public class Employee extends User implements Serializable {
 
 
-    public Employee(String firstName, String lastName, String sSN, String address, String email, boolean isAdmin) {
-        super(firstName, lastName, sSN, address, email, isAdmin);
+    public Employee(String firstName, String lastName, String sSN, String address, String email, String passwd, boolean isAdmin) {
+        super(firstName, lastName, sSN, address, email, passwd, isAdmin);
     }
 
 
