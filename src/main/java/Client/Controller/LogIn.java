@@ -42,11 +42,12 @@ public class LogIn implements Initializable {
 
         if (tempUser != null) {
             if (tempUser.isStaff()) {
+                currentLoggedInUser = tempUser;
                 loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
             } else {
+                currentLoggedInUser = tempUser;
                 loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
             }
-            currentLoggedInUser = tempUser;
 
         } else {
             message.setText("Vi hittar inte dig i systemet.  Försök logga in igen.");

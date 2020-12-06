@@ -1,9 +1,16 @@
 package Client.Controller.Employee;
 
 import Client.Controller.ControllerUtil;
+import Client.Controller.LogIn;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by Toshiko Kuno
@@ -14,10 +21,16 @@ import javafx.scene.layout.AnchorPane;
  */
 
 
-public class EmployeeHome {
+public class EmployeeHome implements Initializable {
     public AnchorPane loggedInEmployee;
     public Button employeeTop;
     public Button history;
+    public Text userName;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        userName.setText(LogIn.currentLoggedInUser.getName());
+    }
 
 
     public void goToEmployeeTop() {
@@ -46,6 +59,6 @@ public class EmployeeHome {
 
     public void goToRegisterUser() {
         loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
-
     }
+
 }
