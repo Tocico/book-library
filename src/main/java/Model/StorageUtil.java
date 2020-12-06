@@ -11,7 +11,9 @@ public class StorageUtil {
     String path;
 
     public StorageUtil(String dbName) throws FileNotFoundException, IOException {
-        path = "..Data/" + dbName + ".ser";
+        path = "data/" + dbName + ".ser";
+        File file = new File(path);
+        file.createNewFile();
         fileOutput = new FileOutputStream(path);
         objOutput = new ObjectOutputStream(fileOutput);
         fileInput = new FileInputStream(path);
