@@ -45,7 +45,8 @@ public class UserUtil {
                 .orElse(null);
     }
 
-    public static void registerUser() {
+    public static void registerUser(String firstName, String lastName, String sSN,String passwd, String tel, String address, String email, String isAdmin) {
+
 
         //userDao.save(user);
     }
