@@ -3,6 +3,7 @@ package Client;
 import Client.Controller.LogIn;
 import Client.Controller.Modal;
 import DAO.BookDao;
+import DAO.HistoryDao;
 import Model.Book;
 import Model.Category;
 import Model.History;
@@ -17,6 +18,7 @@ import javafx.scene.text.Text;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Toshiko Kuno
@@ -114,7 +116,9 @@ public class BookUtil {
                                               TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) {
 
         //TODO:: Fixa bugg att ta bort föregående historik
-        List<History> histories = UserUtil.getLoggedInUserHistory(LogIn.currentLoggedInUser);
+
+       List<History> histories = UserUtil.getLoggedInUserHistory(LogIn.currentLoggedInUser);
+
         if (histories != null) {
             for (History history : histories) {
                 title.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getBook().getTitle()));

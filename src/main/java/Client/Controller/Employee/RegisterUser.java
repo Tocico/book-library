@@ -2,11 +2,16 @@ package Client.Controller.Employee;
 
 import Client.Controller.ControllerUtil;
 import Client.UserUtil;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by Miwa Guhrés
@@ -15,7 +20,7 @@ import javafx.scene.text.Text;
  * Project: Bibliotek
  * Copyright: MIT
  */
-public class RegisterUser {
+public class RegisterUser implements Initializable {
     public AnchorPane registerUserPane;
     public ToggleGroup userCat;
     public TextField firstNameT;
@@ -26,6 +31,16 @@ public class RegisterUser {
     public TextField addressT;
     public TextField emailT;
     public Text message;
+    public Button regiBtn;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Disable login knappen om man inte skriver namn, personnummer eller löseord
+        regiBtn.disableProperty().bind(firstNameT.textProperty().isEmpty()
+                 .or(lastNameT.textProperty().isEmpty())
+                .or(ssnT.textProperty().isEmpty())
+                .or(passwdT.textProperty().isEmpty()));
+    }
 
     public void goToLogOut() {
         registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
@@ -73,4 +88,5 @@ public class RegisterUser {
         }
 
     }
+
 }

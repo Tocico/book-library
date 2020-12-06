@@ -36,4 +36,8 @@ public class History {
     public Book getBook() {
         return book;
     }
+
+    public User getUser() {
+        return user;
+    }
 }
