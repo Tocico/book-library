@@ -1,9 +1,11 @@
 package Client;
 
+import DAO.HistoryDao;
 import DAO.UserDao;
 import Model.History;
 import Model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +19,7 @@ import java.util.List;
 
 public class UserUtil {
     public static UserDao userDao = new UserDao();
+    public static HistoryDao historyDao = new HistoryDao();
 
     //Hämta ut alla användare list
     public static List<User> getUserList() {
@@ -25,11 +28,19 @@ public class UserUtil {
 
     //Hämta ut den aktuella histori lista
     public static List<History> getLoggedInUserHistory(User loggedInUser) {
-        List<User> userList = getUserList();
+        List<History> histories = new ArrayList<>();
+        for (History history : historyDao.getAll()) {
+            if(history.getUser().equals(loggedInUser)) {
+                histories.add(history);
+            }
+        }
+        return histories;
+    }
 
-        return userList.stream()
-                .filter(user -> user.getSsn().equals(loggedInUser.getSsn()))
-                .map(user -> user.getHistories())
+    //Hämta ut en användare
+    public static User getUser(String ssn) {
+        return userDao.getAll().stream()
+                .filter(user -> user.getSsn().equals(ssn))
                 .findFirst()
                 .orElse(null);
     }
