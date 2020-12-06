@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TableColumn?>
@@ -8,10 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="emoloyeeSearchPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Employee.EmployeeSearch">
+<AnchorPane fx:id="employeeSearchPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Employee.EmployeeSearch">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="1000.0">
          <top>
@@ -22,21 +24,11 @@
                         <Font name="Euphemia UCAS" size="23.0" />
                      </font>
                   </Text>
-                  <ButtonBar layoutX="376.0" layoutY="9.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="564.0">
+                  <ButtonBar layoutX="240.0" layoutY="9.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="740.0">
                     <buttons>
-                      <Button fx:id="top" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#goToTop" style="-fx-background-color: transparent;" text="Top" textFill="WHITE">
+                        <Button fx:id="LogOut" alignment="CENTER" contentDisplay="TOP" maxWidth="79.0" minWidth="30.0" mnemonicParsing="false" onAction="#goToLogOut" prefHeight="28.0" prefWidth="30.0" style="-fx-background-color: transparent;" text="Log out" textFill="WHITE">
                            <font>
-                              <Font name="Euphemia UCAS" size="16.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="search" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#goToSearch" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../css/style.css" text="Search" textFill="WHITE">
-                           <font>
-                              <Font name="Euphemia UCAS" size="16.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="LogIn" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#goToLogIn" style="-fx-background-color: transparent;" stylesheets="@../css/style.css" text="Log in" textFill="WHITE">
-                           <font>
-                              <Font name="Euphemia UCAS" size="16.0" />
+                              <Font name="Euphemia UCAS" size="13.0" />
                            </font>
                         </Button>
                     </buttons>
@@ -58,28 +50,105 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                 
-                  <Pane layoutX="160.0" prefHeight="511.0" prefWidth="709.0">
-                     <children>
-                        <TextField fx:id="searchT" layoutY="43.0" prefHeight="40.0" prefWidth="590.0" />
-                        <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="45.0" minHeight="36.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#searchAction" prefHeight="29.0" prefWidth="90.0" style="-fx-background-color: #a65d58;" text="sök" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                        <Text fx:id="message" fill="#f80909" layoutX="-4.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="572.0787963867188" />
-                        <TableView fx:id="searchView" layoutX="-1.0" layoutY="130.0" prefHeight="341.0" prefWidth="710.0" stylesheets="@../css/style.css">
-                          <columns>
-                            <TableColumn fx:id="title" prefWidth="271.98435974121094" text="Title" />
-                            <TableColumn fx:id="author" minWidth="0.0" prefWidth="189.984375" text="Author" />
-                              <TableColumn fx:id="language" prefWidth="127.015625" text="Language" />
-                              <TableColumn fx:id="category" minWidth="0.0" prefWidth="127.640625" text="Category" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </Pane>
+                  <TextField fx:id="searchT" layoutX="45.0" layoutY="61.0" prefHeight="38.0" prefWidth="532.0" />
+                  <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="603.0" layoutY="63.0" minHeight="36.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#searchAction" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #a65d58;" text="sök" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Text fx:id="message" fill="#f80909" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="572.0787963867188" />
+                  <TableView fx:id="searchView" layoutX="45.0" layoutY="130.0" prefHeight="341.0" prefWidth="710.0" stylesheets="@../../css/style.css">
+                     <columns>
+                        <TableColumn fx:id="title" prefWidth="271.98435974121094" text="Title" />
+                        <TableColumn fx:id="author" minWidth="0.0" prefWidth="189.984375" text="Author" />
+                        <TableColumn fx:id="language" prefWidth="127.015625" text="Language" />
+                        <TableColumn fx:id="category" minWidth="0.0" prefWidth="127.640625" text="Category" />
+                     </columns>
+                  </TableView>
+               </children></Pane>
+         </center>
+         <left>
+            <VBox prefHeight="513.0" prefWidth="208.0" style="-fx-background-color: #536c85;" BorderPane.alignment="CENTER">
+               <children>
+                <Button fx:id="employeeTop" maxWidth="210.0" minWidth="20.0" mnemonicParsing="false" onAction="#goToEmployeeTop" prefHeight="28.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="Top" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="history" contentDisplay="TOP" maxWidth="1.7976931348623157E308" minWidth="210.0" mnemonicParsing="false" onAction="#goToHistory" prefWidth="200.0" style="-fx-background-color: transparent;" text="History" textFill="#fffbfb">
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="bookManage" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToBookManage" prefWidth="210.0" style="-fx-background-color: transparent;" text="Book manage" textFill="#fffbfb">
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="userManage" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToUserManage" prefWidth="210.0" style="-fx-background-color: transparent;" text="User manage" textFill="#fffbfb">
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="registerBooks" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToRegisterBooks" prefWidth="210.0" style="-fx-background-color: transparent;" text="Register books" textFill="#fffbfb">
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="registerUser" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToRegisterUser" prefWidth="210.0" style="-fx-background-color: transparent;" text="Register user" textFill="#fffbfb">
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="search" contentDisplay="TOP" maxWidth="30.0" minWidth="210.0" mnemonicParsing="false" onAction="#goToSearch" prefWidth="210.0" style="-fx-background-color: transparent;" text="Search" textFill="#fffbfb">
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
-            </Pane>
-         </center></BorderPane>
+            </VBox>
+         </left></BorderPane>
    </children>
 </AnchorPane>

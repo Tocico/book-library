@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
@@ -50,15 +49,14 @@
                <children>
                   <Text fx:id="welcome" layoutX="208.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome ">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Euphemia UCAS" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="ExclamationMark" layoutX="539.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!!">
+                  <Text fx:id="userName" fill="#c35050" layoutX="339.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="345.2060546875">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="21.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="userNameField" layoutX="339.0" layoutY="78.0" prefHeight="25.0" prefWidth="193.0" style="-fx-background-color: transparent;" />
                </children></Pane>
          </center>
          <left>
