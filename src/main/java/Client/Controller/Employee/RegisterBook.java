@@ -71,9 +71,6 @@ public class RegisterBook implements Initializable {
         registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
     }
 
-    public void goToHistory() {
-    }
-
     public void goToBookManage() {
     }
 
@@ -130,9 +127,10 @@ public class RegisterBook implements Initializable {
 
     }
 
-    public void lendOutAction() {
+    public void goToLendOut() {
+        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
     }
 
-    public void returnedAction() {
+    public void goToReturned() {
     }
 }

@@ -36,9 +36,6 @@ public class EmployeeHome implements Initializable {
         loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
     }
 
-    public void goToHistory() {
-    }
-
     public void goToBookManage() {
     }
 
@@ -60,9 +57,10 @@ public class EmployeeHome implements Initializable {
         loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
     }
 
-    public void lendOutAction(ActionEvent actionEvent) {
+    public void goToLendOut() {
+        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
     }
 
-    public void returnedAction(ActionEvent actionEvent) {
+    public void goToReturned() {
     }
 }

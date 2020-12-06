@@ -51,9 +51,6 @@ public class RegisterUser implements Initializable {
     public void goToEmployeeTop() {
     }
 
-    public void goToHistory() {
-    }
-
     public void goToBookManage() {
     }
 
@@ -90,9 +87,10 @@ public class RegisterUser implements Initializable {
 
     }
 
-    public void lendOutAction(ActionEvent actionEvent) {
+    public void goTolendOut() {
+        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
     }
 
-    public void returnedAction(ActionEvent actionEvent) {
+    public void goToreturned(ActionEvent actionEvent) {
     }
 }
