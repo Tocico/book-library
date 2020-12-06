@@ -45,18 +45,19 @@
             </Pane>
          </bottom>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #c9d8da #c9d8da;" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="welcome" layoutX="208.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome ">
+                  <Text fx:id="welcome" layoutX="240.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome ">
                      <font>
                         <Font name="Euphemia UCAS" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="userName" fill="#c35050" layoutX="339.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="345.2060546875">
+                  <Text fx:id="userName" fill="#c35050" layoutX="360.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="345.2060546875">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
+                  <Pane layoutX="60.0" layoutY="140.0" prefHeight="330.0" prefWidth="680.0" styleClass="bgHome" stylesheets="@../../css/style.css" />
                </children></Pane>
          </center>
          <left>
@@ -73,16 +74,32 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="history" contentDisplay="TOP" maxWidth="1.7976931348623157E308" minWidth="210.0" mnemonicParsing="false" onAction="#goToHistory" prefWidth="200.0" style="-fx-background-color: transparent;" text="History" textFill="#fffbfb">
-                     <font>
-                        <Font name="Euphemia UCAS" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="300.0" style="-fx-background-color: transparent;" text="Register" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets right="40.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="lendOut" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#lendOutAction" style="-fx-background-color: transparent;" text="Lend out Books" textAlignment="RIGHT" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="returned" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#returnedAction" style="-fx-background-color: transparent;" text="Returned Books" textAlignment="RIGHT" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
                   </Button>
                   <Button fx:id="bookManage" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToBookManage" prefWidth="210.0" style="-fx-background-color: transparent;" text="Book manage" textFill="#fffbfb">
                      <font>

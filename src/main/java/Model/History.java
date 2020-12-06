@@ -18,7 +18,7 @@ public class History {
     private LocalDate returnDate;
     private LocalDate lendOutDate;
 
-    public History(User user, Book book, LocalDate returnDate, LocalDate lendOutDate) {
+    public History(User user, Book book, LocalDate lendOutDate, LocalDate returnDate) {
         this.user = user;
         this.book = book;
         this.returnDate = returnDate;

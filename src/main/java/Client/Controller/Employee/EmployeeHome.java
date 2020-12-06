@@ -61,4 +61,9 @@ public class EmployeeHome implements Initializable {
         loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
     }
 
+    public void lendOutAction(ActionEvent actionEvent) {
+    }
+
+    public void returnedAction(ActionEvent actionEvent) {
+    }
 }

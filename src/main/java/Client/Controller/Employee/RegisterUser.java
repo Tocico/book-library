@@ -2,6 +2,7 @@ package Client.Controller.Employee;
 
 import Client.Controller.ControllerUtil;
 import Client.UserUtil;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -89,4 +90,9 @@ public class RegisterUser implements Initializable {
 
     }
 
+    public void lendOutAction(ActionEvent actionEvent) {
+    }
+
+    public void returnedAction(ActionEvent actionEvent) {
+    }
 }

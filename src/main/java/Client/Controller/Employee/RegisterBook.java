@@ -5,6 +5,7 @@ import Client.Controller.ControllerUtil;
 import Client.Controller.SuccessModal;
 import Model.Category;
 import Model.Language;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -127,5 +128,11 @@ public class RegisterBook implements Initializable {
             message.setText("Det gick något fel. Försök igen");
         }
 
+    }
+
+    public void lendOutAction() {
+    }
+
+    public void returnedAction() {
     }
 }
