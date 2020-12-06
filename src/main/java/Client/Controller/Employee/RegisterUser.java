@@ -1,6 +1,7 @@
 package Client.Controller.Employee;
 
 import Client.Controller.ControllerUtil;
+import Client.Controller.SuccessModal;
 import Client.UserUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -76,14 +77,43 @@ public class RegisterUser implements Initializable {
         try {
             //TODO hämta inmatning värde och kontrollera dem. t.ex Personnummer(ÅÅMMDDXXXX), email osv
 
+            if (firstNameT.getText() != null &&
+                    lastNameT.getText() != null &&
+                    ssnT.getText().matches("[0-9]{10}") && // number from 0 to 9, length 10
+                    passwdT.getText() != null&&
+                    telT.getText()!=null&&
+                    addressT.getText()!=null&&
+                    emailT.getText()!=null&&
+                    userCategoryChoice.getText()!=null
+            )
 
-            //Anropa registerUser metod och skicka alla user info
-            UserUtil.registerUser();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            message.setText("Det gick något fel. Försök igen");
-        }
+                UserUtil.registerUser(
+                        firstNameT.getText(),
+                        lastNameT.getText(),
+                        ssnT.getText(),
+                        passwdT.getText(),
+                        telT.getText(),
+                        addressT.getText(),
+                        emailT.getText()),
+                        userCategoryChoice.getText()
+            );
+
+                SuccessModal.message = "You've successfully created user data";
+                SuccessModal.displaySuccessDisplay(getClass());
+
+                firstNameT.setText("");
+                lastNameT.setText("");
+                ssnT.setText("");
+                passwdT.setText("");
+                telT.setText("");
+                addressT.setText("");
+                emailT.setText("");
+
+            } catch(Exception e){
+                e.printStackTrace();
+                message.setText("Det gick något fel. Försök igen");
+            }
 
     }
 
