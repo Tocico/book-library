@@ -134,52 +134,59 @@ public class BookUtil {
     public static void registerBook(String title, String isbn, String author, String edition,
                                     String numberOfPages, String description,
                                     String publisher, String category,
-                                    String language, LocalDate releaseDate) throws IOException {
+                                    String language, LocalDate releaseDate, int numberOfBooks) throws IOException {
 
-        Book registerBook = new Book()
-                .setTitle(title)
-                .setIsbn(isbn)
-                .setAuthor(author)
-                .setEdition(edition)
-                .setNumberOfPages(numberOfPages)
-                .setDescription(description)
-                .setPublisher(publisher)
-                .setReleaseDate(releaseDate);
+        //Instansera Bok objekt beroende på antal bok
+        for (int i = 0; i < numberOfBooks; i++) {
 
-        if (category.length() != 0) {
-            registerBook.setCategory(Category.getByStringCategoryName(category));
+            Book registerBook = new Book()
+                    .setTitle(title)
+                    .setIsbn(isbn)
+                    .setAuthor(author)
+                    .setEdition(edition)
+                    .setNumberOfPages(numberOfPages)
+                    .setDescription(description)
+                    .setPublisher(publisher)
+                    .setNumberOfBooks(numberOfBooks)
+                    .setReleaseDate(releaseDate);
+
+            if (category.length() != 0) {
+                registerBook.setCategory(Category.getByStringCategoryName(category));
+            }
+            if (language.length() != 0) {
+                registerBook.setLanguage(Language.valueOf(language));
+            }
+
+            bookDao.save(registerBook);
+
         }
-        if (language.length() != 0) {
-            registerBook.setLanguage(Language.valueOf(language));
-        }
 
-        bookDao.save(registerBook);
     }
 
     public static History registerLendOutBook(String ssn, String isbn) throws IOException, ClassNotFoundException {
         User user = UserUtil.userDao.getById(ssn);
         Book book = bookDao.getById(isbn);
         History history = new History()
-                                .setUser(user)
-                                .setBook(book)
-                                .setLendOutDate(LocalDate.now());
+                .setUser(user)
+                .setBook(book)
+                .setLendOutDate(LocalDate.now());
 
         //Add new history
         UserUtil.historyDao.save(history);
 
         //Update number of books
-        book.setNumberOfBooks(book.getNumberOfBooks()-1);
+        book.setNumberOfBooks(book.getNumberOfBooks() - 1);
 
         return history;
     }
 
     public static History registerReturnedBook(String ssn, String isbn) throws IOException {
-          History history = UserUtil.historyDao.getByIdAndIsbn(ssn, isbn);
-          history.setReturnDate(LocalDate.now());
+        History history = UserUtil.historyDao.getByIdAndIsbn(ssn, isbn);
+        history.setReturnDate(LocalDate.now());
 
-          UserUtil.historyDao.update(history);
+        UserUtil.historyDao.update(history);
 
-          //TODO:: Update antal bok
-          return history;
+        //TODO:: Update antal bok
+        return history;
     }
 }

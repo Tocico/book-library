@@ -36,6 +36,7 @@ public class RegisterBook implements Initializable {
     public TextField numberOfPagesT;
     public TextArea descriptionT;
     public TextField publisherT;
+    public TextField numberOfBooksT;
     public Text message;
     public Button regiBtn;
 
@@ -61,7 +62,8 @@ public class RegisterBook implements Initializable {
         regiBtn.disableProperty().bind(titleT.textProperty().isEmpty()
                 .or(isbnT.textProperty().isEmpty())
                 .or(category.valueProperty().isNull())
-                .or(language.valueProperty().isNull()));
+                .or(language.valueProperty().isNull())
+                .or(numberOfBooksT.textProperty().isEmpty()));
 
     }
 
@@ -106,7 +108,8 @@ public class RegisterBook implements Initializable {
                         publisherT.getText(),
                         category.getValue() != null ? category.getValue().toString() : "",
                         language.getValue() != null ? language.getValue().toString() : "",
-                        releaseDay);
+                        releaseDay,
+                        Integer.parseInt(numberOfBooksT.getText()));
 
             SuccessModal.message = "You've successfully created book data";
             SuccessModal.displaySuccessDisplay(getClass());
@@ -121,6 +124,7 @@ public class RegisterBook implements Initializable {
             category.getSelectionModel().clearSelection();
             language.getSelectionModel().clearSelection();
             releaseDate.setValue(null);
+            numberOfBooksT.setText("");
 
 
         } catch (Exception e) {

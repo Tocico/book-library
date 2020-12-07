@@ -27,11 +27,11 @@ public class BookDao implements Dao<Book> {
 
     //Hämta data från textfil?
     public BookDao() {
-        /*---------------- TEST --------------------*/
+       /* *//*---------------- TEST --------------------*//*
         bookList.add(new Book().setTitle("Harry Potter").setIsbn("123434").setCategory(Category.FANTASY).setLanguage(Language.Svenska).setAuthor("JK.Rolling").setNumberOfBooks(2));
         bookList.add(new Book().setTitle("Load of the rings").setIsbn("22343").setCategory(Category.FANTASY).setLanguage(Language.Engelska).setAuthor("J. R. R. Tolkien").setNumberOfBooks(4));
         bookList.add(new Book().setTitle("Gozilla").setIsbn("32343").setCategory(Category.SCIENCE_FICTION).setLanguage(Language.Engelska).setAuthor("Tomoyuki Tanaka").setNumberOfBooks(1));
-        /*------------------------------------------*/
+        *//*------------------------------------------*/
 
 
         try {
