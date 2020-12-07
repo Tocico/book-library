@@ -5,6 +5,7 @@ import DAO.UserDao;
 import Model.History;
 import Model.UserEntities.User;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class UserUtil {
     }
 
     //Hämta ut den aktuella histori lista
-    public static List<History> getLoggedInUserHistory(User loggedInUser) {
+    public static List<History> getLoggedInUserHistory(User loggedInUser) throws IOException, ClassNotFoundException {
         List<History> histories = new ArrayList<>();
         for (History history : historyDao.getAll()) {
             if(history.getUser().equals(loggedInUser)) {

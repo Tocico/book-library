@@ -13,7 +13,7 @@ import java.io.Serializable;
     
     
     
-    public class Visitor extends User implements Serializable {
+    public class Visitor extends User {
 
     public Visitor(String firstName, String lastName, String sSN, String address, String email, String passwd, boolean isAdmin) {
         super(firstName, lastName, sSN, address, email, passwd, isAdmin);

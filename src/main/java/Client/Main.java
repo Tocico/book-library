@@ -1,5 +1,6 @@
 package Client;
 
+import DAO.HistoryDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +18,12 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        try {
+            new HistoryDao();
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
         launch(args);
+
     }
 }

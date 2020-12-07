@@ -13,7 +13,7 @@ import java.io.Serializable;
     
     
     
-    public class Employee extends User implements Serializable {
+    public class Employee extends User {
 
 
     public Employee(String firstName, String lastName, String sSN, String address, String email, String passwd, boolean isAdmin) {

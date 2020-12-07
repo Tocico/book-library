@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import Model.UserEntities.User;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 
 
-public class History {
+public class History implements Serializable {
     private User user;
     private Book book;
     private LocalDate returnDate;

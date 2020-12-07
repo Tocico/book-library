@@ -1,4 +1,8 @@
-package Model.UserEntities;  /**
+package Model.UserEntities;
+
+import java.io.Serializable;
+
+/**
    * Created by Toshiko Kuno
    * Date: 2020-11-30
    * Time: 15:51
@@ -8,7 +12,7 @@ package Model.UserEntities;  /**
     
     
     
-    public abstract class User {
+    public abstract class User implements Serializable {
         protected String firstName;
         protected String lastName;
         protected String sSN;

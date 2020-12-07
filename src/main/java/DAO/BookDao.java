@@ -4,6 +4,7 @@ import Model.Book;
 import Model.Category;
 import Model.Language;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,11 @@ public class BookDao implements Dao<Book> {
     @Override
     public List<Book> getAll() {
         return bookList;
+    }
+
+    @Override
+    public void saveAll() throws IOException {
+
     }
 
     //Register book

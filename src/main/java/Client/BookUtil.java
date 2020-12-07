@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -114,7 +115,7 @@ public class BookUtil {
 
     //Skriv ut utlåningshistorik
     public static void printOutLendingHistory(TableView historyView, TableColumn<History, String> title, TableColumn<History, String> isbn,
-                                              TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) {
+                                              TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) throws IOException, ClassNotFoundException {
 
         //TODO:: Fixa bugg att ta bort föregående historik
 
@@ -169,7 +170,7 @@ public class BookUtil {
         bookDao.save(registerBook);
     }
 
-    public static History registerLendOutBook(String ssn, String isbn) {
+    public static History registerLendOutBook(String ssn, String isbn) throws IOException {
         User user = UserUtil.getUser(ssn);
         Book book = BookUtil.getBook(isbn);
         History history = new History(user, book, LocalDate.now(), LocalDate.now().plusDays(14));
