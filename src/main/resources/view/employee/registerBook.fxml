@@ -73,7 +73,7 @@
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="lendOut" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#goToLendOut" style="-fx-background-color: transparent;" text="Lend out Books" textAlignment="RIGHT" textFill="WHITE">
+                  <Button fx:id="lendOut" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#goToLendOut" style="-fx-background-color: transparent;" text="Checkout Books" textAlignment="RIGHT" textFill="WHITE">
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
