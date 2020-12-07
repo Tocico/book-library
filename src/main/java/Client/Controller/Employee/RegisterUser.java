@@ -95,7 +95,7 @@ public class RegisterUser implements Initializable {
                         passwdT.getText(),
                         telT.getText(),
                         addressT.getText(),
-                        emailT.getText()),
+                        emailT.getText(),
                         userCategoryChoice.getText()
             );
 
