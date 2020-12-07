@@ -31,23 +31,22 @@ public class HistoryDao implements Dao<History> {
     //Hämta data från textfil?
     public HistoryDao() {
 
+        try {
         /*---------------- TEST --------------------*/
         historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
-                .setBook(BookUtil.getBook("123434"))
+                .setBook(BookUtil.bookDao.getById("123434"))
                 .setLendOutDate(LocalDate.of(2020, 12, 01))
                 .setReturnDate(LocalDate.of(2020, 12, 13)));
         historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
-                .setBook(BookUtil.getBook("32343"))
+                .setBook(BookUtil.bookDao.getById("32343"))
                 .setLendOutDate(LocalDate.of(2020, 12, 05)));
         historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
-                .setBook(BookUtil.getBook("22343"))
+                .setBook(BookUtil.bookDao.getById("22343"))
                 .setLendOutDate(LocalDate.of(2020, 12, 05)));
         historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
-                .setBook(BookUtil.getBook("32343"))
+                .setBook(BookUtil.bookDao.getById("32343"))
                 .setLendOutDate(LocalDate.of(2020, 12, 05)));
         /*------------------------------------------*/
-
-        try {
             db = new StorageUtil("history");
             //saveAll();
             historyList = getAll(); //Overwrite current history list with the fetched deserialized data
@@ -89,11 +88,12 @@ public class HistoryDao implements Dao<History> {
         saveAll();
     }
 
-    @Override
-    public History getById(String id) {
+
+    public History getByIdAndIsbn(String userSsn, String isbn) {
         for (Object e : historyList) {
             if (e instanceof History) {
-                if(((History) e).getUser().getsSN().equals(id)) return (History) e;
+                if(((History) e).getBook().getIsbn().equals(isbn) &&
+                        ((History) e).getUser().getsSN().equals(userSsn)) return (History) e;
             }
         }
         return null;

@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,9 +31,9 @@ public class LogIn implements Initializable {
     }
 
 
-    public void logIn() {
+    public void logIn() throws IOException, ClassNotFoundException {
         //Hämta user list
-        List<User> userList = UserUtil.getUserList();
+        List<User> userList = UserUtil.userDao.getAll();
 
         User tempUser = userList.stream()
                 .filter(user -> user.getsSN().equalsIgnoreCase(socialId.getText())

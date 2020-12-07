@@ -46,7 +46,7 @@ public class RegisterBook implements Initializable {
         //Hämta alla category enum
         Category[] categoryArr = Category.values();
         //Sätta alla category namn i dropdown menu
-        for(Category categoryItem: categoryArr) {
+        for (Category categoryItem : categoryArr) {
             category.getItems().add(categoryItem.getCategory());
         }
 
@@ -54,12 +54,14 @@ public class RegisterBook implements Initializable {
         //Hämta alla language enum
         Language[] languageArr = Language.values();
         //Sätta alla language namn i dropdown menu
-        for(Language languageItem: languageArr) {
+        for (Language languageItem : languageArr) {
             language.getItems().add(languageItem);
         }
 
-        //Disable login knappen om man inte skriver title eller ISBN
-        regiBtn.disableProperty().bind(titleT.textProperty().isEmpty().or(isbnT.textProperty().isEmpty()));
+        regiBtn.disableProperty().bind(titleT.textProperty().isEmpty()
+                .or(isbnT.textProperty().isEmpty())
+                .or(category.valueProperty().isNull())
+                .or(language.valueProperty().isNull()));
 
     }
 
@@ -82,6 +84,7 @@ public class RegisterBook implements Initializable {
     }
 
     public void goToSearch() {
+        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
     }
 
     public void goToRegisterUser() {
@@ -90,20 +93,20 @@ public class RegisterBook implements Initializable {
 
     public void actionRegister() {
         LocalDate releaseDay = releaseDate.getValue();
-        try{
+        try {
 
-            if(category.getValue() != null )
-            BookUtil.registerBook(
-                    titleT.getText(),
-                    isbnT.getText(),
-                    authorT.getText(),
-                    editionT.getText(),
-                    numberOfPagesT.getText(),
-                    descriptionT.getText(),
-                    publisherT.getText(),
-                    category.getValue() != null ? category.getValue().toString() : "",
-                    language.getValue() != null? language.getValue().toString() : "",
-                    releaseDay);
+            if (category.getValue() != null)
+                BookUtil.registerBook(
+                        titleT.getText(),
+                        isbnT.getText(),
+                        authorT.getText(),
+                        editionT.getText(),
+                        numberOfPagesT.getText(),
+                        descriptionT.getText(),
+                        publisherT.getText(),
+                        category.getValue() != null ? category.getValue().toString() : "",
+                        language.getValue() != null ? language.getValue().toString() : "",
+                        releaseDay);
 
             SuccessModal.message = "You've successfully created book data";
             SuccessModal.displaySuccessDisplay(getClass());
@@ -120,7 +123,7 @@ public class RegisterBook implements Initializable {
             releaseDate.setValue(null);
 
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             message.setText("Det gick något fel. Försök igen");
         }
@@ -132,5 +135,6 @@ public class RegisterBook implements Initializable {
     }
 
     public void goToReturned() {
+        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
     }
 }

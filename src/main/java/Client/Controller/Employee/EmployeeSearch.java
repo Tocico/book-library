@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -73,9 +74,10 @@ public class EmployeeSearch implements Initializable {
     }
 
     public void goToReturned() {
+        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
     }
 
-    public void searchAction() {
+    public void searchAction() throws IOException, ClassNotFoundException {
         String searchWord = searchT.getText();
         BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
     }

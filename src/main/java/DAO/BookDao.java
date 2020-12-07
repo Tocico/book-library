@@ -36,7 +36,7 @@ public class BookDao implements Dao<Book> {
 
         try {
             db = new StorageUtil("books");
-            //saveAll();
+            saveAll();
             bookList = getAll(); //Overwrite current history list with the fetched deserialized data
 
             System.out.println("Loaded data" + bookList);
@@ -76,11 +76,11 @@ public class BookDao implements Dao<Book> {
         saveAll();
     }
 
-    @Override
+
     public Book getById(String id) {
         for (Object e : bookList) {
             if (e instanceof Book) {
-                if(((Book) e).getId().equals(id)) return (Book) e;
+                if(((Book) e).getIsbn().equals(id)) return (Book) e;
             }
         }
         return null;

@@ -37,11 +37,6 @@ public class BookUtil {
     public static Book selectedBook;
     public static BookDao bookDao = new BookDao();
 
-    //Hämta ut alla boklista
-    public static List<Book> getAllBookList() {
-        return bookDao.getAll();
-    }
-
     /**
      * Ta bort white space
      *
@@ -59,9 +54,9 @@ public class BookUtil {
     }
 
     //Boksök funktion
-    public static List<Book> searchBook(String searchWord) {
+    public static List<Book> searchBook(String searchWord) throws IOException, ClassNotFoundException {
 
-        List<Book> bookList = getAllBookList();
+        List<Book> bookList = bookDao.getAll();
         List<Book> hitSearchBookList = new ArrayList<>();
         searchWord = removeWhiteSpace(searchWord);
 
@@ -82,7 +77,7 @@ public class BookUtil {
     public static void printOutSearchResult(String searchWord, TableView searchView,
                                             TableColumn<Book, String> title, TableColumn<Book, String> author,
                                             TableColumn<Book, String> language, TableColumn<Book, String> category,
-                                            Text message, Class<?> currentClass) {
+                                            Text message, Class<?> currentClass) throws IOException, ClassNotFoundException {
 
         searchView.getItems().clear();
         searchView.setVisible(false);
@@ -107,7 +102,7 @@ public class BookUtil {
         //Open modal window
         searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
         {
-            selectedBook = getBook(newVal.toString());
+            selectedBook = bookDao.getById(newVal.toString());
             Modal.displayBook(currentClass);
         });
 
@@ -119,7 +114,7 @@ public class BookUtil {
 
         //TODO:: Fixa bugg att ta bort föregående historik
 
-        List<History> histories = UserUtil.getLoggedInUserHistory(LogIn.currentLoggedInUser);
+        List<History> histories = UserUtil.historyDao.getHistoryList(LogIn.currentLoggedInUser.getsSN());
 
         if (histories != null) {
             for (History history : histories) {
@@ -135,20 +130,11 @@ public class BookUtil {
 
     }
 
-    //Hämta ut en bok
-    public static Book getBook(String isbn) {
-
-        return getAllBookList().stream()
-                .filter(book -> book.getIsbn().equals(isbn))
-                .findFirst()
-                .orElse(null);
-    }
-
     //Registrera bok
     public static void registerBook(String title, String isbn, String author, String edition,
                                     String numberOfPages, String description,
                                     String publisher, String category,
-                                    String language, LocalDate releaseDate) {
+                                    String language, LocalDate releaseDate) throws IOException {
 
         Book registerBook = new Book()
                 .setTitle(title)
@@ -170,9 +156,9 @@ public class BookUtil {
         bookDao.save(registerBook);
     }
 
-    public static History registerLendOutBook(String ssn, String isbn) throws IOException {
-        User user = UserUtil.getUser(ssn);
-        Book book = BookUtil.getBook(isbn);
+    public static History registerLendOutBook(String ssn, String isbn) throws IOException, ClassNotFoundException {
+        User user = UserUtil.userDao.getById(ssn);
+        Book book = bookDao.getById(isbn);
         History history = new History()
                                 .setUser(user)
                                 .setBook(book)
@@ -188,6 +174,12 @@ public class BookUtil {
     }
 
     public static History registerReturnedBook(String ssn, String isbn) throws IOException {
+          History history = UserUtil.historyDao.getByIdAndIsbn(ssn, isbn);
+          history.setReturnDate(LocalDate.now());
 
+          UserUtil.historyDao.update(history);
+
+          //TODO:: Update antal bok
+          return history;
     }
 }

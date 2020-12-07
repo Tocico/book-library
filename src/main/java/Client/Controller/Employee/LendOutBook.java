@@ -4,6 +4,7 @@ import Client.BookUtil;
 import Client.Controller.ControllerUtil;
 import Client.Controller.SuccessModal;
 import Client.UserUtil;
+import DAO.BookDao;
 import Model.History;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -49,6 +50,7 @@ public class LendOutBook implements Initializable {
     }
 
     public void goToReturned() {
+        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
     }
 
     public void goToLendOut() {
@@ -67,16 +69,17 @@ public class LendOutBook implements Initializable {
     }
 
     public void goToSearch() {
+        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
     }
 
     public void lendOutAction() {
         try {
 
-            if (BookUtil.getBook(isbn.getText()) == null && UserUtil.getUser(ssn.getText()) == null)
+            if (BookUtil.bookDao.getById(isbn.getText()) == null && UserUtil.getUser(ssn.getText()) == null)
                 message.setText("Felaktig inmatning. Försök mata in igen.");
             else if (UserUtil.getUser(ssn.getText()) == null)
                 message.setText("Vi hittar inte personnummer. Försök mata in igen.");
-            else if (BookUtil.getBook(isbn.getText()) == null)
+            else if (BookUtil.bookDao.getById(isbn.getText()) == null)
                 message.setText("Vi hittar inte den bok. Försök mata in igen.");
             else {
                History history = BookUtil.registerLendOutBook(ssn.getText(), isbn.getText());

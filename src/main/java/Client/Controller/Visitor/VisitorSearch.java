@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -60,7 +61,7 @@ public class VisitorSearch implements Initializable {
         visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
     }
 
-    public void searchAction(){
+    public void searchAction() throws IOException, ClassNotFoundException {
         String searchWord = searchT.getText();
         BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
     }
