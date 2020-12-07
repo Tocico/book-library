@@ -1,8 +1,5 @@
 package Client;
 
-import DAO.BookDao;
-import DAO.HistoryDao;
-import DAO.UserDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,11 +16,5 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) {
-       // new UserDao();
-       // new HistoryDao();
-        //new BookDao();
-
-        launch(args);
-    }
+    public static void main(String[] args) { launch(args); }
 }

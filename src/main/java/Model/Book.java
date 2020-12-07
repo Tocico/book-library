@@ -2,6 +2,7 @@ package Model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
 
 /**
    * Created by Toshiko Kuno
@@ -14,7 +15,7 @@ import java.time.LocalDate;
     
     
     public class Book implements Serializable {
-    protected String id;// Add id to
+    protected final String id = UUID.randomUUID().toString().replace("-", ""); //Create uniq ID
     protected String isbn;
     protected String title;
     protected String description;
@@ -50,11 +51,6 @@ import java.time.LocalDate;
 
     public String getId() {
         return id;
-    }
-
-    public Book setId(String id) {
-        this.id = id;
-        return this;
     }
 
     public String getIsbn() {

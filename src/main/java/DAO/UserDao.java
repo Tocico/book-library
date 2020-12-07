@@ -1,7 +1,5 @@
 package DAO;
 
-import Model.Book;
-import Model.History;
 import Model.StorageUtil;
 import Model.UserEntities.Employee;
 import Model.UserEntities.User;
@@ -30,7 +28,7 @@ public class UserDao implements Dao<User> {
     public UserDao() {
 
         /*------------------------TEST----------------------------------*/
-        userList.add(new Employee("Toshiko", "Kuno", "8811072886", "Enskede", "kuno@gmail.com", "1111", "11111111", false));
+        userList.add(new Employee("Toshiko", "Kuno", "8811072886", "Enskede", "kuno@gmail.com", "1111", "11111111", true));
         userList.add(new Employee("Miwa", "", "0000000000", "", "miwa@gmail.com", "2222","11111111",true));
         userList.add(new Visitor("Yohannes", "", "1111111111", "", "yohannes@gmail.com", "3333" ,"11111111",false));
         userList.add(new Visitor("Maxim", "", "2222222222", "", "maxim@gmail.com", "4444", "11111111",true));
