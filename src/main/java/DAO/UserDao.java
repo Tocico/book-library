@@ -1,5 +1,6 @@
 package DAO;
 
+import Model.Book;
 import Model.UserEntities.Employee;
 import Model.UserEntities.User;
 import Model.UserEntities.Visitor;
@@ -61,5 +62,15 @@ public class UserDao implements Dao<User> {
     public void delete(User user) {
         userList.remove(userList.indexOf(user));
         //TODO: Updatera db? Deserialize?
+    }
+
+    @Override
+    public User getById(String id) {
+        return null;
+    }
+
+    @Override
+    public User getByName(String name) {
+        return null;
     }
 }

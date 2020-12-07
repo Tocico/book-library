@@ -18,9 +18,13 @@ public interface Dao<T> {
 
     void saveAll() throws IOException;
 
-    void save(T t) throws IOException;
+    void save(T t);
 
     void update(T t);
 
     void delete(T t);
+
+    T getById(String id);
+
+    T getByName(String name);
 }

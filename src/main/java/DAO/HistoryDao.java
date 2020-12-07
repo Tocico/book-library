@@ -2,6 +2,7 @@ package DAO;
 
 import Client.BookUtil;
 import Client.UserUtil;
+import Model.Book;
 import Model.History;
 import Model.StorageUtil;
 
@@ -56,11 +57,11 @@ public class HistoryDao implements Dao<History> {
         }
 
         //Iteration tests
-        for (Object e : historyList) {
+/*        for (Object e : historyList) {
             if (e instanceof History) {
                 System.out.println("Element: " + ((History) e).getBook().getAuthor());
             }
-        }
+        }*/
     }
 
     @Override
@@ -75,7 +76,7 @@ public class HistoryDao implements Dao<History> {
 
     //Register history
     @Override
-    public void save(History history) throws IOException {
+    public void save(History history) {
         historyList.add(history);
         //TODO: Updatera db? Deserialize?
     }
@@ -94,4 +95,13 @@ public class HistoryDao implements Dao<History> {
         //TODO: Updatera db? Deserialize?
     }
 
+    @Override
+    public History getById(String id) {
+        return null;
+    }
+
+    @Override
+    public History getByName(String name) {
+        return null;
+    }
 }

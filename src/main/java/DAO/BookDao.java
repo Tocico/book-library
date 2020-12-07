@@ -62,4 +62,15 @@ public class BookDao implements Dao<Book> {
        //TODO: Updatera db? Deserialize?
     }
 
+    @Override
+    public Book getById(String id) {
+        return null;
+    }
+
+    @Override
+    public Book getByName(String name) {
+        return null;
+    }
+
+
 }
