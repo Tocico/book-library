@@ -56,7 +56,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Text fx:id="message" fill="#f80909" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="572.0787963867188" />
+                  <Text fx:id="message" fill="#f80909" layoutX="47.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="572.0787963867188" />
                   <TableView fx:id="searchView" layoutX="45.0" layoutY="130.0" prefHeight="341.0" prefWidth="710.0" stylesheets="@../../css/style.css">
                      <columns>
                         <TableColumn fx:id="title" prefWidth="271.98435974121094" text="Title" />
@@ -70,7 +70,7 @@
          <left>
             <VBox prefHeight="513.0" prefWidth="208.0" style="-fx-background-color: #536c85;" BorderPane.alignment="CENTER">
                <children>
-                <Button fx:id="employeeTop" maxWidth="210.0" minWidth="20.0" mnemonicParsing="false" onAction="#goToEmployeeTop" prefHeight="28.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="Top" textFill="WHITE" textOverrun="CLIP">
+                <Button fx:id="employeeTop" maxWidth="210.0" minWidth="20.0" mnemonicParsing="false" onAction="#goToEmployeeTop" prefHeight="28.0" style="-fx-background-color: transparent;" stylesheets="@../../css/style.css" text="Top" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
@@ -149,7 +149,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="search" contentDisplay="TOP" maxWidth="30.0" minWidth="210.0" mnemonicParsing="false" onAction="#goToSearch" prefWidth="210.0" style="-fx-background-color: transparent;" text="Search" textFill="#fffbfb">
+                  <Button fx:id="search" contentDisplay="TOP" maxWidth="30.0" minWidth="210.0" mnemonicParsing="false" onAction="#goToSearch" prefWidth="210.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="Search" textFill="#fffbfb">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>

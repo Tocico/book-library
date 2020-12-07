@@ -1,6 +1,19 @@
 package Client.Controller.Employee;
 
+import Client.BookUtil;
+import Client.Controller.ControllerUtil;
+import Model.Book;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by Miwa Guhrés
@@ -9,15 +22,33 @@ import javafx.event.ActionEvent;
  * Project: Bibliotek
  * Copyright: MIT
  */
-public class EmployeeSearch {
+public class EmployeeSearch implements Initializable {
+
+    public AnchorPane employeeSearchPane;
+    public TextField searchT;
+    public Button searchBtn;
+    public Text message;
+    public TableView searchView;
+    public TableColumn<Book, String> title;
+    public TableColumn<Book, String> author;
+    public TableColumn<Book, String> language;
+    public TableColumn<Book, String> category;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        searchT.setPromptText("Skriv sök ord här ....");
+        searchView.setVisible(false);
+        //Sätt disable på sök knappen om man inte skriver något
+        searchBtn.disableProperty().bind(searchT.textProperty().isEmpty());
+
+    }
 
     public void goToLogOut() {
+        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToEmployeeTop() {
-    }
-
-    public void goToHistory() {
+        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
     }
 
     public void goToBookManage() {
@@ -27,20 +58,27 @@ public class EmployeeSearch {
     }
 
     public void goToRegisterBooks() {
+        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
     }
 
     public void goToRegisterUser() {
+        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
     }
 
     public void goToSearch() {
-    }
-
-    public void searchAction() {
+        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
     }
 
     public void goToLendOut() {
+        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
     }
 
     public void goToReturned() {
     }
+
+    public void searchAction() {
+        String searchWord = searchT.getText();
+        BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
+    }
+
 }

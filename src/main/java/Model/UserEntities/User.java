@@ -1,33 +1,34 @@
 package Model.UserEntities;
-
 import java.io.Serializable;
 
 /**
-   * Created by Toshiko Kuno
-   * Date: 2020-11-30
-   * Time: 15:51
-   * Project: IntelliJ IDEA
-   * Copyright: MIT
-   */ 
-    
-    
-    
-    public abstract class User implements Serializable {
-        protected String firstName;
-        protected String lastName;
-        protected String sSN;
-        protected String address;
-        protected String email;
-        protected String passwd;
-        protected boolean isAdmin;
+ * Created by Toshiko Kuno
+ * Date: 2020-11-30
+ * Time: 15:51
+ * Project: IntelliJ IDEA
+ * Copyright: MIT
+ */
 
-    public User(String firstName, String lastName, String sSN, String address, String email, String passwd, boolean isAdmin) {
+
+public abstract class User implements Serializable {
+    protected String firstName;
+    protected String lastName;
+    protected String sSN;
+    protected String address;
+    protected String email;
+    protected String passwd;
+    protected String tel;
+    protected boolean isAdmin;
+
+    public User(String firstName, String lastName, String sSN, String address, String email, String passwd, String tel, boolean isAdmin) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.sSN = sSN;
         this.address = address;
         this.email = email;
         this.passwd = passwd;
+        this.tel = tel;
         this.isAdmin = isAdmin;
     }
 
@@ -87,4 +88,11 @@ import java.io.Serializable;
         isAdmin = admin;
     }
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 }

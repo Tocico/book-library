@@ -51,6 +51,7 @@ public class EmployeeHome implements Initializable {
     }
 
     public void goToSearch() {
+        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
     }
 
     public void goToRegisterUser() {
