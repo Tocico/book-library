@@ -42,7 +42,6 @@ public class VisitorSearch implements Initializable {
         searchView.setVisible(false);
         //Sätt disable på sök knappen om man inte skriver något
         searchBtn.disableProperty().bind(searchT.textProperty().isEmpty());
-
     }
 
     public void goToHistory() {

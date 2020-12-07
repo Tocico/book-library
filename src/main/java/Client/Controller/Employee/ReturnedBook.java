@@ -23,9 +23,9 @@ import java.util.ResourceBundle;
  */
 
 
-public class LendOutBook implements Initializable {
+public class ReturnedBook implements Initializable {
 
-    public AnchorPane lendOutBookPane;
+    public AnchorPane returnedBookPane;
     public TextField ssn;
     public TextField isbn;
     public Button regiBtn;
@@ -38,38 +38,40 @@ public class LendOutBook implements Initializable {
     }
 
     public void goToEmployeeTop() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
+        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
     }
 
     public void goToLogOut() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
+        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToBookManage() {
     }
 
     public void goToReturned() {
+        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
     }
 
     public void goToLendOut() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
+        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
     }
 
     public void goToUserManage() {
     }
 
     public void goToRegisterBooks() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
+        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
     }
 
     public void goToRegisterUser() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
+        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
     }
 
     public void goToSearch() {
+        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
     }
 
-    public void lendOutAction() {
+    public void retunredAction() {
         try {
 
             if (BookUtil.getBook(isbn.getText()) == null && UserUtil.getUser(ssn.getText()) == null)
@@ -79,14 +81,14 @@ public class LendOutBook implements Initializable {
             else if (BookUtil.getBook(isbn.getText()) == null)
                 message.setText("Vi hittar inte den bok. Försök mata in igen.");
             else {
-               History history = BookUtil.registerLendOutBook(ssn.getText(), isbn.getText());
+               History history = BookUtil.registerReturnedBook(ssn.getText(), isbn.getText());
 
                isbn.setText("");
                ssn.setText("");
 
                 SuccessModal.message = "Name: " + history.getUser().getFirstName() + " " + history.getUser().getLastName()
                                         + "\nTitle: " + history.getBook().getTitle() +
-                                        "\nReturn Date: " + history.getLendOutDate().plusDays(14).toString(); //Återlämnings datum borde om 14 dagar.
+                                        "\nYou have returned book!";
                 SuccessModal.displaySuccessDisplay(getClass());
             }
 

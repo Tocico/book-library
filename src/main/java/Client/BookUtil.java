@@ -186,4 +186,8 @@ public class BookUtil {
 
         return history;
     }
+
+    public static History registerReturnedBook(String ssn, String isbn) throws IOException {
+
+    }
 }
