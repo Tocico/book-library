@@ -37,11 +37,15 @@ public class RegisterUser implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Disable login knappen om man inte skriver namn, personnummer eller löseord
+        //Disable login knappen om man inte fylla i alla info
         regiBtn.disableProperty().bind(firstNameT.textProperty().isEmpty()
-                 .or(lastNameT.textProperty().isEmpty())
+                .or(lastNameT.textProperty().isEmpty())
                 .or(ssnT.textProperty().isEmpty())
-                .or(passwdT.textProperty().isEmpty()));
+                .or(passwdT.textProperty().isEmpty())
+                .or(telT.textProperty().isEmpty())
+                .or(addressT.textProperty().isEmpty())
+                .or(emailT.textProperty().isEmpty())
+                .or(userCat.selectedToggleProperty().isNull()));
     }
 
     public void goToLogOut() {
@@ -50,6 +54,7 @@ public class RegisterUser implements Initializable {
     }
 
     public void goToEmployeeTop() {
+        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
     }
 
     public void goToBookManage() {
@@ -67,26 +72,23 @@ public class RegisterUser implements Initializable {
     }
 
     public void goToSearch() {
+        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
     }
 
     public void actionRegister() {
         RadioButton userCategoryChoice = (RadioButton) userCat.getSelectedToggle();
-        System.out.println(userCategoryChoice.getText());
-        System.out.println(firstNameT.getText());
 
         try {
-            //TODO hämta inmatning värde och kontrollera dem. t.ex Personnummer(ÅÅMMDDXXXX), email osv
+            message.setText("");
+            if (!ssnT.getText().matches("[0-9]{10}") && !emailT.getText().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")) {
+                message.setText("Kontrollera personnummer och Email");
+            } else if (!ssnT.getText().matches("[0-9]{10}")) {
+                message.setText("Kontrollera personnummer");
+            } else if (!emailT.getText().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")) {
+                message.setText("Kontrollera email");
+            } else {
 
-            if (firstNameT.getText() != null &&
-                    lastNameT.getText() != null &&
-                    ssnT.getText().matches("[0-9]{10}") && // number from 0 to 9, length 10
-                    passwdT.getText() != null&&
-                    telT.getText()!=null&&
-                    addressT.getText()!=null&&
-                    emailT.getText()!=null&&
-                    userCategoryChoice.getText()!=null
-            )
-
+                message.setText("");
 
                 UserUtil.registerUser(
                         firstNameT.getText(),
@@ -97,7 +99,7 @@ public class RegisterUser implements Initializable {
                         addressT.getText(),
                         emailT.getText(),
                         userCategoryChoice.getText()
-            );
+                );
 
                 SuccessModal.message = "You've successfully created user data";
                 SuccessModal.displaySuccessDisplay(getClass());
@@ -109,18 +111,19 @@ public class RegisterUser implements Initializable {
                 telT.setText("");
                 addressT.setText("");
                 emailT.setText("");
-
-            } catch(Exception e){
-                e.printStackTrace();
-                message.setText("Det gick något fel. Försök igen");
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            message.setText("Det gick något fel. Försök igen");
+        }
 
     }
 
-    public void goTolendOut() {
+    public void goToLendOut() {
         registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
     }
 
-    public void goToreturned(ActionEvent actionEvent) {
+    public void goToReturned() {
     }
 }

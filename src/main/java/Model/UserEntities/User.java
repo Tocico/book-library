@@ -1,29 +1,32 @@
-package Model.UserEntities;  /**
-   * Created by Toshiko Kuno
-   * Date: 2020-11-30
-   * Time: 15:51
-   * Project: IntelliJ IDEA
-   * Copyright: MIT
-   */ 
-    
-    
-    
-    public abstract class User {
-        protected String firstName;
-        protected String lastName;
-        protected String sSN;
-        protected String address;
-        protected String email;
-        protected String passwd;
-        protected boolean isAdmin;
+package Model.UserEntities;
 
-    public User(String firstName, String lastName, String sSN, String address, String email, String passwd, boolean isAdmin) {
+/**
+ * Created by Toshiko Kuno
+ * Date: 2020-11-30
+ * Time: 15:51
+ * Project: IntelliJ IDEA
+ * Copyright: MIT
+ */
+
+
+public abstract class User {
+    protected String firstName;
+    protected String lastName;
+    protected String sSN;
+    protected String address;
+    protected String email;
+    protected String passwd;
+    protected String tel;
+    protected boolean isAdmin;
+
+    public User(String firstName, String lastName, String sSN, String address, String email, String passwd, String tel, boolean isAdmin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sSN = sSN;
         this.address = address;
         this.email = email;
         this.passwd = passwd;
+        this.tel = tel;
         this.isAdmin = isAdmin;
     }
 
@@ -83,4 +86,11 @@ package Model.UserEntities;  /**
         isAdmin = admin;
     }
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 }
