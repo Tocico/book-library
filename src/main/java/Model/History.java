@@ -20,11 +20,24 @@ public class History implements Serializable {
     private LocalDate returnDate;
     private LocalDate lendOutDate;
 
-    public History(User user, Book book, LocalDate lendOutDate, LocalDate returnDate) {
-        this.user = user;
-        this.book = book;
+    public History setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
+        return this;
+    }
+
+    public History setLendOutDate(LocalDate lendOutDate) {
         this.lendOutDate = lendOutDate;
+        return this;
+    }
+
+    public History setBook(Book book) {
+        this.book = book;
+        return this;
+    }
+
+    public History setUser(User user) {
+        this.user = user;
+        return this;
     }
 
     public LocalDate getLendOutDate() {

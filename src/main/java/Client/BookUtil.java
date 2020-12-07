@@ -173,7 +173,10 @@ public class BookUtil {
     public static History registerLendOutBook(String ssn, String isbn) throws IOException {
         User user = UserUtil.getUser(ssn);
         Book book = BookUtil.getBook(isbn);
-        History history = new History(user, book, LocalDate.now(), LocalDate.now().plusDays(14));
+        History history = new History()
+                                .setUser(user)
+                                .setBook(book)
+                                .setLendOutDate(LocalDate.now());
 
         //Add new history
         UserUtil.historyDao.save(history);

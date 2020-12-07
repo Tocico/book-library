@@ -25,7 +25,7 @@ public class UserDao implements Dao<User> {
     //Hämta data från textfil?
     public UserDao() {
         /*------------------------TEST----------------------------------*/
-        userList.add(new Employee("Toshiko", "Kuno", "8811072886", "Enskede", "kuno@gmail.com", "1111", true));
+        userList.add(new Employee("Toshiko", "Kuno", "8811072886", "Enskede", "kuno@gmail.com", "1111", false));
         userList.add(new Employee("Miwa", "", "0000000000", "", "miwa@gmail.com", "2222",true));
         userList.add(new Visitor("Yohannes", "", "1111111111", "", "yohannes@gmail.com", "3333" ,false));
         userList.add(new Visitor("Maxim", "", "2222222222", "", "maxim@gmail.com", "4444", false));
