@@ -5,6 +5,7 @@ import Client.UserUtil;
 import Model.Book;
 import Model.History;
 import Model.StorageUtil;
+import Model.UserEntities.User;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -30,7 +31,7 @@ public class HistoryDao implements Dao<History> {
     //Hämta data från textfil?
     public HistoryDao() {
 
-        //Throw dummy elements
+        /*---------------- TEST --------------------*/
         historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
                 .setBook(BookUtil.getBook("123434"))
                 .setLendOutDate(LocalDate.of(2020, 12, 01))
@@ -44,7 +45,7 @@ public class HistoryDao implements Dao<History> {
         historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
                 .setBook(BookUtil.getBook("32343"))
                 .setLendOutDate(LocalDate.of(2020, 12, 05)));
-
+        /*------------------------------------------*/
 
         try {
             db = new StorageUtil("history");
@@ -55,13 +56,6 @@ public class HistoryDao implements Dao<History> {
         } catch (ClassNotFoundException | IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
-
-        //Iteration tests
-/*        for (Object e : historyList) {
-            if (e instanceof History) {
-                System.out.println("Element: " + ((History) e).getBook().getAuthor());
-            }
-        }*/
     }
 
     @Override
@@ -76,32 +70,42 @@ public class HistoryDao implements Dao<History> {
 
     //Register history
     @Override
-    public void save(History history) {
+    public void save(History history) throws IOException {
         historyList.add(history);
-        //TODO: Updatera db? Deserialize?
+        saveAll();
     }
 
     //Update history
     @Override
-    public void update(History history) {
+    public void update(History history) throws IOException {
         historyList.get(historyList.indexOf(history));
-        //TODO: Updatera db? Deserialize?
+        saveAll();
     }
 
     //Remove history
     @Override
-    public void delete(History history) {
+    public void delete(History history) throws IOException {
         historyList.remove(historyList.indexOf(history));
-        //TODO: Updatera db? Deserialize?
+        saveAll();
     }
 
     @Override
     public History getById(String id) {
+        for (Object e : historyList) {
+            if (e instanceof History) {
+                if(((History) e).getUser().getsSN().equals(id)) return (History) e;
+            }
+        }
         return null;
     }
 
-    @Override
-    public History getByName(String name) {
-        return null;
+    public List<History> getHistoryList(String userSSN) {
+        List<History> foundHistory = new ArrayList<>();
+        for(Object e: historyList) {
+            if (e instanceof History) {
+                 if(((History) e).getUser().getsSN().equals(userSSN)) foundHistory.add((History) e);
+            }
+        }
+        return foundHistory;
     }
 }

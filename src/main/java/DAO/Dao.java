@@ -18,13 +18,12 @@ public interface Dao<T> {
 
     void saveAll() throws IOException;
 
-    void save(T t);
+    void save(T t) throws IOException;
 
-    void update(T t);
+    void update(T t) throws IOException, ClassNotFoundException;
 
-    void delete(T t);
+    void delete(T t) throws IOException;
 
     T getById(String id);
-
-    T getByName(String name);
+    
 }
