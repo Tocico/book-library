@@ -23,7 +23,5 @@ public interface Dao<T> {
     void update(T t) throws IOException, ClassNotFoundException;
 
     void delete(T t) throws IOException;
-
-    T getById(String id);
     
 }

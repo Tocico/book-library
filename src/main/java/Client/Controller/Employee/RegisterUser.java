@@ -50,7 +50,6 @@ public class RegisterUser implements Initializable {
 
     public void goToLogOut() {
         registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
-
     }
 
     public void goToEmployeeTop() {
@@ -125,5 +124,6 @@ public class RegisterUser implements Initializable {
     }
 
     public void goToReturned() {
+        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
     }
 }

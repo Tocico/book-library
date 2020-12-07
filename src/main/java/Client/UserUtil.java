@@ -25,7 +25,7 @@ public class UserUtil {
     public static HistoryDao historyDao = new HistoryDao();
 
     //Hämta ut alla användare list
-    public static List<User> getUserList() {
+    public static List<User> getUserList() throws IOException, ClassNotFoundException {
         return userDao.getAll();
     }
 
@@ -41,14 +41,14 @@ public class UserUtil {
     }
 
     //Hämta ut en användare
-    public static User getUser(String ssn) {
+    public static User getUser(String ssn) throws IOException, ClassNotFoundException {
         return userDao.getAll().stream()
                 .filter(user -> user.getsSN().equals(ssn))
                 .findFirst()
                 .orElse(null);
     }
 
-    public static void registerUser(String firstName, String lastName, String sSN,String passwd, String tel, String address, String email, String userCategory) {
+    public static void registerUser(String firstName, String lastName, String sSN,String passwd, String tel, String address, String email, String userCategory) throws IOException {
         User user;
         if(userCategory.equalsIgnoreCase("Visitor")) {
             user = new Visitor(firstName,lastName,sSN,address,email,passwd, tel,false);
