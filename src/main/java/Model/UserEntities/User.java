@@ -1,4 +1,5 @@
 package Model.UserEntities;
+import java.io.Serializable;
 
 /**
  * Created by Toshiko Kuno
@@ -9,7 +10,7 @@ package Model.UserEntities;
  */
 
 
-public abstract class User {
+public abstract class User implements Serializable {
     protected String firstName;
     protected String lastName;
     protected String sSN;
@@ -20,6 +21,7 @@ public abstract class User {
     protected boolean isAdmin;
 
     public User(String firstName, String lastName, String sSN, String address, String email, String passwd, String tel, boolean isAdmin) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.sSN = sSN;

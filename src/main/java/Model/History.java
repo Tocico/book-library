@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import Model.UserEntities.User;
 import java.util.List;
@@ -13,17 +14,30 @@ import java.util.List;
  */
 
 
-public class History {
+public class History implements Serializable {
     private User user;
     private Book book;
     private LocalDate returnDate;
     private LocalDate lendOutDate;
 
-    public History(User user, Book book, LocalDate lendOutDate, LocalDate returnDate) {
-        this.user = user;
-        this.book = book;
+    public History setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
+        return this;
+    }
+
+    public History setLendOutDate(LocalDate lendOutDate) {
         this.lendOutDate = lendOutDate;
+        return this;
+    }
+
+    public History setBook(Book book) {
+        this.book = book;
+        return this;
+    }
+
+    public History setUser(User user) {
+        this.user = user;
+        return this;
     }
 
     public LocalDate getLendOutDate() {

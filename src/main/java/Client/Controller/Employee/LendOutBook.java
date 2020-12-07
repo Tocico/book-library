@@ -88,7 +88,7 @@ public class LendOutBook implements Initializable {
 
                 SuccessModal.message = "Name: " + history.getUser().getFirstName() + " " + history.getUser().getLastName()
                                         + "\nTitle: " + history.getBook().getTitle() +
-                                        "\nReturn Date: " + history.getReturnDate().toString();
+                                        "\nReturn Date: " + history.getLendOutDate().plusDays(14).toString(); //Återlämnings datum borde om 14 dagar.
                 SuccessModal.displaySuccessDisplay(getClass());
             }
 

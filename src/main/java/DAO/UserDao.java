@@ -4,6 +4,7 @@ import Model.UserEntities.Employee;
 import Model.UserEntities.User;
 import Model.UserEntities.Visitor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,11 @@ public class UserDao implements Dao<User> {
     @Override
     public List<User> getAll() {
         return userList;
+    }
+
+    @Override
+    public void saveAll() throws IOException {
+
     }
 
     //Register user

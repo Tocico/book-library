@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,7 +32,13 @@ public class VisitorHistory implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         historyView.getItems().clear();
-        BookUtil.printOutLendingHistory(historyView,  title,  isbn, returnDate, lendDate);
+        try {
+            BookUtil.printOutLendingHistory(historyView,  title,  isbn, returnDate, lendDate);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void goToLogOut() {

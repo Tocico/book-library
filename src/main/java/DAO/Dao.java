@@ -1,5 +1,6 @@
 package DAO;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -13,9 +14,11 @@ import java.util.List;
 
 public interface Dao<T> {
 
-    List<T> getAll();
+    List<T> getAll() throws IOException, ClassNotFoundException;
 
-    void save(T t);
+    void saveAll() throws IOException;
+
+    void save(T t) throws IOException;
 
     void update(T t);
 
