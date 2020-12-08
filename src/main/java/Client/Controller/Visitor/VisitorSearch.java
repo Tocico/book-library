@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -46,14 +47,17 @@ public class VisitorSearch implements Initializable {
     }
 
     public void goToHistory() {
+        searchView.getItems().clear();
         visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHistory"));
     }
 
     public void goToSearch() {
+        searchView.getItems().clear();
         visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorSearch"));
     }
 
     public void goToLogOut() {
+        searchView.getItems().clear();
         visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
@@ -61,9 +65,12 @@ public class VisitorSearch implements Initializable {
         visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
     }
 
-    public void searchAction() throws IOException, ClassNotFoundException {
+    public void searchAction() {
         String searchWord = searchT.getText();
         BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
     }
 
+    public void onChangeText() {
+        searchView.getItems().clear();
+    }
 }

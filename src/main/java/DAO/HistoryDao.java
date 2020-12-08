@@ -33,19 +33,19 @@ public class HistoryDao implements Dao<History> {
 
         try {
         /*---------------- TEST --------------------*/
-        historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
+       /* historyList.add(new History().setUser(UserUtil.userDao.getById("8811072886"))
                 .setBook(BookUtil.bookDao.getById("123434"))
                 .setLendOutDate(LocalDate.of(2020, 12, 01))
                 .setReturnDate(LocalDate.of(2020, 12, 13)));
-        historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
+        historyList.add(new History().setUser(UserUtil.userDao.getById("8811072886"))
                 .setBook(BookUtil.bookDao.getById("32343"))
                 .setLendOutDate(LocalDate.of(2020, 12, 05)));
-        historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
+        historyList.add(new History().setUser(UserUtil.userDao.getById("8811072886"))
                 .setBook(BookUtil.bookDao.getById("22343"))
                 .setLendOutDate(LocalDate.of(2020, 12, 05)));
-        historyList.add(new History().setUser(UserUtil.getUser("8811072886"))
+        historyList.add(new History().setUser(UserUtil.userDao.getById("8811072886"))
                 .setBook(BookUtil.bookDao.getById("32343"))
-                .setLendOutDate(LocalDate.of(2020, 12, 05)));
+                .setLendOutDate(LocalDate.of(2020, 12, 05)));*/
         /*------------------------------------------*/
             db = new StorageUtil("history");
             //saveAll();

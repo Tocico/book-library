@@ -4,6 +4,8 @@ import Client.BookUtil;
 import Model.Book;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -32,20 +34,26 @@ public class Search implements Initializable {
     }
 
     public void goToLogIn() {
+        searchView.getItems().clear();
         searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToSearch() {
+        searchView.getItems().clear();
         searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "search"));
     }
 
     public void goToTop() {
+        searchView.getItems().clear();
         searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "home"));
     }
 
-    public void searchAction() throws IOException, ClassNotFoundException {
+    public void searchAction() {
         String searchWord = searchT.getText();
         BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
     }
 
+    public void onChangeText() {
+        searchView.getItems().clear();
+    }
 }

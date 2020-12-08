@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -44,42 +45,56 @@ public class EmployeeSearch implements Initializable {
     }
 
     public void goToLogOut() {
+        searchView.getItems().clear();
         employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToEmployeeTop() {
+        searchView.getItems().clear();
         employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
     }
 
     public void goToBookManage() {
+        searchView.getItems().clear();
+
     }
 
     public void goToUserManage() {
+        searchView.getItems().clear();
+
     }
 
     public void goToRegisterBooks() {
+        searchView.getItems().clear();
         employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
     }
 
     public void goToRegisterUser() {
+        searchView.getItems().clear();
         employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
     }
 
     public void goToSearch() {
+        searchView.getItems().clear();
         employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
     }
 
     public void goToLendOut() {
+        searchView.getItems().clear();
         employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
     }
 
     public void goToReturned() {
+        searchView.getItems().clear();
         employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
     }
 
-    public void searchAction() throws IOException, ClassNotFoundException {
+    public void searchAction(){
         String searchWord = searchT.getText();
         BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
     }
 
+    public void onChangeText() {
+        searchView.getItems().clear();
+    }
 }
