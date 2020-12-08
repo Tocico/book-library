@@ -56,16 +56,19 @@ public class BookUtil {
         List<Book> bookList = bookDao.getAll();
         List<Book> hitSearchBookList = new ArrayList<>();
         searchWord = removeWhiteSpace(searchWord);
-
-        for (Book book : bookList) {
-            String title = removeWhiteSpace(book.getTitle());
-            String isbn = book.getIsbn();
-            String category = book.getCategory().toString().toLowerCase();
-            String author = removeWhiteSpace(book.getAuthor());
-            if (title.contains(searchWord) || isbn.contains(searchWord) ||
-                    category.contains(searchWord) || author.contains(searchWord)) {
-                hitSearchBookList.add(book);
+        try {
+            for (Book book : bookList) {
+                String title = removeWhiteSpace(book.getTitle());
+                String isbn = book.getIsbn();
+                String category = book.getCategory().toString().toLowerCase();
+                String author = removeWhiteSpace(book.getAuthor());
+                if (title.contains(searchWord) || isbn.contains(searchWord) ||
+                        category.contains(searchWord) || author.contains(searchWord)) {
+                    hitSearchBookList.add(book);
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return hitSearchBookList;
     }
@@ -77,7 +80,7 @@ public class BookUtil {
                                             Text message, Class<?> currentClass) {
 
         try {
-            System.out.println(bookDao.getAll().size());
+            //System.out.println(bookDao.getAll().size());
             searchView.getItems().clear();
             searchView.setVisible(false);
             List<Book> books = BookUtil.searchBook(searchWord);

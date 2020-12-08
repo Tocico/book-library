@@ -38,7 +38,7 @@ public class UserDao implements Dao<User> {
             db = new StorageUtil("users");
             saveAll();
             userList = getAll(); //Overwrite current history list with the fetched deserialized data
-            System.out.println("Loaded data" + userList);
+            System.out.println("Loaded data: " + userList);
         } catch (ClassNotFoundException | IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
