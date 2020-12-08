@@ -1,14 +1,14 @@
 package DAO;
 
 import Model.Book;
-import Model.Category;
-import Model.Language;
 import Model.StorageUtil;
-import Model.UserEntities.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by Toshiko Kuno
@@ -36,7 +36,7 @@ public class BookDao implements Dao<Book> {
 
         try {
             db = new StorageUtil("books");
-            saveAll();
+            //saveAll();
             bookList = getAll(); //Overwrite current history list with the fetched deserialized data
 
             System.out.println("Loaded data" + bookList);
@@ -96,5 +96,25 @@ public class BookDao implements Dao<Book> {
         return foundBooks;
     }
 
+    //TODO:: Måste ta bort dublicate på något sätt
+  /*  public List<Book> removeDublicateBook() {
+        List<Book> filteredBookList = new ArrayList<>();
+        Map<String, Integer> count = new HashMap<>();
 
+        for(Book book: bookList) {
+            if(count.containsKey(book.getIsbn())) {
+                count.put(book.getIsbn(), count.get(book.getIsbn()) + 1);
+            }else count.put(book.getIsbn(), 1);
+        }
+        System.out.println(count);
+
+       return filteredBookList;
+    }
+
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        BookDao b = new BookDao();
+        b.removeDublicateBook();
+        System.out.println(b.getAll().size());
+    }*/
 }

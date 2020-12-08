@@ -4,12 +4,8 @@ import Client.Controller.LogIn;
 import Client.Controller.Modal;
 import DAO.BookDao;
 import DAO.HistoryDao;
-import Model.Book;
-import Model.Category;
-import Model.History;
-import Model.Language;
+import Model.*;
 import Model.UserEntities.User;
-import Model.UserEntities.Visitor;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,6 +32,7 @@ public class BookUtil {
     private static ObservableList<History> historyData = FXCollections.observableArrayList();
     public static Book selectedBook;
     public static BookDao bookDao = new BookDao();
+    public static HistoryDao historyDao = new HistoryDao();
 
     /**
      * Ta bort white space
@@ -77,34 +74,40 @@ public class BookUtil {
     public static void printOutSearchResult(String searchWord, TableView searchView,
                                             TableColumn<Book, String> title, TableColumn<Book, String> author,
                                             TableColumn<Book, String> language, TableColumn<Book, String> category,
-                                            Text message, Class<?> currentClass) throws IOException, ClassNotFoundException {
+                                            Text message, Class<?> currentClass) {
 
-        searchView.getItems().clear();
-        searchView.setVisible(false);
-        List<Book> books = BookUtil.searchBook(searchWord);
-        if (books.size() == 0) {
-            message.setText("Din sökning gav inga träffar. Försök igen.");
-        } else {
-            message.setText("");
-            searchView.setVisible(true);
+        try {
+            System.out.println(bookDao.getAll().size());
+            searchView.getItems().clear();
+            searchView.setVisible(false);
+            List<Book> books = BookUtil.searchBook(searchWord);
+            if (books.size() == 0 || books.equals(null)) {
+                message.setText("Din sökning gav inga träffar. Försök igen.");
+            } else {
+                message.setText("");
+                searchView.setVisible(true);
 
-            //Skriv ut sökresultat
-            for (Book book : books) {
-                title.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getTitle()));
-                author.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getAuthor()));
-                language.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getLanguage().toString()));
-                category.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getCategory().getCategory()));
-                bookData.add(book);
+                //Skriv ut sökresultat
+                for (Book book : books) {
+                    title.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getTitle()));
+                    author.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getAuthor()));
+                    language.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getLanguage().toString()));
+                    category.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getCategory().getCategory()));
+                    bookData.add(book);
+                }
+                searchView.setItems(bookData);
             }
-            searchView.setItems(bookData);
-        }
 
-        //Open modal window
-        searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
-        {
-            selectedBook = bookDao.getById(newVal.toString());
-            Modal.displayBook(currentClass);
-        });
+            //Open modal window
+            searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
+            {
+                selectedBook = bookDao.getById(newVal.toString());
+                Modal.displayBook(currentClass);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            message.setText("Din sökning gav inga träffar. Försök igen.");
+        }
 
     }
 
@@ -114,20 +117,20 @@ public class BookUtil {
 
         //TODO:: Fixa bugg att ta bort föregående historik
 
-        List<History> histories = UserUtil.historyDao.getHistoryList(LogIn.currentLoggedInUser.getsSN());
+        List<History> histories = historyDao.getHistoryList(LogIn.currentLoggedInUser.getsSN());
 
         if (histories != null) {
             for (History history : histories) {
                 title.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getBook().getTitle()));
                 isbn.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getBook().getIsbn()));
-                returnDate.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getReturnDate())));
                 lendOutDate.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getLendOutDate())));
+                if (history.getReturnDate() == null)
+                    returnDate.setCellValueFactory(cellData -> new SimpleObjectProperty(""));
+                else returnDate.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getReturnDate())));
                 historyData.add(history);
             }
             historyView.setItems(historyData);
-
         }
-
     }
 
     //Registrera bok
@@ -160,10 +163,9 @@ public class BookUtil {
             bookDao.save(registerBook);
 
         }
-
     }
 
-    public static History registerLendOutBook(String ssn, String isbn) throws IOException, ClassNotFoundException {
+    public static History registerLendOutBook(String ssn, String isbn) throws IOException {
         User user = UserUtil.userDao.getById(ssn);
         Book book = bookDao.getById(isbn);
         History history = new History()
@@ -172,7 +174,7 @@ public class BookUtil {
                 .setLendOutDate(LocalDate.now());
 
         //Add new history
-        UserUtil.historyDao.save(history);
+        historyDao.save(history);
 
         //Update number of books
         book.setNumberOfBooks(book.getNumberOfBooks() - 1);
@@ -181,10 +183,10 @@ public class BookUtil {
     }
 
     public static History registerReturnedBook(String ssn, String isbn) throws IOException {
-        History history = UserUtil.historyDao.getByIdAndIsbn(ssn, isbn);
+        History history = historyDao.getByIdAndIsbn(ssn, isbn);
         history.setReturnDate(LocalDate.now());
 
-        UserUtil.historyDao.update(history);
+        historyDao.update(history);
 
         //TODO:: Update antal bok
         return history;

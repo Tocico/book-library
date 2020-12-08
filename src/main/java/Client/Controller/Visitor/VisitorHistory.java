@@ -41,18 +41,22 @@ public class VisitorHistory implements Initializable {
     }
 
     public void goToLogOut() {
+        historyView.getItems().clear();
         visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToVisitorTop() {
+        historyView.getItems().clear();
         visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
     }
 
     public void goToHistory() {
+        historyView.getItems().clear();
         visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHistory"));
     }
 
     public void goToVisitorSearch() {
+        historyView.getItems().clear();
         visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorSearch"));
     }
 }
