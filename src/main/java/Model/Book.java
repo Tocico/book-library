@@ -28,23 +28,7 @@ import java.util.UUID;
     protected Language language;//enum
     protected String numberOfPages;
     protected Library library;
-
-// I think that we need to use setter and need to use a builder pattern...
-
-   /* public Book(String isbn, String title, String description, int numberOfBooks, String author, Category category, String publisher, String edition, int releaseDate, Language language, String numberOfPages, Library location) {
-        this.isbn = isbn;
-        this.title = title;
-        this.description = description;
-        this.numberOfBooks = numberOfBooks;
-        this.author = author;
-        this.category = category;
-        this.publisher = publisher;
-        this.edition = edition;
-        this.releaseDate = releaseDate;
-        this.language = language;
-        this.numberOfPages = numberOfPages;
-        this.location = location;
-    }*/
+    protected boolean isCheckOut = false;
 
     // We can use fluent builder (do not make constructor)
 
@@ -156,10 +140,19 @@ import java.util.UUID;
         return library;
     }
 
+    public Book setIsCheckOut(boolean isCheckOut) {
+        this.isCheckOut = isCheckOut;
+        return this;
+    }
+
+    public boolean getIsCheckOut() {
+        return isCheckOut;
+    }
+
 
     @Override
     public String toString() {
-        return isbn;
+        return id;
     }
 
 }

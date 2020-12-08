@@ -76,11 +76,18 @@ public class BookDao implements Dao<Book> {
         saveAll();
     }
 
+    public Book getByIsbn(String isbn) {
+        return bookList.stream()
+                .filter(book -> book.getIsbn().equals(isbn))
+                .filter(book -> !book.getIsCheckOut())
+                .findAny()
+                .orElse(null);
+    }
 
     public Book getById(String id) {
         for (Object e : bookList) {
             if (e instanceof Book) {
-                if(((Book) e).getIsbn().equals(id)) return (Book) e;
+                if(((Book) e).getId().equals(id)) return (Book) e;
             }
         }
         return null;
@@ -96,25 +103,15 @@ public class BookDao implements Dao<Book> {
         return foundBooks;
     }
 
-    //TODO:: Måste ta bort dublicate på något sätt
-  /*  public List<Book> removeDublicateBook() {
-        List<Book> filteredBookList = new ArrayList<>();
-        Map<String, Integer> count = new HashMap<>();
-
-        for(Book book: bookList) {
-            if(count.containsKey(book.getIsbn())) {
-                count.put(book.getIsbn(), count.get(book.getIsbn()) + 1);
-            }else count.put(book.getIsbn(), 1);
-        }
-        System.out.println(count);
+   public List<Book> removeDublicateBook() {
+       Map<String, Book> map = new HashMap<>();
+       for (Book book : bookList) {
+           map.put(book.getIsbn(), book);
+       }
+       //Map -> List
+       List<Book> filteredBookList = new ArrayList<>(map.values());
 
        return filteredBookList;
     }
 
-
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        BookDao b = new BookDao();
-        b.removeDublicateBook();
-        System.out.println(b.getAll().size());
-    }*/
 }
