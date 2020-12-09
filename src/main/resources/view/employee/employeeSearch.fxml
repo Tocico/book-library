@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="employeeSearchPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Employee.EmployeeSearch">
+<AnchorPane fx:id="employeeSearchPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Employee.EmployeeSearch">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="1000.0">
          <top>
@@ -50,7 +50,7 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="searchT" layoutX="45.0" layoutY="61.0" onKeyTyped="#onChangeText" prefHeight="38.0" prefWidth="532.0" />
+                  <TextField fx:id="searchT" layoutX="45.0" layoutY="61.0" prefHeight="38.0" prefWidth="532.0" />
                   <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="603.0" layoutY="63.0" minHeight="36.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#searchAction" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #a65d58;" text="sök" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                      <font>
                         <Font size="20.0" />

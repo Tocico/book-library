@@ -47,17 +47,14 @@ public class VisitorSearch implements Initializable {
     }
 
     public void goToHistory() {
-        searchView.getItems().clear();
         visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHistory"));
     }
 
     public void goToSearch() {
-        searchView.getItems().clear();
         visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorSearch"));
     }
 
     public void goToLogOut() {
-        searchView.getItems().clear();
         visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
@@ -70,7 +67,4 @@ public class VisitorSearch implements Initializable {
         BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
     }
 
-    public void onChangeText() {
-        searchView.getItems().clear();
-    }
 }
