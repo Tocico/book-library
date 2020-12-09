@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Created by Toshiko Kuno
@@ -136,14 +135,6 @@ public class BookDao implements Dao<Book> {
             System.out.println(e.getMessage());
         }
         return hitSearchBookList;
-    }
-
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        BookDao b = new BookDao();
-        for (Book book: b.getAll()) {
-            System.out.println(book.getIsCheckOut());
-            System.out.println(book.getNumberOfBooks());
-        }
     }
 
 }
