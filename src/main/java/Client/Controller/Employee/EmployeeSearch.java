@@ -50,12 +50,8 @@ public class EmployeeSearch implements Initializable {
     }
 
     public void goToEmployeeTop() {
-        try{
         searchView.getItems().clear();
         employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
-    }catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 

@@ -35,18 +35,20 @@ public class Search implements Initializable {
 
     public void goToLogIn() {
         searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
+        searchView.getItems().clear();
     }
 
     public void goToSearch() {
         searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "search"));
+        searchView.getItems().clear();
     }
 
     public void goToTop() {
         searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "home"));
+        searchView.getItems().clear();
     }
 
     public void searchAction() {
-        searchView.getItems().clear();
         String searchWord = searchT.getText();
         BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
     }

@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -61,6 +62,9 @@ public class Modal implements Initializable {
         edition.setText(book.getEdition());
         releaseDate.setText(String.valueOf(book.getReleaseDate()));
         numberOfPages.setText(book.getNumberOfPages());
-        available.setText(String.valueOf(book.getNumberOfBooks()));
+
+        //Hämta hur många tillgängliga böcker finns i bibliotek
+        List<Book> availableBookList = BookUtil.bookDao.getAvailableBookList(book.getIsbn());
+        available.setText(String.valueOf(availableBookList.size()));
     }
 }

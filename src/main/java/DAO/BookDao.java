@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by Toshiko Kuno
@@ -93,15 +94,6 @@ public class BookDao implements Dao<Book> {
         return null;
     }
 
-    public List<Book> getBookListByIsbn(String isbn) {
-        List<Book> foundBooks = new ArrayList<>();
-        for (Object e : bookList) {
-            if (e instanceof Book) {
-                if((((Book) e).getIsbn().equals(isbn))) foundBooks.add((Book) e);
-            }
-        }
-        return foundBooks;
-    }
 
    public List<Book> removeDublicateBook() {
        Map<String, Book> map = new HashMap<>();
@@ -133,4 +125,11 @@ public class BookDao implements Dao<Book> {
         return hitSearchBookList;
     }
 
+    //Hämta ut tillgänliga böcker
+    public List<Book> getAvailableBookList(String isbn) {
+        return bookList.stream()
+                .filter(book -> book.getIsbn().equals(isbn))
+                .filter(book -> !book.getIsCheckOut())
+                .collect(Collectors.toList());
+    }
 }
