@@ -114,6 +114,7 @@ public class RegisterBook implements Initializable {
             SuccessModal.message = "You've successfully created book data";
             SuccessModal.displaySuccessDisplay(getClass());
 
+            message.setText("");
             titleT.setText("");
             isbnT.setText("");
             authorT.setText("");

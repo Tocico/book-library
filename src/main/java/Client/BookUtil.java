@@ -28,8 +28,6 @@ import java.util.List;
 
 
 public class BookUtil {
-    private static ObservableList<Book> bookData = FXCollections.observableArrayList();
-    private static ObservableList<History> historyData = FXCollections.observableArrayList();
     public static Book selectedBook;
     public static BookDao bookDao = new BookDao();
     public static HistoryDao historyDao = new HistoryDao();
@@ -41,8 +39,9 @@ public class BookUtil {
                                             TableColumn<Book, String> language, TableColumn<Book, String> category,
                                             Text message, Class<?> currentClass) {
 
+        ObservableList<Book> bookData = searchView.getItems();
+
         try {
-            searchView.getItems().clear();
             searchView.setVisible(false);
             List<Book> books = bookDao.searchBook(searchWord);
             if (books.size() == 0 || books.equals(null)) {
@@ -60,16 +59,14 @@ public class BookUtil {
                     bookData.add(book);
                 }
                 searchView.setItems(bookData);
+                //Open modal window
+                searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
+                {
+                    selectedBook = bookDao.getById(newVal.toString());
+                    Modal.displayBook(currentClass);
+                });
             }
 
-            //Open modal window
-            searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
-            {
-                selectedBook = bookDao.getById(newVal.toString());
-               // List<Book> countAvailable = bookDao.getByName(selectedBook.getTitle());
-                //selectedBook.setNumberOfBooks(countAvailable.size());
-                Modal.displayBook(currentClass);
-            });
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -80,6 +77,7 @@ public class BookUtil {
     public static void printOutLendingHistory(TableView historyView, TableColumn<History, String> title, TableColumn<History, String> isbn,
                                               TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) {
 
+        ObservableList<History> historyData = historyView.getItems();
         List<History> histories = historyDao.getHistoryList(LogIn.currentLoggedInUser.getsSN());
 
         if (histories != null) {
@@ -89,7 +87,8 @@ public class BookUtil {
                 lendOutDate.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getLendOutDate())));
                 if (history.getReturnDate() == null)
                     returnDate.setCellValueFactory(cellData -> new SimpleObjectProperty(""));
-                else returnDate.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getReturnDate())));
+                else
+                    returnDate.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getReturnDate())));
                 historyData.add(history);
             }
             historyView.setItems(historyData);
