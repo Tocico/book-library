@@ -39,7 +39,7 @@ public class BookDao implements Dao<Book> {
             //saveAll();
             bookList = getAll(); //Overwrite current history list with the fetched deserialized data
 
-            System.out.println("Loaded data" + bookList);
+            System.out.println("Loaded data: " + bookList);
         } catch (ClassNotFoundException | IOException e) {
             System.out.println("Error: " + e.getMessage());
         }

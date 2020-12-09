@@ -24,12 +24,17 @@ public class StorageUtil {
     }
 
     public <T> List<T> deserializeReadList() throws ClassNotFoundException, IOException {
-        FileInputStream fileInput = new FileInputStream(path);
-        ObjectInputStream objInput = new ObjectInputStream(fileInput);
-        List<T> list = (List<T>) objInput.readObject();
-        System.out.println("List deserialization and read success!");
-        objInput.close();
-        fileInput.close();
+        List<T> list = null;
+        try {
+            FileInputStream fileInput = new FileInputStream(path);
+            ObjectInputStream objInput = new ObjectInputStream(fileInput);
+            list = (List<T>) objInput.readObject();
+            objInput.close();
+            fileInput.close();
+            System.out.println("List deserialization and read success!");
+        } catch (Exception e) {
+            System.out.println("List deserialization failure! Error type: " + e.toString());
+        }
         return list;
     }
 }
