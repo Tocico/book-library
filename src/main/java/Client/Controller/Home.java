@@ -3,24 +3,27 @@ package Client.Controller;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
+
 
 public class Home {
     public AnchorPane homePane;
     public Button search;
     public Button top;
     public Button log;
+    ControllerUtil c = new ControllerUtil();
 
 
-    public void goToTop() {
-        homePane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "home"));
+    public void goToTop() throws IOException {
+        c.loadNewScreen("home", top);
     }
 
-    public void goToSearch() {
-        homePane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "search"));
+    public void goToSearch() throws IOException {
+        c.loadNewScreen("search", search);
     }
 
-    public void goToLogIn() {
-        homePane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
+    public void goToLogIn() throws IOException {
+        c.loadNewScreen("logIn", log);
     }
 
 }
