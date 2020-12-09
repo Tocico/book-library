@@ -121,7 +121,6 @@ public class BookDao implements Dao<Book> {
         List<Book> bookList = removeDublicateBook();
         List<Book> hitSearchBookList = new ArrayList<>();
         searchWord = Util.removeWhiteSpace(searchWord);
-        try {
             for (Book book : bookList) {
                 String title = Util.removeWhiteSpace(book.getTitle());
                 String isbn = book.getIsbn();
@@ -131,9 +130,6 @@ public class BookDao implements Dao<Book> {
                     hitSearchBookList.add(book);
                 }
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
         return hitSearchBookList;
     }
 

@@ -71,7 +71,7 @@ public class BookUtil {
                 Modal.displayBook(currentClass);
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
             message.setText("Din sökning gav inga träffar. Försök igen.");
         }
 
