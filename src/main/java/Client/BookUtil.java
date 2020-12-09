@@ -34,43 +34,6 @@ public class BookUtil {
     public static BookDao bookDao = new BookDao();
     public static HistoryDao historyDao = new HistoryDao();
 
-    /**
-     * Ta bort white space
-     *
-     * @param text t.ex Harry Potter
-     * @return harrypotter
-     */
-    public static String removeWhiteSpace(String text) {
-        String[] split = text.split(" ");
-        text = "";
-        for (int i = 0; i < split.length; i++) {
-            if (split[i].length() != 0)
-                text = text.concat(split[i]).toLowerCase();
-        }
-        return text;
-    }
-
-    //Boksök funktion
-    public static List<Book> searchBook(String searchWord) throws IOException, ClassNotFoundException {
-
-        List<Book> bookList = bookDao.removeDublicateBook();
-        List<Book> hitSearchBookList = new ArrayList<>();
-        searchWord = removeWhiteSpace(searchWord);
-        try {
-            for (Book book : bookList) {
-                String title = removeWhiteSpace(book.getTitle());
-                String isbn = book.getIsbn();
-                String author = removeWhiteSpace(book.getAuthor());
-                if (title.contains(searchWord) || isbn.contains(searchWord) ||
-                         author.contains(searchWord)) {
-                    hitSearchBookList.add(book);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return hitSearchBookList;
-    }
 
     //Skriv ut sökresultat
     public static void printOutSearchResult(String searchWord, TableView searchView,
@@ -81,7 +44,7 @@ public class BookUtil {
         try {
             searchView.getItems().clear();
             searchView.setVisible(false);
-            List<Book> books = BookUtil.searchBook(searchWord);
+            List<Book> books = bookDao.searchBook(searchWord);
             if (books.size() == 0 || books.equals(null)) {
                 message.setText("Din sökning gav inga träffar. Försök igen.");
             } else {
@@ -169,8 +132,18 @@ public class BookUtil {
     public static History registerLendOutBook(String ssn, String isbn) throws IOException {
         User user = UserUtil.userDao.getById(ssn);
         Book book = bookDao.getByIsbn(isbn);
+
+        //Sätt true på isCheckOut
         book.setIsCheckOut(true);
 
+        //Hämta alla samma bok som besökare ska låna ut
+        //Ändra numberOfBooks värde och uppdatera dem
+        for(Book item: bookDao.getBookListByIsbn(book.getIsbn())) {
+            item.setNumberOfBooks(book.getNumberOfBooks() - 1);
+            bookDao.update(item);
+        }
+
+        //Skapa history objekt
         History history = new History()
                 .setUser(user)
                 .setBook(book)
@@ -188,7 +161,16 @@ public class BookUtil {
 
         historyDao.update(history);
 
-        //TODO:: Update antal bok
+        //Sätt false på isCheckOut
+        Book returnedBook = bookDao.getById(history.getBook().getId());
+        returnedBook.setIsCheckOut(false);
+
+        //Hämta alla samma bok som besökare ska lämnat
+        //Ändra numberOfBooks värde och uppdatera dem
+        for(Book item: bookDao.getBookListByIsbn(returnedBook.getIsbn())) {
+            item.setNumberOfBooks(returnedBook.getNumberOfBooks() + 1);
+            bookDao.update(item);
+        }
         return history;
     }
 }

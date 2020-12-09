@@ -2,13 +2,13 @@ package DAO;
 
 import Model.Book;
 import Model.StorageUtil;
+import Util.Util;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Created by Toshiko Kuno
@@ -93,11 +93,11 @@ public class BookDao implements Dao<Book> {
         return null;
     }
 
-    public List<Book> getByName(String name) {
+    public List<Book> getBookListByIsbn(String isbn) {
         List<Book> foundBooks = new ArrayList<>();
         for (Object e : bookList) {
             if (e instanceof Book) {
-                if((((Book) e).getTitle().equals(name))) foundBooks.add((Book) e);
+                if((((Book) e).getIsbn().equals(isbn))) foundBooks.add((Book) e);
             }
         }
         return foundBooks;
@@ -112,6 +112,29 @@ public class BookDao implements Dao<Book> {
        List<Book> filteredBookList = new ArrayList<>(map.values());
 
        return filteredBookList;
+    }
+
+
+    //Boksök funktion
+    public List<Book> searchBook(String searchWord) {
+
+        List<Book> bookList = removeDublicateBook();
+        List<Book> hitSearchBookList = new ArrayList<>();
+        searchWord = Util.removeWhiteSpace(searchWord);
+        try {
+            for (Book book : bookList) {
+                String title = Util.removeWhiteSpace(book.getTitle());
+                String isbn = book.getIsbn();
+                String author = Util.removeWhiteSpace(book.getAuthor());
+                if (title.contains(searchWord) || isbn.contains(searchWord) ||
+                        author.contains(searchWord)) {
+                    hitSearchBookList.add(book);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return hitSearchBookList;
     }
 
 }

@@ -74,11 +74,11 @@ public class ReturnedBook implements Initializable {
     public void retunredAction() {
         try {
 
-            if (BookUtil.bookDao.getById(isbn.getText()) == null && UserUtil.userDao.getById(ssn.getText()) == null)
+            if (BookUtil.bookDao.getByIsbn(isbn.getText()) == null && UserUtil.userDao.getById(ssn.getText()) == null)
                 message.setText("Felaktig inmatning. Försök mata in igen.");
             else if (UserUtil.userDao.getById(ssn.getText()) == null)
                 message.setText("Vi hittar inte personnummer. Försök mata in igen.");
-            else if (BookUtil.bookDao.getById(isbn.getText()) == null)
+            else if (BookUtil.bookDao.getByIsbn(isbn.getText()) == null)
                 message.setText("Vi hittar inte den bok. Försök mata in igen.");
             else {
                History history = BookUtil.registerReturnedBook(ssn.getText(), isbn.getText());
