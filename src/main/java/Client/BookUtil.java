@@ -95,6 +95,25 @@ public class BookUtil {
         }
     }
 
+    public static void printOutBookManage(TableView searchView, TableColumn<Book, String> id, TableColumn<Book, String> isbn,
+                                          TableColumn<Book, String> title, TableColumn<Book, String> author) throws IOException, ClassNotFoundException {
+
+        ObservableList<Book> bookManageData = searchView.getItems();
+        List<Book> allBookList = bookDao.getAll();
+
+        if (allBookList != null) {
+            for (Book book : allBookList) {
+                id.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId()));
+                isbn.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getIsbn()));
+                title.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getTitle()));
+                author.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getAuthor())));
+                bookManageData.add(book);
+            }
+            searchView.setItems(bookManageData);
+        }
+    }
+
+
     //Registrera bok
     public static void registerBook(String title, String isbn, String author, String edition,
                                     String numberOfPages, String description,

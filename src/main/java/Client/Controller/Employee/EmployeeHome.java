@@ -37,6 +37,7 @@ public class EmployeeHome implements Initializable {
     }
 
     public void goToBookManage() {
+        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/searchBookManage"));
     }
 
     public void goToUserManage() {
