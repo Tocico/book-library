@@ -23,29 +23,34 @@ public class Search implements Initializable {
     public TableColumn<Book, String> author;
     public TableColumn<Book, String> language;
     public TableColumn<Book, String> category;
+    public Button top;
+    public Button search;
+    public Button LogIn;
+    ControllerUtil c = new ControllerUtil();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchT.setPromptText("Skriv sök ord här ....");
         searchView.setVisible(false);
+        searchView.getItems().clear();
         //Sätt disable på sök knappen om man inte skriver något
         searchBtn.disableProperty().bind(searchT.textProperty().isEmpty());
     }
 
-    public void goToLogIn() {
-        searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
+    public void goToLogIn() throws IOException {
         searchView.getItems().clear();
+        c.loadNewScreen("logIn", LogIn);
     }
 
-    public void goToSearch() {
-        searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "search"));
+    public void goToSearch() throws IOException {
         searchView.getItems().clear();
+        c.loadNewScreen("search", search);
     }
 
-    public void goToTop() {
-        searchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "home"));
+    public void goToTop() throws IOException {
         searchView.getItems().clear();
+        c.loadNewScreen("home", top);
     }
 
     public void searchAction() {

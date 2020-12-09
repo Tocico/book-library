@@ -41,7 +41,7 @@ public class BookUtil {
                                             TableColumn<Book, String> language, TableColumn<Book, String> category,
                                             Text message, Class<?> currentClass) {
 
-       // try {
+        try {
             searchView.getItems().clear();
             searchView.setVisible(false);
             List<Book> books = bookDao.searchBook(searchWord);
@@ -70,9 +70,9 @@ public class BookUtil {
                 //selectedBook.setNumberOfBooks(countAvailable.size());
                 Modal.displayBook(currentClass);
             });
-      //  } catch (Exception e) {
-      //      System.out.println("Error: " + e.getMessage());
-      ////  }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
     }
 

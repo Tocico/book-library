@@ -1,8 +1,11 @@
 package Client.Controller;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -31,5 +34,18 @@ public class ControllerUtil {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void loadNewScreen(String fxml, Node node) throws IOException {
+        try {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("view/" + fxml + ".fxml"));
+        Stage primaryStage = (Stage) node.getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+        } catch (IOException e) {
+            System.out.println("Couldn't load FMXLfile");
+            e.printStackTrace();
+        }
     }
 }

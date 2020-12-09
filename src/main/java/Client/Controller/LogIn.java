@@ -22,6 +22,10 @@ public class LogIn implements Initializable {
     public Button logInBtn;
     public Text message;
     public static User currentLoggedInUser;
+    public Button top;
+    public Button search;
+    public Button LogIn;
+    ControllerUtil c = new ControllerUtil();
 
 
     @Override
@@ -59,16 +63,16 @@ public class LogIn implements Initializable {
 
     }
 
-    public void goToTop() {
-        loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "home"));
+    public void goToTop() throws IOException {
+        c.loadNewScreen("home", top);
     }
 
-    public void goToSearch() {
-        loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "search"));
+    public void goToSearch() throws IOException {
+        c.loadNewScreen("search", search);
     }
 
-    public void goToLogIn() {
-        loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
+    public void goToLogIn() throws IOException {
+        c.loadNewScreen("logIn", logInBtn);
     }
 
     //Ta bort felmeddelande så fort användare skriver något
