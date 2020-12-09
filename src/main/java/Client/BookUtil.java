@@ -41,7 +41,7 @@ public class BookUtil {
                                             TableColumn<Book, String> language, TableColumn<Book, String> category,
                                             Text message, Class<?> currentClass) {
 
-        try {
+       // try {
             searchView.getItems().clear();
             searchView.setVisible(false);
             List<Book> books = bookDao.searchBook(searchWord);
@@ -70,10 +70,9 @@ public class BookUtil {
                 //selectedBook.setNumberOfBooks(countAvailable.size());
                 Modal.displayBook(currentClass);
             });
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            message.setText("Din sökning gav inga träffar. Försök igen.");
-        }
+      //  } catch (Exception e) {
+      //      System.out.println("Error: " + e.getMessage());
+      ////  }
 
     }
 
@@ -114,7 +113,6 @@ public class BookUtil {
                     .setNumberOfPages(numberOfPages)
                     .setDescription(description)
                     .setPublisher(publisher)
-                    .setNumberOfBooks(numberOfBooks)
                     .setReleaseDate(releaseDate);
 
             if (category.length() != 0) {
@@ -133,15 +131,9 @@ public class BookUtil {
         User user = UserUtil.userDao.getById(ssn);
         Book book = bookDao.getByIsbn(isbn);
 
-        //Sätt true på isCheckOut
+        //Sätt true på isCheckOut och updatera
         book.setIsCheckOut(true);
-
-        //Hämta alla samma bok som besökare ska låna ut
-        //Ändra numberOfBooks värde och uppdatera dem
-        for(Book item: bookDao.getBookListByIsbn(book.getIsbn())) {
-            item.setNumberOfBooks(book.getNumberOfBooks() - 1);
-            bookDao.update(item);
-        }
+        bookDao.update(book);
 
         //Skapa history objekt
         History history = new History()
@@ -159,18 +151,13 @@ public class BookUtil {
         History history = historyDao.getByIdAndIsbn(ssn, isbn);
         history.setReturnDate(LocalDate.now());
 
-        historyDao.update(history);
-
-        //Sätt false på isCheckOut
+        //Sätt false på isCheckOut och updatera
         Book returnedBook = bookDao.getById(history.getBook().getId());
         returnedBook.setIsCheckOut(false);
+        bookDao.update(returnedBook);
 
-        //Hämta alla samma bok som besökare ska lämnat
-        //Ändra numberOfBooks värde och uppdatera dem
-        for(Book item: bookDao.getBookListByIsbn(returnedBook.getIsbn())) {
-            item.setNumberOfBooks(returnedBook.getNumberOfBooks() + 1);
-            bookDao.update(item);
-        }
+        historyDao.update(history);
+
         return history;
     }
 }

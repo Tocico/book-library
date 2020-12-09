@@ -19,7 +19,6 @@ import java.util.UUID;
     protected String isbn;
     protected String title;
     protected String description;
-    protected int numberOfBooks;
     protected String author;
     protected Category category;// enum
     protected String publisher;
@@ -61,15 +60,6 @@ import java.util.UUID;
 
     public Book setDescription(String description) {
         this.description = description;
-        return this;
-    }
-
-    public int getNumberOfBooks() {
-        return numberOfBooks;
-    }
-
-    public Book setNumberOfBooks(int numberOfBooks) {
-        this.numberOfBooks = numberOfBooks;
         return this;
     }
 
