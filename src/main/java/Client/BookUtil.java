@@ -51,20 +51,23 @@ public class BookUtil {
     }
 
     //Boksök funktion
-    public static List<Book> searchBook(String searchWord)  {
+    public static List<Book> searchBook(String searchWord) throws IOException, ClassNotFoundException {
 
         List<Book> bookList = bookDao.removeDublicateBook();
         List<Book> hitSearchBookList = new ArrayList<>();
         searchWord = removeWhiteSpace(searchWord);
-
-        for (Book book : bookList) {
-            String title = removeWhiteSpace(book.getTitle());
-            String isbn = book.getIsbn();
-            String author = removeWhiteSpace(book.getAuthor());
-            if (title.contains(searchWord) || isbn.contains(searchWord) ||
-                    author.contains(searchWord)) {
-                hitSearchBookList.add(book);
+        try {
+            for (Book book : bookList) {
+                String title = removeWhiteSpace(book.getTitle());
+                String isbn = book.getIsbn();
+                String author = removeWhiteSpace(book.getAuthor());
+                if (title.contains(searchWord) || isbn.contains(searchWord) ||
+                         author.contains(searchWord)) {
+                    hitSearchBookList.add(book);
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return hitSearchBookList;
     }

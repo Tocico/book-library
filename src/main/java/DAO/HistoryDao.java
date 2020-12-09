@@ -51,7 +51,7 @@ public class HistoryDao implements Dao<History> {
             //saveAll();
             historyList = getAll(); //Overwrite current history list with the fetched deserialized data
 
-            System.out.println("Loaded data" + historyList);
+            System.out.println("Loaded data: " + historyList);
         } catch (ClassNotFoundException | IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
