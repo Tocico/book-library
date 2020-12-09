@@ -41,7 +41,7 @@
          <center>
             <Pane maxHeight="700.0" maxWidth="920.0" minHeight="620.0" prefHeight="700.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane layoutX="61.0" layoutY="87.0" prefHeight="433.0" prefWidth="799.0" style="-fx-grid-lines-visible: true;">
+                  <GridPane layoutX="61.0" layoutY="87.0" prefHeight="454.0" prefWidth="799.0" style="-fx-grid-lines-visible: true;">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="217.207275390625" minWidth="0.0" prefWidth="154.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.2870788574219" minWidth="10.0" prefWidth="629.0" />
@@ -53,10 +53,11 @@
                       <RowConstraints maxHeight="77.7471923828125" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="84.58543395996094" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="88.14352416992188" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="134.97265625" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="134.97265625" minHeight="10.0" prefHeight="72.22381591796875" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="40.77618408203125" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="82.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
@@ -159,10 +160,19 @@
                         <ComboBox fx:id="category" prefWidth="150.0" promptText="Categories" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <ComboBox fx:id="language" prefWidth="150.0" promptText="Languages" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <DatePicker fx:id="releaseDate" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Label text="Number of books" textFill="#575757" GridPane.rowIndex="11">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="numberOfBooks" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                      </children>
                   </GridPane>
-                  <Button fx:id="updateBtn" layoutX="674.0" layoutY="556.0" mnemonicParsing="false" onAction="#actionUpdate" prefHeight="33.0" prefWidth="74.0" style="-fx-background-color: #ce5f5f#ce5f5f;" text="Update" textFill="WHITE" />
-                  <Button fx:id="removeBtn" layoutX="795.0" layoutY="556.0" mnemonicParsing="false" onAction="#actionRemove" prefHeight="33.0" prefWidth="74.0" style="-fx-background-color: #ce5f5f#ce5f5f;" text="Remove" textFill="WHITE" />
+                  <Button fx:id="updateBtn" layoutX="685.0" layoutY="553.0" mnemonicParsing="false" onAction="#actionUpdate" prefHeight="33.0" prefWidth="74.0" style="-fx-background-color: #37824f#37824f;" text="Update" textFill="WHITE" />
+                  <Button fx:id="removeBtn" layoutX="787.0" layoutY="553.0" mnemonicParsing="false" onAction="#actionRemove" prefHeight="33.0" prefWidth="74.0" style="-fx-background-color: #ce5f5f#ce5f5f;" text="Remove" textFill="WHITE" />
                   <Text fill="#4d4d4d" layoutX="333.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update and Remove book data">
                      <font>
                         <Font size="18.0" />
