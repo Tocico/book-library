@@ -53,17 +53,16 @@ public class BookUtil {
     //Boksök funktion
     public static List<Book> searchBook(String searchWord) throws IOException, ClassNotFoundException {
 
-        List<Book> bookList = bookDao.getAll();
+        List<Book> bookList = bookDao.removeDublicateBook();
         List<Book> hitSearchBookList = new ArrayList<>();
         searchWord = removeWhiteSpace(searchWord);
         try {
             for (Book book : bookList) {
                 String title = removeWhiteSpace(book.getTitle());
                 String isbn = book.getIsbn();
-                String category = book.getCategory().toString().toLowerCase();
                 String author = removeWhiteSpace(book.getAuthor());
                 if (title.contains(searchWord) || isbn.contains(searchWord) ||
-                        category.contains(searchWord) || author.contains(searchWord)) {
+                         author.contains(searchWord)) {
                     hitSearchBookList.add(book);
                 }
             }
@@ -80,7 +79,6 @@ public class BookUtil {
                                             Text message, Class<?> currentClass) {
 
         try {
-            //System.out.println(bookDao.getAll().size());
             searchView.getItems().clear();
             searchView.setVisible(false);
             List<Book> books = BookUtil.searchBook(searchWord);
@@ -105,6 +103,8 @@ public class BookUtil {
             searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
             {
                 selectedBook = bookDao.getById(newVal.toString());
+               // List<Book> countAvailable = bookDao.getByName(selectedBook.getTitle());
+                //selectedBook.setNumberOfBooks(countAvailable.size());
                 Modal.displayBook(currentClass);
             });
         } catch (Exception e) {
@@ -116,9 +116,7 @@ public class BookUtil {
 
     //Skriv ut utlåningshistorik
     public static void printOutLendingHistory(TableView historyView, TableColumn<History, String> title, TableColumn<History, String> isbn,
-                                              TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) throws IOException, ClassNotFoundException {
-
-        //TODO:: Fixa bugg att ta bort föregående historik
+                                              TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) {
 
         List<History> histories = historyDao.getHistoryList(LogIn.currentLoggedInUser.getsSN());
 
@@ -170,7 +168,9 @@ public class BookUtil {
 
     public static History registerLendOutBook(String ssn, String isbn) throws IOException {
         User user = UserUtil.userDao.getById(ssn);
-        Book book = bookDao.getById(isbn);
+        Book book = bookDao.getByIsbn(isbn);
+        book.setIsCheckOut(true);
+
         History history = new History()
                 .setUser(user)
                 .setBook(book)
@@ -178,9 +178,6 @@ public class BookUtil {
 
         //Add new history
         historyDao.save(history);
-
-        //Update number of books
-        book.setNumberOfBooks(book.getNumberOfBooks() - 1);
 
         return history;
     }

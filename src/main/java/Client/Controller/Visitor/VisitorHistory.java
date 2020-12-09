@@ -31,13 +31,7 @@ public class VisitorHistory implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
             BookUtil.printOutLendingHistory(historyView,  title,  isbn, returnDate, lendDate);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     public void goToLogOut() {
