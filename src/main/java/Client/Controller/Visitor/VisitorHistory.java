@@ -8,17 +8,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-/**
- * Created by Toshiko Kuno
- * Date: 2020-11-30
- * Time: 16:44
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
 
 
 public class VisitorHistory extends ControllerUtil implements Initializable {

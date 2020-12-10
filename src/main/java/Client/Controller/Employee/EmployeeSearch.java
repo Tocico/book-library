@@ -3,27 +3,17 @@ package Client.Controller.Employee;
 import Client.BookUtil;
 import Client.Controller.ControllerUtil;
 import Model.Book;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created by Miwa Guhrés
- * Date: 2020-12-05
- * Time: 23:58
- * Project: Bibliotek
- * Copyright: MIT
- */
 public class EmployeeSearch extends ControllerUtil implements Initializable {
 
     public AnchorPane employeeSearchPane;

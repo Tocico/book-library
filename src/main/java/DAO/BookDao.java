@@ -11,14 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-05
- * Time: 10:39
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
-
 
 public class BookDao implements Dao<Book> {
 
@@ -28,12 +20,6 @@ public class BookDao implements Dao<Book> {
 
     //Hämta data från textfil?
     public BookDao() {
-       /* *//*---------------- TEST --------------------*//*
-        bookList.add(new Book().setTitle("Harry Potter").setIsbn("123434").setCategory(Category.FANTASY).setLanguage(Language.Svenska).setAuthor("JK.Rolling").setNumberOfBooks(2));
-        bookList.add(new Book().setTitle("Load of the rings").setIsbn("22343").setCategory(Category.FANTASY).setLanguage(Language.Engelska).setAuthor("J. R. R. Tolkien").setNumberOfBooks(4));
-        bookList.add(new Book().setTitle("Gozilla").setIsbn("32343").setCategory(Category.SCIENCE_FICTION).setLanguage(Language.Engelska).setAuthor("Tomoyuki Tanaka").setNumberOfBooks(1));
-        *//*------------------------------------------*/
-
 
         try {
             db = new StorageUtil("books");

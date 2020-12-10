@@ -1,25 +1,12 @@
 package DAO;
 
-import Client.BookUtil;
-import Client.UserUtil;
-import Model.Book;
+
 import Model.History;
 import Model.StorageUtil;
-import Model.UserEntities.User;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-05
- * Time: 10:39
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
 
 
 public class HistoryDao implements Dao<History> {

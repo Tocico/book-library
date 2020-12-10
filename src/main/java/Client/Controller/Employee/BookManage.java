@@ -14,23 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created by Miwa Guhrés
- * Date: 2020-12-07
- * Time: 14:42
- * Project: Bibliotek
- * Copyright: MIT
- */
 public class BookManage extends ControllerUtil implements Initializable {
-    public Button LogOut;
-    public Button employeeTop;
-    public Button lendOut;
-    public Button returned;
-    public Button bookManage;
-    public Button userManage;
-    public Button registerBooks;
-    public Button registerUser;
-    public Button search;
     public TextField searchT;
     public Button searchBtn;
     public Text message;
@@ -39,7 +23,6 @@ public class BookManage extends ControllerUtil implements Initializable {
     public TableColumn<Book, String> isbn;
     public TableColumn<Book, String> title;
     public TableColumn<Book, String> author;
-    ControllerUtil c = new ControllerUtil();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

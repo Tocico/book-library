@@ -1,7 +1,6 @@
 package Model;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class StorageUtil {
@@ -25,16 +24,12 @@ public class StorageUtil {
 
     public <T> List<T> deserializeReadList() throws ClassNotFoundException, IOException {
         List<T> list = null;
-        //try {
             FileInputStream fileInput = new FileInputStream(path);
             ObjectInputStream objInput = new ObjectInputStream(fileInput);
             list = (List<T>) objInput.readObject();
             objInput.close();
             fileInput.close();
             System.out.println("List deserialization and read success!");
-        //} catch (Exception e) {
-          //  System.out.println("List deserialization failure! Error type: " + e.toString());
-        //}
         return list;
     }
 }

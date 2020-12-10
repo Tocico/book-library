@@ -4,15 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
 
-/**
-   * Created by Toshiko Kuno
-   * Date: 2020-11-30
-   * Time: 15:52
-   * Project: IntelliJ IDEA
-   * Copyright: MIT
-   */ 
-    
-    
     
     public class Book implements Serializable {
     protected final String id = UUID.randomUUID().toString().replace("-", ""); //Create uniq ID

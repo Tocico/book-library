@@ -2,7 +2,9 @@ package Client.Controller;
 
 import Client.UserUtil;
 import Model.UserEntities.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -32,7 +34,7 @@ public class LogIn extends ControllerUtil implements Initializable {
         logInBtn.disableProperty().bind(socialId.textProperty().isEmpty().or(psw.textProperty().isEmpty()));
     }
 
-    public void logIn() throws IOException, ClassNotFoundException {
+    public void logIn(ActionEvent e) throws IOException, ClassNotFoundException {
         //Hämta user list
         List<User> userList = UserUtil.userDao.getAll();
 
@@ -45,10 +47,10 @@ public class LogIn extends ControllerUtil implements Initializable {
         if (tempUser != null) {
             if (tempUser.isAdmin()) {
                 currentLoggedInUser = tempUser;
-                loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
+                loadNewScreen("employee/employeeHome", (Node)e.getSource() );
             } else {
                 currentLoggedInUser = tempUser;
-                loginPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
+                loadNewScreen("visitor/visitorHome", (Node)e.getSource() );
             }
 
         } else {

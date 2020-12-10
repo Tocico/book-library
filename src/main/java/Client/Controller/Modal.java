@@ -11,14 +11,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-02
- * Time: 14:13
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
-
 
 public class Modal implements Initializable {
 
