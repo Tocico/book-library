@@ -2,27 +2,23 @@ package Client.Controller.Employee;
 
 import Client.BookUtil;
 import Client.Controller.ControllerUtil;
+import Client.Controller.SuccessModal;
 import Model.Book;
 import Model.Category;
 import Model.Language;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-/**
- * Created by Miwa Guhrés
- * Date: 2020-12-07
- * Time: 14:50
- * Project: Bibliotek
- * Copyright: MIT
- */
-public class ModalBookManage implements Initializable {
+
+public class ModalBookManage extends ControllerUtil implements Initializable {
     private static Stage stage;
     public TextField id;
     public Button updateBtn;
@@ -38,10 +34,12 @@ public class ModalBookManage implements Initializable {
     public TextField edition;
     public DatePicker releaseDate;
     public TextField numberOfPages;
+    public static Class<?> currentClass;
 
 
-    public static void displayBookManage(Class<?> currentClass) {
-        Scene scene = ControllerUtil.loadModalScene(currentClass, "/view/employee/modalBookManage.fxml");
+    public static void displayBookManage(Class<?> c) {
+        currentClass = c;
+        Scene scene = ControllerUtil.loadModalScene(c, "/view/employee/modalBookManage.fxml");
         stage = new Stage();
         stage.setScene(scene);
         stage.show();
@@ -91,6 +89,10 @@ public class ModalBookManage implements Initializable {
     public void actionUpdate(ActionEvent actionEvent) {
     }
 
-    public void actionRemove(ActionEvent actionEvent) {
+    public void actionRemove(ActionEvent e) throws IOException {
+        BookUtil.bookDao.delete(book);
+        stage.close();
+        SuccessModal.message = "You've successfully deleted book";
+        SuccessModal.displaySuccessDisplay2(getClass(), (Node)e.getSource());
     }
 }

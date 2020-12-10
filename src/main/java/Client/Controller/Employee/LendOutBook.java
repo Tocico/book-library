@@ -4,7 +4,6 @@ import Client.BookUtil;
 import Client.Controller.ControllerUtil;
 import Client.Controller.SuccessModal;
 import Client.UserUtil;
-import DAO.BookDao;
 import Model.History;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,14 +13,6 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-06
- * Time: 15:39
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
 
 
 public class LendOutBook extends ControllerUtil implements Initializable {

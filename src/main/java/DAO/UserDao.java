@@ -9,14 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-05
- * Time: 10:39
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
-
 
 public class UserDao implements Dao<User> {
 

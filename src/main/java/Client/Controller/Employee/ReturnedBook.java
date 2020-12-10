@@ -14,14 +14,6 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-06
- * Time: 15:39
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
-
 
 public class ReturnedBook extends ControllerUtil implements Initializable {
 

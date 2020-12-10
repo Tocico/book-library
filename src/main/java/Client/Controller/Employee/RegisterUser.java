@@ -3,7 +3,6 @@ package Client.Controller.Employee;
 import Client.Controller.ControllerUtil;
 import Client.Controller.SuccessModal;
 import Client.UserUtil;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -15,13 +14,7 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created by Miwa Guhrés
- * Date: 2020-12-05
- * Time: 10:18
- * Project: Bibliotek
- * Copyright: MIT
- */
+
 public class RegisterUser extends ControllerUtil implements Initializable {
     public AnchorPane registerUserPane;
     public ToggleGroup userCat;

@@ -3,28 +3,16 @@ package Client.Controller.Visitor;
 import Client.BookUtil;
 import Client.Controller.ControllerUtil;
 import Model.Book;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-/**
- * Created by Toshiko Kuno
- * Date: 2020-11-30
- * Time: 16:42
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
 
 
 public class VisitorSearch extends ControllerUtil implements Initializable {

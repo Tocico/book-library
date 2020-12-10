@@ -1,25 +1,12 @@
 package DAO;
 
-import Client.BookUtil;
-import Client.UserUtil;
-import Model.Book;
+
 import Model.History;
 import Model.StorageUtil;
-import Model.UserEntities.User;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-05
- * Time: 10:39
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
 
 
 public class HistoryDao implements Dao<History> {
@@ -32,21 +19,6 @@ public class HistoryDao implements Dao<History> {
     public HistoryDao() {
 
         try {
-        /*---------------- TEST --------------------*/
-       /* historyList.add(new History().setUser(UserUtil.userDao.getById("8811072886"))
-                .setBook(BookUtil.bookDao.getById("123434"))
-                .setLendOutDate(LocalDate.of(2020, 12, 01))
-                .setReturnDate(LocalDate.of(2020, 12, 13)));
-        historyList.add(new History().setUser(UserUtil.userDao.getById("8811072886"))
-                .setBook(BookUtil.bookDao.getById("32343"))
-                .setLendOutDate(LocalDate.of(2020, 12, 05)));
-        historyList.add(new History().setUser(UserUtil.userDao.getById("8811072886"))
-                .setBook(BookUtil.bookDao.getById("22343"))
-                .setLendOutDate(LocalDate.of(2020, 12, 05)));
-        historyList.add(new History().setUser(UserUtil.userDao.getById("8811072886"))
-                .setBook(BookUtil.bookDao.getById("32343"))
-                .setLendOutDate(LocalDate.of(2020, 12, 05)));*/
-        /*------------------------------------------*/
             db = new StorageUtil("history");
             //saveAll();
             historyList = getAll(); //Overwrite current history list with the fetched deserialized data

@@ -5,7 +5,6 @@ import Client.Controller.ControllerUtil;
 import Client.Controller.SuccessModal;
 import Model.Category;
 import Model.Language;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -14,14 +13,6 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-04
- * Time: 13:34
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
 
 
 public class RegisterBook extends ControllerUtil implements Initializable {
