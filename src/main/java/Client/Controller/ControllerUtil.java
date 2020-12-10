@@ -77,4 +77,36 @@ public class ControllerUtil {
     public void goToVisitorHistory(ActionEvent e) throws IOException {
         loadNewScreen("visitor/visitorHistory", (Node) e.getSource());
     }
+
+    public void goToEmployeeSearch(ActionEvent e) throws IOException {
+        loadNewScreen("employee/employeeSearch", (Node) e.getSource());
+    }
+
+    public void goToRegisterUser(ActionEvent e) throws IOException {
+        loadNewScreen("employee/registerUser", (Node) e.getSource());
+    }
+
+    public void goToRegisterBooks(ActionEvent e) throws IOException {
+        loadNewScreen("employee/registerBook", (Node) e.getSource());
+    }
+
+    public void goToUserManage(ActionEvent e) throws IOException {
+    }
+
+    public void goToBookManage(ActionEvent e) throws IOException {
+        loadNewScreen("employee/searchBookManage", (Node) e.getSource());
+    }
+
+    public void goToReturned(ActionEvent e) throws IOException {
+        loadNewScreen("employee/returnedBook", (Node) e.getSource());
+    }
+
+    public void goToLendOut(ActionEvent e) throws IOException {
+        loadNewScreen("employee/lendOutBook", (Node) e.getSource());
+    }
+
+    public void goToEmployeeTop(ActionEvent e) throws IOException {
+        loadNewScreen("employee/employeeHome", (Node) e.getSource());
+    }
+
 }

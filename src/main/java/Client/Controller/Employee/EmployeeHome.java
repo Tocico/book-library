@@ -32,37 +32,5 @@ public class EmployeeHome extends ControllerUtil implements Initializable {
     }
 
 
-    public void goToEmployeeTop() {
-        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
-    }
 
-    public void goToBookManage() {
-        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/searchBookManage"));
-    }
-
-    public void goToUserManage() {
-    }
-
-    public void goToRegisterBooks() {
-        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
-    }
-
-    public void goToLogOut() {
-        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
-    }
-
-    public void goToSearch() {
-        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
-    }
-
-    public void goToRegisterUser() {
-        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
-    }
-
-    public void goToLendOut() {
-        loggedInEmployee.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
-    }
-
-    public void goToReturned() {
-    }
 }

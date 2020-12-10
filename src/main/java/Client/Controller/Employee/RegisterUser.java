@@ -48,28 +48,6 @@ public class RegisterUser extends ControllerUtil implements Initializable {
                 .or(userCat.selectedToggleProperty().isNull()));
     }
 
-    public void goToEmployeeTop() {
-        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
-    }
-
-    public void goToBookManage() {
-    }
-
-    public void goToUserManage() {
-    }
-
-    public void goToRegisterBooks() {
-        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
-    }
-
-    public void goToRegisterUser() {
-        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
-    }
-
-    public void goToSearch() {
-        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
-    }
-
     public void actionRegister() {
         RadioButton userCategoryChoice = (RadioButton) userCat.getSelectedToggle();
 
@@ -115,11 +93,4 @@ public class RegisterUser extends ControllerUtil implements Initializable {
 
     }
 
-    public void goToLendOut() {
-        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
-    }
-
-    public void goToReturned() {
-        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
-    }
 }
