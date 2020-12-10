@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Search implements Initializable {
+public class Search extends ControllerUtil implements Initializable {
     public TextField searchT;
     public AnchorPane searchPane;
     public Button searchBtn;
@@ -26,8 +26,6 @@ public class Search implements Initializable {
     public Button top;
     public Button search;
     public Button LogIn;
-    ControllerUtil c = new ControllerUtil();
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,18 +33,6 @@ public class Search implements Initializable {
         searchView.setVisible(false);
         //Sätt disable på sök knappen om man inte skriver något
         searchBtn.disableProperty().bind(searchT.textProperty().isEmpty());
-    }
-
-    public void goToLogIn() throws IOException {
-        c.loadNewScreen("logIn", LogIn);
-    }
-
-    public void goToSearch() throws IOException {
-        c.loadNewScreen("search", search);
-    }
-
-    public void goToTop() throws IOException {
-        c.loadNewScreen("home", top);
     }
 
     public void searchAction() {

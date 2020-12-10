@@ -82,7 +82,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="history" contentDisplay="TOP" maxWidth="1.7976931348623157E308" minWidth="210.0" mnemonicParsing="false" onAction="#goToHistory" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="History" textFill="#fffbfb">
+                  <Button fx:id="history" contentDisplay="TOP" maxWidth="1.7976931348623157E308" minWidth="210.0" mnemonicParsing="false" onAction="#goToVisitorHistory" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="History" textFill="#fffbfb">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>

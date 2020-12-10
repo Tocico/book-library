@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  */
 
 
-public class RegisterBook implements Initializable {
+public class RegisterBook extends ControllerUtil implements Initializable {
     public AnchorPane registerBook;
     public ComboBox category;
     public ComboBox language;
@@ -65,10 +65,6 @@ public class RegisterBook implements Initializable {
                 .or(language.valueProperty().isNull())
                 .or(numberOfBooksT.textProperty().isEmpty()));
 
-    }
-
-    public void goToLogOut() {
-        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToEmployeeTop() {

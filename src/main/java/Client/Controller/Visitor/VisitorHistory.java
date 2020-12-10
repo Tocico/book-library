@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  */
 
 
-public class VisitorHistory implements Initializable {
+public class VisitorHistory extends ControllerUtil implements Initializable {
     public AnchorPane visitorHistoryPane;
     public TableColumn<History, String> isbn;
     public TableColumn<History, String> title;
@@ -32,21 +32,5 @@ public class VisitorHistory implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BookUtil.printOutLendingHistory(historyView,  title,  isbn, returnDate, lendDate);
-    }
-
-    public void goToLogOut() {
-        visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
-    }
-
-    public void goToVisitorTop() {
-        visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
-    }
-
-    public void goToHistory() {
-        visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHistory"));
-    }
-
-    public void goToVisitorSearch() {
-        visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorSearch"));
     }
 }

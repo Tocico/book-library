@@ -18,28 +18,12 @@ import java.util.ResourceBundle;
  */
 
 
-public class VisitorHome implements Initializable {
+public class VisitorHome extends ControllerUtil implements Initializable {
     public AnchorPane loggedInVisitor;
     public Text userName;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userName.setText(LogIn.currentLoggedInUser.getFirstName());
-    }
-
-    public void goToVisitorTop() {
-        loggedInVisitor.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
-    }
-
-    public void goToHistory() {
-        loggedInVisitor.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHistory"));
-    }
-
-    public void goToSearch() {
-        loggedInVisitor.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorSearch"));
-    }
-
-    public void goToLogOut() {
-        loggedInVisitor.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 }

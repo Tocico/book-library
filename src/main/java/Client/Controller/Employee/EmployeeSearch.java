@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  * Project: Bibliotek
  * Copyright: MIT
  */
-public class EmployeeSearch implements Initializable {
+public class EmployeeSearch extends ControllerUtil implements Initializable {
 
     public AnchorPane employeeSearchPane;
     public TextField searchT;
@@ -42,10 +42,6 @@ public class EmployeeSearch implements Initializable {
         searchView.setVisible(false);
         //Sätt disable på sök knappen om man inte skriver något
         searchBtn.disableProperty().bind(searchT.textProperty().isEmpty());
-    }
-
-    public void goToLogOut() {
-        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToEmployeeTop() {

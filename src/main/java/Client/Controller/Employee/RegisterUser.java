@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
  * Project: Bibliotek
  * Copyright: MIT
  */
-public class RegisterUser implements Initializable {
+public class RegisterUser extends ControllerUtil implements Initializable {
     public AnchorPane registerUserPane;
     public ToggleGroup userCat;
     public TextField firstNameT;
@@ -46,10 +46,6 @@ public class RegisterUser implements Initializable {
                 .or(addressT.textProperty().isEmpty())
                 .or(emailT.textProperty().isEmpty())
                 .or(userCat.selectedToggleProperty().isNull()));
-    }
-
-    public void goToLogOut() {
-        registerUserPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToEmployeeTop() {
