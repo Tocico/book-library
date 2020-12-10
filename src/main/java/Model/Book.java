@@ -26,7 +26,6 @@ import java.util.UUID;
     protected LocalDate releaseDate;
     protected Language language;//enum
     protected String numberOfPages;
-    protected Library library;
     protected boolean isCheckOut = false;
 
     // We can use fluent builder (do not make constructor)
@@ -124,10 +123,6 @@ import java.util.UUID;
     public Book setNumberOfPages(String numberOfPages) {
         this.numberOfPages = numberOfPages;
         return this;
-    }
-
-    public Library getLibraryObject() {
-        return library;
     }
 
     public Book setIsCheckOut(boolean isCheckOut) {

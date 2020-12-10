@@ -103,40 +103,44 @@ public class BookUtil {
         ObservableList<Book> bookManageData = searchView.getItems();
         List<Book> bookList;
 
-        //Första gången kommer till book manage sidan
-        if (searchWord.equals("")) {
-            message.setText("");
-            bookList = bookDao.getAll();
-            if (bookList.equals(null))
-                message.setText("Det finns inga data");
-        } else {
-            message.setText("");
-            bookManageData.clear();
-            bookList = bookDao.searchBook(bookDao.getAll(),searchWord);
-            if (bookList.size() == 0 || bookList.equals(null)) {
-                searchView.setVisible(false);
-                message.setText("Din sökning gav inga träffar. Försök igen.");
+        try {
+            //Första gången kommer till book manage sidan
+            if (searchWord.equals("")) {
+                message.setText("");
+                bookList = bookDao.getAll();
+                if (bookList.equals(null))
+                    message.setText("Det finns inga data");
             } else {
                 message.setText("");
-                searchView.setVisible(true);
+                bookManageData.clear();
+                bookList = bookDao.searchBook(bookDao.getAll(), searchWord);
+                if (bookList.size() == 0 || bookList.equals(null)) {
+                    searchView.setVisible(false);
+                    message.setText("Din sökning gav inga träffar. Försök igen.");
+                } else {
+                    message.setText("");
+                    searchView.setVisible(true);
+                }
             }
-        }
 
-        for (Book book : bookList) {
-            id.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId()));
-            isbn.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getIsbn()));
-            title.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getTitle()));
-            author.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getAuthor())));
-            bookManageData.add(book);
-        }
-        searchView.setItems(bookManageData);
+            for (Book book : bookList) {
+                id.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId()));
+                isbn.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getIsbn()));
+                title.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getTitle()));
+                author.setCellValueFactory(cellData -> new SimpleObjectProperty(String.valueOf(cellData.getValue().getAuthor())));
+                bookManageData.add(book);
+            }
+            searchView.setItems(bookManageData);
 
-        //Open modal window
-        searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
-        {
-            selectedBook = bookDao.getById(newVal.toString());
-            ModalBookManage.displayBookManage(currentClass);
-        });
+            //Open modal window
+            searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
+            {
+                selectedBook = bookDao.getById(newVal.toString());
+                ModalBookManage.displayBookManage(currentClass);
+            });
+        }catch (Exception e) {
+            message.setText("Det finns inga data");
+        }
 
     }
 
