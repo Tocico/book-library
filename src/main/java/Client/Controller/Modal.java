@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 public class Modal implements Initializable {
 
     private static Stage stage;
-    private static Book book;
+    private Book book;
     public TextField title;
     public TextField isbn;
     public TextField author;
