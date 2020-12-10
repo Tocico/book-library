@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  */
 
 
-public class LendOutBook implements Initializable {
+public class LendOutBook extends ControllerUtil implements Initializable {
 
     public AnchorPane lendOutBookPane;
     public TextField ssn;
@@ -40,10 +40,6 @@ public class LendOutBook implements Initializable {
 
     public void goToEmployeeTop() {
         lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
-    }
-
-    public void goToLogOut() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToBookManage() {

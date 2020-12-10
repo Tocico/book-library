@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class LogIn implements Initializable {
+public class LogIn extends ControllerUtil implements Initializable {
     public AnchorPane loginPane;
     public TextField socialId;
     public PasswordField psw;
@@ -25,15 +25,12 @@ public class LogIn implements Initializable {
     public Button top;
     public Button search;
     public Button LogIn;
-    ControllerUtil c = new ControllerUtil();
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Disable login knappen om man inte skriver personnummer eller löseord
         logInBtn.disableProperty().bind(socialId.textProperty().isEmpty().or(psw.textProperty().isEmpty()));
     }
-
 
     public void logIn() throws IOException, ClassNotFoundException {
         //Hämta user list
@@ -61,18 +58,6 @@ public class LogIn implements Initializable {
         }
 
 
-    }
-
-    public void goToTop() throws IOException {
-        c.loadNewScreen("home", top);
-    }
-
-    public void goToSearch() throws IOException {
-        c.loadNewScreen("search", search);
-    }
-
-    public void goToLogIn() throws IOException {
-        c.loadNewScreen("logIn", logInBtn);
     }
 
     //Ta bort felmeddelande så fort användare skriver något

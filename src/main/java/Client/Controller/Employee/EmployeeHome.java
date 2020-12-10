@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  */
 
 
-public class EmployeeHome implements Initializable {
+public class EmployeeHome extends ControllerUtil implements Initializable {
     public AnchorPane loggedInEmployee;
     public Button employeeTop;
     public Text userName;

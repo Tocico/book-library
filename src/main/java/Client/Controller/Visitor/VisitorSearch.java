@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
  */
 
 
-public class VisitorSearch implements Initializable {
+public class VisitorSearch extends ControllerUtil implements Initializable {
     public AnchorPane visitorSearchPane;
     public TextField searchT;
     public Button searchBtn;
@@ -44,22 +44,6 @@ public class VisitorSearch implements Initializable {
         searchView.setVisible(false);
         //Sätt disable på sök knappen om man inte skriver något
         searchBtn.disableProperty().bind(searchT.textProperty().isEmpty());
-    }
-
-    public void goToHistory() {
-        visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHistory"));
-    }
-
-    public void goToSearch() {
-        visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorSearch"));
-    }
-
-    public void goToLogOut() {
-        visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
-    }
-
-    public void goToVisitorTop() {
-        visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
     }
 
     public void searchAction() {

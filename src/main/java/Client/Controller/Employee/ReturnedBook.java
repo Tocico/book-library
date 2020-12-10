@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
  */
 
 
-public class ReturnedBook implements Initializable {
+public class ReturnedBook extends ControllerUtil implements Initializable {
 
     public AnchorPane returnedBookPane;
     public TextField ssn;
@@ -39,10 +39,6 @@ public class ReturnedBook implements Initializable {
 
     public void goToEmployeeTop() {
         returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
-    }
-
-    public void goToLogOut() {
-        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
     }
 
     public void goToBookManage() {

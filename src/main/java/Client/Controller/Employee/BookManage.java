@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  * Project: Bibliotek
  * Copyright: MIT
  */
-public class BookManage implements Initializable {
+public class BookManage extends ControllerUtil implements Initializable {
     public Button LogOut;
     public Button employeeTop;
     public Button lendOut;
@@ -87,9 +87,5 @@ public class BookManage implements Initializable {
 
     public void goToEmployeeTop() throws IOException {
         c.loadNewScreen("employee/employeeHome", employeeTop);
-    }
-
-    public void goToLogOut() throws IOException {
-        c.loadNewScreen("logIn", LogOut);
     }
 }
