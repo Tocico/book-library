@@ -108,9 +108,8 @@ public class BookDao implements Dao<Book> {
 
 
     //Boksök funktion
-    public List<Book> searchBook(String searchWord) {
+    public List<Book> searchBook(List<Book> bookList, String searchWord) {
 
-        List<Book> bookList = removeDublicateBook();
         List<Book> hitSearchBookList = new ArrayList<>();
         searchWord = Util.removeWhiteSpace(searchWord);
             for (Book book : bookList) {

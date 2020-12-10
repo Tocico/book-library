@@ -47,7 +47,8 @@ public class BookManage implements Initializable {
         //Sätt disable på sök knappen om man inte skriver något
         searchBtn.disableProperty().bind(searchT.textProperty().isEmpty());
         try {
-            BookUtil.printOutBookManage(searchView,  id,  isbn, title, author);
+            String searchWord = searchT.getText();
+            BookUtil.printOutBookManage(searchWord, searchView,  id,  isbn, title, author, message, getClass());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -56,6 +57,8 @@ public class BookManage implements Initializable {
     }
 
     public void searchAction() throws IOException, ClassNotFoundException {
+        String searchWord = searchT.getText();
+        BookUtil.printOutBookManage(searchWord, searchView,  id,  isbn, title, author, message, getClass());
     }
 
     public void goToSearch() throws IOException {
