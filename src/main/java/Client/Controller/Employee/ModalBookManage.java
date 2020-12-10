@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  * Project: Bibliotek
  * Copyright: MIT
  */
-public class ModalBookManage implements Initializable {
+public class ModalBookManage extends ControllerUtil implements Initializable {
     private static Stage stage;
     public TextField id;
     public Button updateBtn;
