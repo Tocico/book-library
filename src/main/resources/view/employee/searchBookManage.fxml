@@ -132,7 +132,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="search" contentDisplay="TOP" maxWidth="30.0" minWidth="210.0" mnemonicParsing="false" onAction="#goToSearch" prefWidth="210.0" style="-fx-background-color: transparent;" text="Search" textFill="#fffbfb">
+                  <Button fx:id="search" contentDisplay="TOP" maxWidth="30.0" minWidth="210.0" mnemonicParsing="false" onAction="#goToEmployeeSearch" prefWidth="210.0" style="-fx-background-color: transparent;" text="Search" textFill="#fffbfb">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>

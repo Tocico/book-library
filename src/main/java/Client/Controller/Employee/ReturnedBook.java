@@ -37,36 +37,6 @@ public class ReturnedBook extends ControllerUtil implements Initializable {
         regiBtn.disableProperty().bind(ssn.textProperty().isEmpty().or(isbn.textProperty().isEmpty()));
     }
 
-    public void goToEmployeeTop() {
-        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
-    }
-
-    public void goToBookManage() {
-    }
-
-    public void goToReturned() {
-        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
-    }
-
-    public void goToLendOut() {
-        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
-    }
-
-    public void goToUserManage() {
-    }
-
-    public void goToRegisterBooks() {
-        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
-    }
-
-    public void goToRegisterUser() {
-        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
-    }
-
-    public void goToSearch() {
-        returnedBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
-    }
-
     public void retunredAction() {
         try {
 
