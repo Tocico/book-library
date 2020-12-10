@@ -63,12 +63,10 @@ public class ControllerUtil {
     }
 
     public void goToLogOut(ActionEvent e) throws IOException {
-        //visitorHistoryPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "logIn"));
         loadNewScreen("logIn", (Node) e.getSource());
     }
 
     public void goToVisitorTop(ActionEvent e) throws IOException {
-        //visitorSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "visitor/visitorHome"));
         loadNewScreen("visitor/visitorHome", (Node) e.getSource());
     }
 
