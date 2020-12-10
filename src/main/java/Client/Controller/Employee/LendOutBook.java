@@ -38,36 +38,6 @@ public class LendOutBook extends ControllerUtil implements Initializable {
         regiBtn.disableProperty().bind(ssn.textProperty().isEmpty().or(isbn.textProperty().isEmpty()));
     }
 
-    public void goToEmployeeTop() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
-    }
-
-    public void goToBookManage() {
-    }
-
-    public void goToReturned() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
-    }
-
-    public void goToLendOut() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
-    }
-
-    public void goToUserManage() {
-    }
-
-    public void goToRegisterBooks() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
-    }
-
-    public void goToRegisterUser() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
-    }
-
-    public void goToSearch() {
-        lendOutBookPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
-    }
-
     public void lendOutAction() {
         try {
 

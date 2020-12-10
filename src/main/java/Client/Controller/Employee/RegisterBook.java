@@ -67,28 +67,6 @@ public class RegisterBook extends ControllerUtil implements Initializable {
 
     }
 
-    public void goToEmployeeTop() {
-        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
-    }
-
-    public void goToBookManage() {
-    }
-
-    public void goToUserManage() {
-    }
-
-    public void goToRegisterBooks() {
-        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
-    }
-
-    public void goToSearch() {
-        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
-    }
-
-    public void goToRegisterUser() {
-        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
-    }
-
     public void actionRegister() {
         LocalDate releaseDay = releaseDate.getValue();
         try {
@@ -131,11 +109,4 @@ public class RegisterBook extends ControllerUtil implements Initializable {
 
     }
 
-    public void goToLendOut() {
-        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
-    }
-
-    public void goToReturned() {
-        registerBook.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
-    }
 }

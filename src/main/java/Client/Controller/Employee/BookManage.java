@@ -61,34 +61,4 @@ public class BookManage extends ControllerUtil implements Initializable {
         BookUtil.printOutBookManage(searchWord, searchView,  id,  isbn, title, author, message, getClass());
     }
 
-    public void goToSearch() throws IOException {
-        c.loadNewScreen("employee/employeeSearch", search);
-    }
-
-    public void goToRegisterUser() throws IOException {
-        c.loadNewScreen("employee/registerUser", registerUser);
-    }
-
-    public void goToRegisterBooks() throws IOException {
-        c.loadNewScreen("employee/registerBook", registerBooks);
-    }
-
-    public void goToUserManage() throws IOException {
-    }
-
-    public void goToBookManage() throws IOException {
-        c.loadNewScreen("employee/searchBookManage", bookManage);
-    }
-
-    public void goToReturned() throws IOException {
-        c.loadNewScreen("employee/returnedBook", returned);
-    }
-
-    public void goToLendOut() throws IOException {
-        c.loadNewScreen("employee/lendOutBook", lendOut);
-    }
-
-    public void goToEmployeeTop() throws IOException {
-        c.loadNewScreen("employee/employeeHome", employeeTop);
-    }
 }

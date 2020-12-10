@@ -44,37 +44,6 @@ public class EmployeeSearch extends ControllerUtil implements Initializable {
         searchBtn.disableProperty().bind(searchT.textProperty().isEmpty());
     }
 
-    public void goToEmployeeTop() {
-        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeHome"));
-    }
-
-
-    public void goToBookManage() {
-    }
-
-    public void goToUserManage() {
-    }
-
-    public void goToRegisterBooks() {
-        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerBook"));
-    }
-
-    public void goToRegisterUser() {
-        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/registerUser"));
-    }
-
-    public void goToSearch() {
-        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/employeeSearch"));
-    }
-
-    public void goToLendOut() {
-        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/lendOutBook"));
-    }
-
-    public void goToReturned() {
-        employeeSearchPane.getChildren().setAll(ControllerUtil.loadFMXLFiles(getClass(), "employee/returnedBook"));
-    }
-
     public void searchAction(){
         String searchWord = searchT.getText();
         BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
