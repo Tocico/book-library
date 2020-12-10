@@ -1,5 +1,6 @@
 package Client;
 
+import Client.Controller.Employee.ModalBookManage;
 import Client.Controller.LogIn;
 import Client.Controller.Modal;
 import DAO.BookDao;
@@ -134,7 +135,7 @@ public class BookUtil {
         searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
         {
             selectedBook = bookDao.getById(newVal.toString());
-            Modal.displayBook(currentClass);
+            ModalBookManage.displayBookManage(currentClass);
         });
 
     }
