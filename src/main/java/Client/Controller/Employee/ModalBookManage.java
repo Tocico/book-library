@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class ModalBookManage extends ControllerUtil implements Initializable {
     public TextField id;
     public Button updateBtn;
     public Button removeBtn;
+    public Text message;
     private Book book;
     public TextField title;
     public TextField isbn;
@@ -81,18 +83,54 @@ public class ModalBookManage extends ControllerUtil implements Initializable {
         releaseDate.setValue(book.getReleaseDate());
         numberOfPages.setText(book.getNumberOfPages());
 
-        if(book.getIsCheckOut()) {
+        if (book.getIsCheckOut()) {
             removeBtn.setVisible(false);
         }
     }
 
-    public void actionUpdate(ActionEvent actionEvent) {
+    public void actionUpdate(){
+        try {
+            message.setText("");
+            book.setTitle(title.getText())
+                    .setIsbn(isbn.getText())
+                    .setAuthor(author.getText())
+                    .setEdition(edition.getText())
+                    .setNumberOfPages(numberOfPages.getText())
+                    .setDescription(description.getText())
+                    .setPublisher(publisher.getText())
+                    .setReleaseDate(releaseDate.getValue());
+
+            String cat = category.getValue().toString();
+            String lang = language.getValue().toString();
+            if (cat.length() != 0) {
+                book.setCategory(Category.getByStringCategoryName(cat));
+            }
+            if (lang.length() != 0) {
+                book.setLanguage(Language.valueOf(lang));
+            }
+
+            BookUtil.bookDao.update(book);
+
+            SuccessModal.message = "You've successfully updated book";
+            SuccessModal.displaySuccessDisplay(getClass());
+            closeModal();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            message.setText("It didn't work. Please try again");
+        }
     }
 
-    public void actionRemove(ActionEvent e) throws IOException {
-        BookUtil.bookDao.delete(book);
-        stage.close();
-        SuccessModal.message = "You've successfully deleted book";
-        SuccessModal.displaySuccessDisplay2(getClass(), (Node)e.getSource());
+    public void actionRemove(){
+        try {
+            message.setText("");
+            BookUtil.bookDao.delete(book);
+            SuccessModal.message = "You've successfully deleted book";
+            SuccessModal.displaySuccessDisplay(getClass());
+            closeModal();
+        } catch (Exception e) {
+            e.printStackTrace();
+            message.setText("It didn't work. Please try again");
+        }
     }
 }

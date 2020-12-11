@@ -8,7 +8,6 @@ import DAO.HistoryDao;
 import Model.*;
 import Model.UserEntities.User;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,17 +15,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-01
- * Time: 13:36
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
-
 
 public class BookUtil {
     public static Book selectedBook;
