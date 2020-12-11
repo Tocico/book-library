@@ -3,12 +3,16 @@ package Client.Controller.Employee;
 import Client.BookUtil;
 import Client.Controller.ControllerUtil;
 import Model.Book;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -42,6 +46,12 @@ public class BookManage extends ControllerUtil implements Initializable {
     public void searchAction() throws IOException, ClassNotFoundException {
         String searchWord = searchT.getText();
         BookUtil.printOutBookManage(searchWord, searchView,  id,  isbn, title, author, message, getClass());
+    }
+
+    public void closeOldBookManageSceneAndOpenNewScene(ActionEvent e) throws IOException {
+        Stage stage = (Stage)primaryStage.getScene().getWindow();
+        stage.close();
+        loadNewScreen("employee/searchBookManage", (Node)e.getSource());
     }
 
 }

@@ -52,7 +52,7 @@ public class Modal implements Initializable {
         description.setText(book.getDescription());
         publisher.setText(book.getPublisher());
         edition.setText(book.getEdition());
-        releaseDate.setText(String.valueOf(book.getReleaseDate()));
+        releaseDate.setText(book.getReleaseDate().equals(null) ? "" : String.valueOf(book.getReleaseDate()));
         numberOfPages.setText(book.getNumberOfPages());
 
         //Hämta hur många tillgängliga böcker finns i bibliotek

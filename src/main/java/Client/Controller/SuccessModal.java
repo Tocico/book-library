@@ -1,5 +1,6 @@
 package Client.Controller;
 
+import Client.Controller.Employee.BookManage;
 import Client.Controller.Employee.RegisterBook;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -28,28 +29,22 @@ public class SuccessModal extends ControllerUtil implements Initializable {
     public Text successMsg;
     private static Stage stage;
     public static String message;
-    private static Node node;
+    private static String currentClassName;
+    BookManage bm = new BookManage();
 
     public static void displaySuccessDisplay(Class<?> currentClass) {
+        String s = currentClass.getName();
+        currentClassName = s.substring(s.lastIndexOf('.') + 1);
         Scene scene = ControllerUtil.loadModalScene(currentClass, "/view/success.fxml");
         stage = new Stage();
         stage.setScene(scene);
         stage.show();
     }
 
-    public static void displaySuccessDisplay2(Class<?> currentClass, Node e) {
-        node = e;
-        Scene scene = ControllerUtil.loadModalScene(currentClass, "/view/success.fxml");
-        stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-
-
-    }
-
-    public void closeModal() throws IOException {
+    public void closeModal(ActionEvent e) throws IOException {
         stage.close();
-        loadNewScreen("employee/searchBookManage", node);
+        if(currentClassName.equalsIgnoreCase("ModalBookManage"))
+        bm.closeOldBookManageSceneAndOpenNewScene(e);
     }
 
     @Override

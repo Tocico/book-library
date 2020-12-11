@@ -12,6 +12,7 @@ import java.io.IOException;
 
 
 public class ControllerUtil {
+    public static Stage primaryStage;
 
     public static AnchorPane loadFMXLFiles(Class<?> tClass, String FMXLFileName) {
         try {
@@ -39,7 +40,7 @@ public class ControllerUtil {
     public void loadNewScreen(String fxml, Node node) throws IOException {
         try {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("view/" + fxml + ".fxml"));
-        Stage primaryStage = (Stage) node.getScene().getWindow();
+        primaryStage = (Stage) node.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Nackademin Bibliotek");
         primaryStage.setResizable(false);
@@ -52,6 +53,7 @@ public class ControllerUtil {
 
     public void goToTop(ActionEvent e) throws IOException {
         loadNewScreen("home", (Node) e.getSource());
+        System.out.println(primaryStage);
     }
 
     public void goToSearch(ActionEvent e) throws IOException {
