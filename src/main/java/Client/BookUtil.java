@@ -66,10 +66,10 @@ public class BookUtil {
 
     //Skriv ut utlåningshistorik
     public static void printOutLendingHistory(TableView historyView, TableColumn<History, String> title, TableColumn<History, String> isbn,
-                                              TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) {
+                                              TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate, String userSsn) {
 
         ObservableList<History> historyData = historyView.getItems();
-        List<History> histories = historyDao.getHistoryList(LogIn.currentLoggedInUser.getsSN());
+        List<History> histories = historyDao.getHistoryList(userSsn);
 
         if (histories != null) {
             for (History history : histories) {

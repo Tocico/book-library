@@ -2,6 +2,7 @@ package Client.Controller;
 
 import Client.Controller.Employee.BookManage;
 import Client.Controller.Employee.RegisterBook;
+import Client.Controller.Employee.UserManage;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -16,14 +17,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-/**
- * Created by Toshiko Kuno
- * Date: 2020-12-05
- * Time: 17:22
- * Project: IntelliJ IDEA
- * Copyright: MIT
- */
-
 
 public class SuccessModal extends ControllerUtil implements Initializable {
     public Text successMsg;
@@ -31,11 +24,12 @@ public class SuccessModal extends ControllerUtil implements Initializable {
     public static String message;
     private static String currentClassName;
     BookManage bm = new BookManage();
+    UserManage um = new UserManage();
 
     public static void displaySuccessDisplay(Class<?> currentClass) {
         String s = currentClass.getName();
         currentClassName = s.substring(s.lastIndexOf('.') + 1);
-        Scene scene = ControllerUtil.loadModalScene(currentClass, "/view/success.fxml");
+        Scene scene = loadModalScene(currentClass, "/view/success.fxml");
         stage = new Stage();
         stage.setScene(scene);
         stage.show();
@@ -43,8 +37,12 @@ public class SuccessModal extends ControllerUtil implements Initializable {
 
     public void closeModal(ActionEvent e) throws IOException {
         stage.close();
-        if(currentClassName.equalsIgnoreCase("ModalBookManage"))
-        bm.closeOldBookManageSceneAndOpenNewScene(e);
+        //Stänga den gamla window och öppna ett nytt window som updaterat data
+        if (currentClassName.equalsIgnoreCase("ModalBookManage"))
+            bm.closeOldBookManageSceneAndOpenNewScene(e);
+        else if (currentClassName.equalsIgnoreCase("ModalUserManage"))
+            um.closeOldUserManageSceneAndOpenNewScene(e);
+
     }
 
     @Override

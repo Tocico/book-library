@@ -4,6 +4,7 @@ import Model.StorageUtil;
 import Model.UserEntities.Employee;
 import Model.UserEntities.User;
 import Model.UserEntities.Visitor;
+import Util.Util;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,9 +22,9 @@ public class UserDao implements Dao<User> {
 
         /*------------------------TEST----------------------------------*/
         userList.add(new Employee("Toshiko", "Kuno", "8811072886", "Enskede", "kuno@gmail.com", "1111", "11111111", false));
-        userList.add(new Employee("Miwa", "", "0000000000", "", "miwa@gmail.com", "2222","11111111",true));
-        userList.add(new Visitor("Yohannes", "", "1111111111", "", "yohannes@gmail.com", "3333" ,"11111111",false));
-        userList.add(new Visitor("Maxim", "", "2222222222", "", "maxim@gmail.com", "4444", "11111111",true));
+        userList.add(new Employee("Miwa", "", "0000000000", "", "miwa@gmail.com", "2222", "11111111", true));
+        userList.add(new Visitor("Yohannes", "", "1111111111", "", "yohannes@gmail.com", "3333", "11111111", false));
+        userList.add(new Visitor("Maxim", "", "2222222222", "", "maxim@gmail.com", "4444", "11111111", true));
         /*------------------------------------------*/
 
         try {
@@ -71,18 +72,20 @@ public class UserDao implements Dao<User> {
     public User getById(String id) {
         for (Object e : userList) {
             if (e instanceof User) {
-                if(((User) e).getsSN().equals(id)) return (User) e;
+                if (((User) e).getsSN().equals(id)) return (User) e;
             }
         }
         return null;
     }
 
-    public List<User> getByName(String name) {
+    public List<User> searchUser(String searchWord) throws IOException, ClassNotFoundException {
         List<User> foundUsers = new ArrayList<>();
-        for (Object e : userList) {
-            if (e instanceof User) {
-                if((((User) e).getFirstName() + " " + ((User) e).getFirstName()).equals(name)) foundUsers.add((User) e);
-            }
+        searchWord = Util.removeWhiteSpace(searchWord);
+        for (User user : getAll()) {
+            if (user.getsSN().contains(searchWord) ||
+                    user.getFirstName().toLowerCase().contains(searchWord) ||
+                    user.getLastName().toLowerCase().contains(searchWord))
+                foundUsers.add(user);
         }
         return foundUsers;
     }
