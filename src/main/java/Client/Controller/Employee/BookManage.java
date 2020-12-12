@@ -36,9 +36,7 @@ public class BookManage extends ControllerUtil implements Initializable {
         try {
             String searchWord = searchT.getText();
             BookUtil.printOutBookManage(searchWord, searchView,  id,  isbn, title, author, message, getClass());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        }catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

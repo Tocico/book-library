@@ -32,6 +32,8 @@ public class BookUtil {
         ObservableList<Book> bookData = searchView.getItems();
 
         try {
+            if(bookData.size() != 0)
+                bookData.clear();
             searchView.setVisible(false);
             List<Book> bookList = bookDao.removeDublicateBook();
             List<Book> books = bookDao.searchBook(bookList, searchWord);
@@ -53,23 +55,21 @@ public class BookUtil {
                 //Open modal window
                 searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
                 {
-                    selectedBook = bookDao.getById(newVal.toString());
-                    Modal.displayBook(currentClass);
+                        selectedBook = bookDao.getById(newVal.toString());
+                        Modal.displayBook(currentClass);
                 });
             }
-
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Null");
         }
-
     }
 
     //Skriv ut utlåningshistorik
     public static void printOutLendingHistory(TableView historyView, TableColumn<History, String> title, TableColumn<History, String> isbn,
-                                              TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate) {
+                                              TableColumn<History, String> returnDate, TableColumn<History, String> lendOutDate, String userSsn) {
 
         ObservableList<History> historyData = historyView.getItems();
-        List<History> histories = historyDao.getHistoryList(LogIn.currentLoggedInUser.getsSN());
+        List<History> histories = historyDao.getHistoryList(userSsn);
 
         if (histories != null) {
             for (History history : histories) {

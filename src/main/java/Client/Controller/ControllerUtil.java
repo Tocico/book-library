@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,16 +12,6 @@ import java.io.IOException;
 
 public class ControllerUtil {
     public static Stage primaryStage;
-
-    public static AnchorPane loadFMXLFiles(Class<?> tClass, String FMXLFileName) {
-        try {
-            return FXMLLoader.load(tClass.getClassLoader().getResource("view/" + FMXLFileName + ".fxml"));
-        } catch (IOException e) {
-            System.out.println("Couldn't load FMXLfile");
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     public static Scene loadModalScene(Class<?> currentClass, String FXMLFileName) {
         try {
@@ -93,6 +82,7 @@ public class ControllerUtil {
     }
 
     public void goToUserManage(ActionEvent e) throws IOException {
+        loadNewScreen("employee/searchUserManage", (Node) e.getSource());
     }
 
     public void goToBookManage(ActionEvent e) throws IOException {

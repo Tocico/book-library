@@ -6,15 +6,12 @@ import Client.Controller.SuccessModal;
 import Model.Book;
 import Model.Category;
 import Model.Language;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -41,7 +38,7 @@ public class ModalBookManage extends ControllerUtil implements Initializable {
 
     public static void displayBookManage(Class<?> c) {
         currentClass = c;
-        Scene scene = ControllerUtil.loadModalScene(c, "/view/employee/modalBookManage.fxml");
+        Scene scene = loadModalScene(c, "/view/employee/modalBookManage.fxml");
         stage = new Stage();
         stage.setScene(scene);
         stage.show();

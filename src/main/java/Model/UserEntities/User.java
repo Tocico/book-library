@@ -95,4 +95,9 @@ public abstract class User implements Serializable {
     public void setTel(String tel) {
         this.tel = tel;
     }
+
+    @Override
+    public String toString() {
+        return sSN;
+    }
 }
