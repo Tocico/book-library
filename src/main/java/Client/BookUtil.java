@@ -32,6 +32,8 @@ public class BookUtil {
         ObservableList<Book> bookData = searchView.getItems();
 
         try {
+            if(!bookData.equals(null))
+                bookData.clear();
             searchView.setVisible(false);
             List<Book> bookList = bookDao.removeDublicateBook();
             List<Book> books = bookDao.searchBook(bookList, searchWord);
@@ -58,10 +60,9 @@ public class BookUtil {
                 });
             }
 
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+        } catch (NullPointerException e) {
+            System.out.println("Null");
         }
-
     }
 
     //Skriv ut utlåningshistorik

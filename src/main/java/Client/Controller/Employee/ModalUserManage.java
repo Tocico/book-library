@@ -49,6 +49,11 @@ public class ModalUserManage extends ControllerUtil implements Initializable {
         address.setText(user.getAddress());
         email.setText(user.getEmail());
         userCat.setUserData(user.isAdmin());
+        if (user.isAdmin()) {
+            employee.setSelected(true);
+        } else {
+            visitor.setSelected(true);
+        }
 
         //Skriva ut historik
         BookUtil.printOutLendingHistory(historyView, title, isbn, returnedDate, lendOutDate, user.getsSN());
