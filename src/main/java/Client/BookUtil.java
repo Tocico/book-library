@@ -32,7 +32,7 @@ public class BookUtil {
         ObservableList<Book> bookData = searchView.getItems();
 
         try {
-            if(!bookData.equals(null))
+            if(bookData.size() != 0)
                 bookData.clear();
             searchView.setVisible(false);
             List<Book> bookList = bookDao.removeDublicateBook();
@@ -55,12 +55,11 @@ public class BookUtil {
                 //Open modal window
                 searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
                 {
-                    selectedBook = bookDao.getById(newVal.toString());
-                    Modal.displayBook(currentClass);
+                        selectedBook = bookDao.getById(newVal.toString());
+                        Modal.displayBook(currentClass);
                 });
             }
-
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             System.out.println("Null");
         }
     }
