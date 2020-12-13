@@ -21,15 +21,15 @@ public class UserDao implements Dao<User> {
     public UserDao() {
 
         /*------------------------TEST----------------------------------*/
-        userList.add(new Employee("Toshiko", "Kuno", "8811072886", "Enskede", "kuno@gmail.com", "1111", "11111111", false));
-        userList.add(new Employee("Miwa", "", "0000000000", "", "miwa@gmail.com", "2222", "11111111", true));
-        userList.add(new Visitor("Yohannes", "", "1111111111", "", "yohannes@gmail.com", "3333", "11111111", false));
-        userList.add(new Visitor("Maxim", "", "2222222222", "", "maxim@gmail.com", "4444", "11111111", true));
+//        userList.add(new Employee("Toshiko", "Kuno", "8811072886", "Enskede", "kuno@gmail.com", "1111", "11111111", true));
+//        userList.add(new Employee("Miwa", "G", "0000000000", "", "miwa@gmail.com", "0000", "11111111", false));
+//        userList.add(new Visitor("Yohannes", "Y", "1111111111", "", "yohannes@gmail.com", "1111", "11111111", false));
+//        userList.add(new Visitor("Maxim", "M", "2222222222", "", "maxim@gmail.com", "2222", "11111111", true));
         /*------------------------------------------*/
 
         try {
             db = new StorageUtil("users");
-            saveAll();
+            //saveAll();
             userList = getAll(); //Overwrite current history list with the fetched deserialized data
             System.out.println("Loaded data: " + userList);
         } catch (ClassNotFoundException | IOException e) {
@@ -78,10 +78,10 @@ public class UserDao implements Dao<User> {
         return null;
     }
 
-    public List<User> searchUser(String searchWord) throws IOException, ClassNotFoundException {
+    public List<User> searchUser(String searchWord) {
         List<User> foundUsers = new ArrayList<>();
         searchWord = Util.removeWhiteSpace(searchWord);
-        for (User user : getAll()) {
+        for (User user : userList) {
             if (user.getsSN().contains(searchWord) ||
                     user.getFirstName().toLowerCase().contains(searchWord) ||
                     user.getLastName().toLowerCase().contains(searchWord))
