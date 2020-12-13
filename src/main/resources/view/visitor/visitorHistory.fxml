@@ -58,10 +58,10 @@
                      <children>
                         <TableView fx:id="historyView" layoutX="52.0" prefHeight="420.0" prefWidth="671.0" stylesheets="@../../css/style.css">
                           <columns>
-                            <TableColumn fx:id="isbn" editable="false" minWidth="120.0" prefWidth="75.0" style="-fx-background-color: #a3adaf; -fx-border-color: white;" text="ISBN" />
-                            <TableColumn fx:id="title" editable="false" minWidth="250.0" prefWidth="75.0" style="-fx-background-color: #a3adaf; -fx-border-color: white;" text="Title" />
-                              <TableColumn fx:id="lendDate" editable="false" minWidth="150.0" prefWidth="75.0" style="-fx-background-color: #a3adaf; -fx-border-color: white;" text="Checkout date" />
-                              <TableColumn fx:id="returnDate" editable="false" minWidth="150.0" prefWidth="75.0" style="-fx-background-color: #a3adaf; -fx-border-color: white;" text="Returned date" />
+                            <TableColumn fx:id="isbn" editable="false" minWidth="120.0" prefWidth="75.0" text="ISBN" />
+                            <TableColumn fx:id="title" editable="false" minWidth="250.0" prefWidth="75.0" text="Title" />
+                              <TableColumn fx:id="lendDate" editable="false" minWidth="150.0" prefWidth="75.0" text="Checkout date" />
+                              <TableColumn fx:id="returnDate" editable="false" minWidth="150.0" prefWidth="75.0" text="Returned date" />
                           </columns>
                         </TableView>
                      </children>

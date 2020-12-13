@@ -32,7 +32,7 @@ public class UserUtil {
 
     public static void printOutUserManage(String searchWord, TableView searchView, TableColumn<User, String> ssn, TableColumn<User, String> firstName, TableColumn<User, String> lastName, TableColumn<User, String> userCategory, Text message, Class<?> currentClass) {
         ObservableList<User> userManageData = searchView.getItems();
-        System.out.println("Ovservable: " + userManageData);
+        userManageData.clear();
         List<User> userList;
 
         try {

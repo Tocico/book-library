@@ -41,6 +41,7 @@ public class LendOutBook extends ControllerUtil implements Initializable {
             else {
                History history = BookUtil.registerLendOutBook(ssn.getText(), isbn.getText());
 
+               message.setText("");
                isbn.setText("");
                ssn.setText("");
 

@@ -39,14 +39,15 @@ public class ReturnedBook extends ControllerUtil implements Initializable {
             else if (BookUtil.bookDao.getByIsbn(isbn.getText()) == null)
                 message.setText("Vi hittar inte den bok. Försök mata in igen.");
             else {
-               History history = BookUtil.registerReturnedBook(ssn.getText(), isbn.getText());
+                History history = BookUtil.registerReturnedBook(ssn.getText(), isbn.getText());
 
-               isbn.setText("");
-               ssn.setText("");
+                message.setText("");
+                isbn.setText("");
+                ssn.setText("");
 
                 SuccessModal.message = "Name: " + history.getUser().getFirstName() + " " + history.getUser().getLastName()
-                                        + "\nTitle: " + history.getBook().getTitle() +
-                                        "\nYou have returned book!";
+                        + "\nTitle: " + history.getBook().getTitle() +
+                        "\n" + history.getUser().getFirstName() + " have returned book!";
                 SuccessModal.displaySuccessDisplay(getClass());
             }
 

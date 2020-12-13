@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
 
-    
-    public class Book implements Serializable {
+
+public class Book implements Serializable {
     protected final String id = UUID.randomUUID().toString().replace("-", ""); //Create uniq ID
     protected String isbn;
     protected String title;

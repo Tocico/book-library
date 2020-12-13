@@ -4,6 +4,7 @@ import Client.BookUtil;
 import Model.Book;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -21,7 +22,7 @@ public class Modal implements Initializable {
     public TextField author;
     public TextField category;
     public TextField language;
-    public TextField description;
+    public TextArea description;
     public TextField publisher;
     public TextField edition;
     public TextField releaseDate;

@@ -1,7 +1,6 @@
 package Client;
 
 import Client.Controller.Employee.ModalBookManage;
-import Client.Controller.LogIn;
 import Client.Controller.Modal;
 import DAO.BookDao;
 import DAO.HistoryDao;
@@ -32,8 +31,7 @@ public class BookUtil {
         ObservableList<Book> bookData = searchView.getItems();
 
         try {
-            if(bookData.size() != 0)
-                bookData.clear();
+            bookData.clear();
             searchView.setVisible(false);
             List<Book> bookList = bookDao.removeDublicateBook();
             List<Book> books = bookDao.searchBook(bookList, searchWord);
@@ -55,8 +53,9 @@ public class BookUtil {
                 //Open modal window
                 searchView.getSelectionModel().selectedItemProperty().addListener((observable, oldVal, newVal) ->
                 {
-                        selectedBook = bookDao.getById(newVal.toString());
-                        Modal.displayBook(currentClass);
+                    System.out.println();
+                    selectedBook = bookDao.getById(newVal.toString());
+                    Modal.displayBook(currentClass);
                 });
             }
         } catch (Exception e) {
@@ -93,6 +92,7 @@ public class BookUtil {
         List<Book> bookList;
 
         try {
+            bookManageData.clear();
             //Första gången kommer till book manage sidan
             if (searchWord.equals("")) {
                 message.setText("");
@@ -127,7 +127,7 @@ public class BookUtil {
                 selectedBook = bookDao.getById(newVal.toString());
                 ModalBookManage.displayBookManage(currentClass);
             });
-        }catch (Exception e) {
+        } catch (Exception e) {
             message.setText("Det finns inga data");
         }
 
