@@ -36,7 +36,7 @@ public class ReturnedBook extends ControllerUtil implements Initializable {
                 message.setText("Felaktig inmatning. Försök mata in igen.");
             else if (UserUtil.userDao.getById(ssn.getText()) == null)
                 message.setText("Vi hittar inte personnummer. Försök mata in igen.");
-            else if (BookUtil.bookDao.getByIsbn(isbn.getText()) == null)
+            else if (BookUtil.bookDao.getCheckedBookByIsbn(isbn.getText()) == null)
                 message.setText("Vi hittar inte den bok. Försök mata in igen.");
             else {
                 History history = BookUtil.registerReturnedBook(ssn.getText(), isbn.getText());

@@ -71,6 +71,13 @@ public class BookDao implements Dao<Book> {
                 .orElse(null);
     }
 
+    public Book getCheckedBookByIsbn(String isbn) {
+        return bookList.stream()
+                .filter(book -> book.getIsbn().equals(isbn))
+                .findAny()
+                .orElse(null);
+    }
+
     public Book getById(String id) {
         for (Object e : bookList) {
             if (e instanceof Book) {
