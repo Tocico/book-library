@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -9,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="searchPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Search">
+<AnchorPane fx:id="searchPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Search">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="1000.0">
          <top>
@@ -54,17 +56,26 @@
             </Pane>
          </bottom>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #c9d8da;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                  
                   <Pane layoutX="160.0" prefHeight="511.0" prefWidth="709.0">
                      <children>
                         <TextField fx:id="searchT" layoutY="43.0" prefHeight="40.0" prefWidth="590.0" />
-                        <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="42.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#searchAction" prefWidth="90.0" style="-fx-background-color: #a65d58;" text="sök" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                        <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="620.0" layoutY="45.0" minHeight="36.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#searchAction" prefHeight="29.0" prefWidth="90.0" style="-fx-background-color: #a65d58;" text="sök" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                            <font>
-                              <Font size="22.0" />
+                              <Font size="20.0" />
                            </font>
                         </Button>
+                        <Text fx:id="message" fill="#f80909" layoutX="-4.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="572.0787963867188" />
+                        <TableView fx:id="searchView" layoutX="-1.0" layoutY="130.0" prefHeight="341.0" prefWidth="710.0" stylesheets="@../css/style.css">
+                          <columns>
+                            <TableColumn fx:id="title" prefWidth="271.98435974121094" text="Title" />
+                            <TableColumn fx:id="author" minWidth="0.0" prefWidth="189.984375" text="Author" />
+                              <TableColumn fx:id="language" prefWidth="127.015625" text="Language" />
+                              <TableColumn fx:id="category" minWidth="0.0" prefWidth="127.640625" text="Category" />
+                          </columns>
+                        </TableView>
                      </children>
                   </Pane>
                </children>

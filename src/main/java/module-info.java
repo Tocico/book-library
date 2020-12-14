@@ -6,10 +6,10 @@ module Bibliotek {
 
     opens Client;
     opens Client.Controller;
-    opens Client.Controller.Staff;
+    opens Client.Controller.Employee;
     opens Client.Controller.Visitor;
     opens view;
-    opens view.staff;
+    opens view.employee;
     opens view.visitor;
     opens img;
 }

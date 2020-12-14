@@ -1,22 +1,24 @@
-package Client.Controller;
+package Client.Controller.Visitor;
 
 import Client.BookUtil;
+import Client.Controller.ControllerUtil;
 import Model.Book;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Search extends ControllerUtil implements Initializable {
+
+public class VisitorSearch extends ControllerUtil implements Initializable {
+    public AnchorPane visitorSearchPane;
     public TextField searchT;
-    public AnchorPane searchPane;
     public Button searchBtn;
     public Text message;
     public TableView searchView;
@@ -24,9 +26,6 @@ public class Search extends ControllerUtil implements Initializable {
     public TableColumn<Book, String> author;
     public TableColumn<Book, String> language;
     public TableColumn<Book, String> category;
-    public Button top;
-    public Button search;
-    public Button LogIn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,4 +39,5 @@ public class Search extends ControllerUtil implements Initializable {
         String searchWord = searchT.getText();
         BookUtil.printOutSearchResult(searchWord, searchView, title, author, language, category, message, getClass());
     }
+
 }

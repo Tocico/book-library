@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="loggedInStaff" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Staff.Staff">
+<AnchorPane fx:id="loggedInEmployee" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.Employee.EmployeeHome">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="1000.0">
          <top>
@@ -23,7 +23,7 @@
                   </Text>
                   <ButtonBar layoutX="240.0" layoutY="9.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="740.0">
                     <buttons>
-                        <Button fx:id="LogOut" alignment="CENTER" contentDisplay="TOP" maxWidth="79.0" minWidth="30.0" mnemonicParsing="false" onAction="#goToLogIn" prefHeight="28.0" prefWidth="30.0" style="-fx-background-color: transparent;" text="Log out" textFill="WHITE">
+                        <Button fx:id="LogOut" alignment="CENTER" contentDisplay="TOP" maxWidth="79.0" minWidth="30.0" mnemonicParsing="false" onAction="#goToLogOut" prefHeight="28.0" prefWidth="30.0" style="-fx-background-color: transparent;" text="Log out" textFill="WHITE">
                            <font>
                               <Font name="Euphemia UCAS" size="13.0" />
                            </font>
@@ -45,12 +45,25 @@
             </Pane>
          </bottom>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #c9d8da #c9d8da;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fx:id="welcome" layoutX="240.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome ">
+                     <font>
+                        <Font name="Euphemia UCAS" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="userName" fill="#c35050" layoutX="360.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="345.2060546875">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="60.0" layoutY="140.0" prefHeight="330.0" prefWidth="680.0" styleClass="bgHome" stylesheets="@../../css/style.css" />
+               </children></Pane>
          </center>
          <left>
             <VBox prefHeight="513.0" prefWidth="208.0" style="-fx-background-color: #536c85;" BorderPane.alignment="CENTER">
                <children>
-                <Button fx:id="staffeTop" maxWidth="210.0" minWidth="20.0" mnemonicParsing="false" onAction="#goToStaffTop" prefHeight="28.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="Top" textFill="WHITE" textOverrun="CLIP">
+                <Button fx:id="employeeTop" maxWidth="210.0" minWidth="20.0" mnemonicParsing="false" onAction="#goToEmployeeTop" prefHeight="28.0" style="-fx-background-color: transparent;" styleClass="active" stylesheets="@../../css/style.css" text="Top" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
@@ -61,16 +74,32 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="history" contentDisplay="TOP" maxWidth="1.7976931348623157E308" minWidth="210.0" mnemonicParsing="false" onAction="#goToHistory" prefWidth="200.0" style="-fx-background-color: transparent;" text="History" textFill="#fffbfb">
-                     <font>
-                        <Font name="Euphemia UCAS" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="300.0" style="-fx-background-color: transparent;" text="Register" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets right="40.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="lendOut" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#goToLendOut" style="-fx-background-color: transparent;" text="Checkout Books" textAlignment="RIGHT" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="returned" alignment="TOP_RIGHT" contentDisplay="TOP" maxWidth="190.0" mnemonicParsing="false" onAction="#goToReturned" style="-fx-background-color: transparent;" text="Returned Books" textAlignment="RIGHT" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
                   </Button>
                   <Button fx:id="bookManage" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToBookManage" prefWidth="210.0" style="-fx-background-color: transparent;" text="Book manage" textFill="#fffbfb">
                      <font>
@@ -83,7 +112,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="userManage" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goTouserManage" prefWidth="210.0" style="-fx-background-color: transparent;" text="User manage" textFill="#fffbfb">
+                  <Button fx:id="userManage" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToUserManage" prefWidth="210.0" style="-fx-background-color: transparent;" text="User manage" textFill="#fffbfb">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
@@ -105,7 +134,18 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="search" contentDisplay="TOP" maxWidth="30.0" minWidth="210.0" mnemonicParsing="false" onAction="#goToSearch" prefWidth="210.0" style="-fx-background-color: transparent;" text="Search" textFill="#fffbfb">
+                  <Button fx:id="registerUser" contentDisplay="TOP" minWidth="210.0" mnemonicParsing="false" onAction="#goToRegisterUser" prefWidth="210.0" style="-fx-background-color: transparent;" text="Register user" textFill="#fffbfb">
+                     <font>
+                        <Font name="Euphemia UCAS" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="search" contentDisplay="TOP" maxWidth="30.0" minWidth="210.0" mnemonicParsing="false" onAction="#goToEmployeeSearch" prefWidth="210.0" style="-fx-background-color: transparent;" text="Search" textFill="#fffbfb">
                      <font>
                         <Font name="Euphemia UCAS" size="14.0" />
                      </font>
